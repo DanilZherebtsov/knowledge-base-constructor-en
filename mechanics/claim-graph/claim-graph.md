@@ -125,11 +125,11 @@ And a claim-specific auto-fix (the "Auto-fix" section):
 
 ---
 
-## Piece 4 — S7b: every citation carries a localization, lint-checkable
+## Piece 4 — citation localization: hardening the base rule into a lint check
 
-In claim-graph, citation localization is not merely a formatting convention (like base's generic variant in slot S8) but a **hard, lint-checkable rule**, because a claim without localized evidence is unprovable.
+The rule "**A citation carries a location**" itself lives in base (`page-conventions.md`) as of base@26 and reaches every class as a write-side rule, with no retroactive check (ADR-0030). Claim-graph does **not restate it — it hardens it**: a claim without localized evidence is unprovable, so here localization is a hard, lint-checkable requirement.
 
-**Citation rule (in `page-conventions.md`).** Every item under Evidence / Counter-evidence must contain a localization (page, paragraph, timecode). Without it, the item counts as undocumented and is flagged by lint. Localization format:
+**Hardening (in `page-conventions.md`).** Every item under Evidence / Counter-evidence must contain a localization (page, paragraph, timecode). Without it, the item counts as undocumented and is flagged by lint. Domain localization formats:
 - Literature: `(Smith 2024, p. 47)` or `(Smith 2024, §3.2)`
 - Field materials: `[interview-jones-2026-04-12.md, min. 14:30]` or `[..., turn 87]`
 - Web source: `[Anthropic blog, "Memory" section](https://...)` — with a fragment anchor if possible
@@ -137,7 +137,7 @@ In claim-graph, citation localization is not merely a formatting convention (lik
 
 Without a localization — the marker `[location needed]`.
 
-**Authority rule (S7 in `CLAUDE.md`).** A class without code → "**Sources beat the wiki**" + the claim-graph addition: "**every citation carries a localization**, lint-checkable".
+**Authority rule (S7 in `CLAUDE.md`).** A class without code → "**Sources beat the wiki**" + the claim-graph addition: "**citation localization — lint-checkable**" (the localization rule itself lives in base; here only the hardening into a check).
 
 **Lint check (in `lint.md`, "Report-only" section):**
 > **Citations without localization:** a mention of an author/source without a page / paragraph / timecode. Lint outputs the list of such places in the format `<page>:<line number> — <fragment>`.
@@ -152,6 +152,6 @@ Without a localization — the marker `[location needed]`.
 | 1. Fields `supports/contradicts/refines` | `page-conventions.md` (frontmatter + "Links") | — (additive to base frontmatter) |
 | 2. KNOWLEDGE-UNIT = claim | `ingest.md` | `<<SLOT KNOWLEDGE-UNIT>>` |
 | 3. Counter-evidence balance | `lint.md` | `<<SLOT DOMAIN-LINT>>` |
-| 4. Citation with localization | `page-conventions.md`, `lint.md`, `CLAUDE.md` | S7 (authority rule), lint report check |
+| 4. Citation localization: hardening into lint | `page-conventions.md`, `lint.md`, `CLAUDE.md` | S7 (authority rule), lint report check (the rule itself — in base) |
 
 Step-by-step application order — [_about.md](_about.md).

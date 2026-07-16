@@ -20,7 +20,7 @@ tags: [topic1, topic2]
 
 **`sources:` is mandatory.** A claim without a source is a hallucination dressed up as fact; lint rejects pages without sources.
 
-<<SLOT CITE-LOC: classes that require located citations (research, the claim-graph mechanic) add the rule "**A citation carries a location.** A source link comes with the specific place (page / paragraph / timecode); without it, it's a paraphrase, not a citation. The location format is domain-specific (see slot S8)."; classes without it (saas/business) — the slot is empty.>>
+**A citation carries a location.** A source link comes with the specific place (page / paragraph / timecode); without it, it's a paraphrase, not a citation. The location format is domain-specific (see slot S8). This is a write-side rule: it governs new pages; no retroactive cleanup of old ones is required.
 
 ## Atomicity
 

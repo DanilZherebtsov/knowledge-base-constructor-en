@@ -3,7 +3,7 @@
 version:       8            # CLAUDE.md fingerprint line = "business-run-general · v8"
 title-word:    "the business"
 central-type:  entities/  (added to the base decisions/discovery/synthesis/principles)
-authority:     "Sources beat the wiki"  (no S7b citation localization — that's research-only)
+authority:     "Sources beat the wiki"  (citation localization is a base rule for every class as of base@26; not restated in S7. Its lint check — claim-graph/research only)
 work-layers:   []   (output/ only; no code working layer)
 state-sections:[Snapshot, Open tracks, This week, Next (1–2 weeks), Commitments calendar, "Blockers, risks, and decisions waiting on me", Recently completed]
 domain-conv:   "Currency and amount format — from the bootstrap interview (universal question outside any slot, no default); additionally record the main currency in 'About the project'"

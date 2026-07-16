@@ -8,6 +8,19 @@ The constructor's entry point. When this folder is present but the structure isn
 
 First contact in a project where the constructor lies but the structure doesn't — **regardless of what the first message says** (even "hi" or something off-topic). The always-on trigger lives in the constructor's root [CLAUDE.md](CLAUDE.md): it says to greet on the very first message and start this interview, without waiting for the human to bring up the project themselves. No special command needed.
 
+## The language of the conversation — a sweeping rule
+
+**In force from the first message through onboarding, including incidental progress remarks.** Not tied to steps: the ban used to live on steps 4–5 and in onboarding, and it was exactly in the gap between them that "two mutually exclusive central mechanisms" and English-language progress notes leaked out (ADR-0030).
+
+- **The language is the one the human wrote their first message in.** Progress remarks ("structure's assembled, checking it now") are in that language too.
+- **Internal words never go out:** mechanic, central type, slot, lifecycle, preset, base, claim graph, wiring, build fingerprint, part versions, file-swap, scaffolding.
+- What goes out is only **what the human gets and what they should do**.
+
+> ✗ "decision-lifecycle and the claim graph are mutually exclusive over the central type — each organizes the wiki its own way"
+> ✓ nothing: the constructor decides this itself (see [ASSEMBLY.md](ASSEMBLY.md), step 4), the human doesn't need to know
+> ✗ "Structure's in place. Now hygiene check for leftover slot markers."
+> ✓ "Structure's assembled, checking it now."
+
 ## The interview (guiding questions, one or two at a time, wait for answers)
 
 **Step 1 — what kind of project (determines the STARTING preset).**
@@ -19,13 +32,17 @@ Ask "What will you be doing in this project?" and pick a base from the answer:
 
 Say the inference out loud and confirm: "Sounds like product development — I'll take **saas** as the base, right?" A preset is a starting point, not a cage.
 
-**Step 2 — additional mechanics (NOT tied to the class).**
-Show the relevant optional mechanics from [mechanics-catalog.md](mechanics-catalog.md) in plain words and offer to add them on top of the preset:
-- **claim graph** — a graph of claims with evidence and links (usually research; can sit on top of a product too, when the evidence base matters);
-- **working with code (`software-engineering`)** — if the project writes, maintains, and deploys its own code (site, landing page, bot, scripts, engine). Provides a code folder in the root, a code-writing cycle (subagent checks → implementation → tests → report), ownership discipline, and, for a web product, an "edits / deploys" role pair. Composes with any preset; with saas it pairs with specs (the spec is the unit of work, this mechanic is the execution). Can be wired in later too;
-- etc. per the catalog.
+**Step 2 — the code question (the only thing asked about here).**
 
-Ask directly: "Will there be your own code — a site/bot/scripts? Anything else?" Add the chosen ones to the preset's mechanics list (on top of the defaults). These operations remain available later — "we'll be writing code" at any moment.
+**Admission rule for the interview (ADR-0030).** A mechanic is put to the human only if it has a **question about an observable fact of their work** — one they can answer on day one, knowing nothing about how the wiki is built. No such question — the mechanic is settled by step 1 against the catalog's criterion, silently. Asking "do you need a claim graph / do you need specs" is **forbidden**: the human will answer "I need everything", and that's noise, not a choice.
+
+Today there is exactly one such question — **working with code (`software-engineering`)**:
+
+> "Will there be your own code — a site, a bot, scripts, dashboards?"
+
+Yes → add the mechanic on top of the preset. It provides a code folder in the root, a code-writing cycle (subagent checks → implementation → tests → report), ownership discipline, and, for a web product, an "edits / deploys" role pair. Composes with any preset; with saas it pairs with specs (the spec is the unit of work, this mechanic is the execution). Can be wired in later too — "we'll be writing code" at any moment.
+
+**The central type is not discussed with the human.** Which unit of knowledge the project needs (claim graph vs the class lifecycle) is inferred from the step 1 answer against the criterion in [mechanics-catalog.md](mechanics-catalog.md) ("Criterion for the central type"). A clash between two contenders is resolved by the assembler itself — [ASSEMBLY.md](ASSEMBLY.md), step 4.
 
 **Don't ask about roles at assembly.** The role machinery exists in every project, always (base machinery, not a class mechanic — ADR-0027); at assembly time roles are usually premature. A role is created with "create role <name>" at any moment after assembly — the human learns this at onboarding (Step 6). Nothing gets deactivated.
 
@@ -53,4 +70,4 @@ Give the human a concise orientation to the assembled project: "How to use it" (
 
 ## The principle
 
-**A preset is a starting point; the class doesn't dictate.** Any mechanic (claim graph, working with code) can be added on top of any preset — at interview Step 2 or later with a single phrase. The class merely provides a sensible default the human is free to deviate from. Roles are not a mechanic but a base capability: present in every project, always.
+**A preset is a starting point; the class doesn't dictate. But the central type is not the human's choice.** Add-ons (working with code) go on top of any preset — at Step 2 or later with a single phrase; the class merely provides a sensible default the human is free to deviate from. Mechanics that claim the central type (claim graph, spec-/decision-lifecycle), however, do not stack: there is one central type, and it is set by the catalog's criterion against what the human does for a living — not by their answer to a question about a mechanic (ADR-0030). Roles are not a mechanic but a base capability: present in every project, always.

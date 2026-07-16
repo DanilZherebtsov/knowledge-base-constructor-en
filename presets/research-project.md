@@ -3,7 +3,7 @@
 version:       6            # CLAUDE.md fingerprint line = "research-project · v6"
 title-word:    "research"
 central-type:  claims/ (added in place of the base discovery/; the wiki type set = claims/ · decisions/ · synthesis/ · principles/)
-authority:     "Sources beat the wiki (S7) + S7b: every claim comes with a citation and its localization (file + page / paragraph / timecode), lint-checkable"
+authority:     "Sources beat the wiki (S7) + the claim-graph hardening: citation localization — lint-checkable (the localization rule itself — in base@26, do not restate)"
 work-layers:   [data/ (opt.), src/ (opt.)]
 state-sections:[Stage, Path to goal, In progress now, Next (1–2 weeks), Answered last week, Blockers and risks, Low-priority open questions]
 domain-conv:   "Citations with localization: literature `(Smith 2024, p. 47)` / `(Smith 2024, §3.2)`; fieldwork `[interview-jones-2026-04-12.md, min. 14:30]`; web — with an anchor fragment. Without localization — `[location needed]`"

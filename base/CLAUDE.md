@@ -54,7 +54,7 @@ Rules:
 - **Wiki depth = 1.** One level of thematic subfolders (the types above), no deeper. 30+ homogeneous pages in one type → expand horizontally (a new top-level type or name prefixes), not subfolders.
 - **`raw/` is the exception.** Inside `raw/`, depth as needed is allowed (a store navigated by the human).
 - **`methodology/` is part of the template, not a working area.** Edited only by the human when revising the methodology.
-- <<SLOT S7: authority rule — "**Code beats the wiki**" (classes with `src/`) OR "**Sources beat the wiki**" (classes without code; for research add "**every citation carries a location**, lint-checkable")>>
+- <<SLOT S7: authority rule — "**Code beats the wiki**" (classes with `src/`) OR "**Sources beat the wiki**" (classes without code). The `claim-graph` mechanic adds "**citation localization — lint-checkable**": the localization rule itself lives unconditionally in `page-conventions.md` as of base@26 and every class gets it — here only the hardening into a check, not a restatement of the rule.>>
 - **git is optional.** Under version control — Claude commits after ingest/bootstrap; otherwise history lives in `wiki/log.md` and page dates, and "commit" steps are skipped.
 - **Structure grows as needed.** A source doesn't fit the existing `raw/` subfolders — create a new one (depth is free in `raw/`; `wiki/` stays flat). Changed the layout — reflect it in this file's tree and in the affected context files.
 - **File names.** Descriptive, underscores/kebab-case. Raw files get a `YYYY-MM-DD-` prefix when the source date is known.

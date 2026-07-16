@@ -3,7 +3,7 @@
 version:       8            # preset manifest version; in the build fingerprint — saas-product@<versions.json>
 title-word:    "product"
 central-type:  architecture  (added to the base decisions/discovery/synthesis/principles)
-authority:     "Code beats the wiki (classes with src/). NO S7b citation localization — that's research."
+authority:     "Code beats the wiki (classes with src/). Citation localization is a base rule (base@26), not restated in S7; its lint check — claim-graph/research only."
 work-layers:   [specs/, src/, data/, scripts/]
 state-sections:[Stage, Path to goal, In progress now, Next (1–2 weeks), Completed last week, Blockers and risks, Known tech debt]
 domain-conv:   "Currency and amount format — from the bootstrap interview (universal question outside any slot, no default); the answer fills S8. No special citation format."
