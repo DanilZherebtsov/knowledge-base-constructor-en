@@ -64,9 +64,7 @@ The assembled project `CLAUDE.md` (from `base/`, filled in) goes to the root, **
 > ✓ "The project is assembled, the structure is in place. What's left is to remove the temporary files that helped assemble it — deleting them needs your permission."
 
 **Step 6 — a short onboarding.**
-Give the human a concise orientation to the assembled project: "How to use it" (the real operations — ingest/query/lint + the class's unit-of-work flow + roles) and "Notes" (stage, lazy layers not yet created, central type, under git or not). Details and exact contents — [ASSEMBLY.md](ASSEMBLY.md), step 9. Only what was actually assembled.
-
-**Mention roles explicitly** (they always exist): "You can spin up a helper for any function at any moment — 'create role <name>' (lawyer, devops, fact-checker — whatever you need). Optionally drop a role description and materials for its work into `input/` beforehand — then it will be created qualified right away, with real context."
+Give the human a concise handoff in plain language, in three strokes: (1) they toss materials into `input/` and say "process this"; (2) each new task is best started in a new chat — knowledge accumulates in the project memory (`wiki/`) anyway, visible from any chat; (3) anytime, `guide` shows the detailed guide to what you can do in this project. **Do NOT list operations line by line in the message** — the detailed list (roles and the class flow included) lives in `HELP.md`, filled at assembly. The exact handoff text — [ASSEMBLY.md](ASSEMBLY.md), step 9.
 
 ## The principle
 

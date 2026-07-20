@@ -2,7 +2,7 @@
 
 Runs at the first ingest into a project with no structure, or on request ("initialize the structure", "set up the wiki"). **Never** from `query`/`lint`. Runs once; again — only to recover the structure.
 
-Bootstrap is not stamping out fixed folders but a **short setup pass tailored to the project**. The template already ships with `CLAUDE.md`, `STATE.md`, `methodology/`, `roles/`; bootstrap builds out the working layers.
+Bootstrap is not stamping out fixed folders but a **short setup pass tailored to the project**. The template already ships with `CLAUDE.md`, `HELP.md`, `STATE.md`, `methodology/`, `roles/`; bootstrap builds out the working layers.
 
 ## Step 1 — a short interview (3–5 questions; wait for the answers)
 

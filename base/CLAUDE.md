@@ -43,6 +43,7 @@ roles/           ← Role-chat definitions. `_template.md` is the sample.
 output/          ← Root for working files — **every class has it**. Created empty;
                    subfolders (drafts/, folders for live documents) appear as needed.
                  <<SLOT S4: extra working layers for classes with code — specs/ + src/ + data/>>
+HELP.md          ← A "how to work with me" cheat sheet for the human (on `guide`).
 CLAUDE.md        ← This file.
 STATE.md         ← Operational state (intentions, not facts; not canonical).
 ```
@@ -100,6 +101,14 @@ Types — see the "Architecture" tree (<<SLOT S2>>). Frontmatter, per-type forma
 **Domain flow of the unit of work** — <<SLOT S6: pointer to the class's lifecycle file>>. **`index.md`/`log.md` format** — [methodology/index-log-format.md](methodology/index-log-format.md).
 
 **"Build a site / bot / script / app" from scratch** — that is working on our own code, not generic consulting. If the code mechanic (`software-engineering`) is wired in — follow it. If it isn't — **don't default to advice about external no-code builders**: separate the two readings — (a) the project will own its code → offer to wire in the `software-engineering` mechanic (+ the "edits/deploys" role pair for a web product); (b) no-code / outsourced → we stay codeless — and record the choice. The trigger is always-on: it catches at any stage, not only at assembly.
+
+---
+
+## The "how to work with me" guide (on request)
+
+`HELP.md` in the root is a human-facing cheat sheet: setting a task, a new chat per task, the memory map, safety, maintenance, techniques. The human edits it; don't touch it on ingest/maintenance.
+
+**Trigger (ALWAYS-ON).** The user's **entire** message equals one of `guide` / `help` / `manual` (case-insensitive, with or without a leading slash) → show `HELP.md`. The same words **inside a sentence** ("write a manual for X", "I need help with this contract") are a normal task, not a help request.
 
 ---
 
