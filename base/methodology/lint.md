@@ -23,6 +23,17 @@ A periodic check. Two levels with different authority.
 - **Depth violation:** any `.md` in `wiki/<type>/<subdir>/...` (pages must sit flat in the type folder). Exceptions — `wiki/index.md` and `wiki/log.md`.
 - **Log dates not ascending:** an entry in `wiki/log.md` dated earlier than the previous one → report (the date was likely taken from a file mtime or from when the work was done, not from the environment). Don't sort automatically — whether to fix the date stamp or the entry position is the human's call.
 
+### `STATE.md` hygiene (read silently every session → size = context tax)
+
+`STATE.md` is read at the start of **every** chat, so its growth is a constant tax on context, and status drift distorts any answer to "what's in progress". Everything below is **report-only, never an auto-edit:** STATE holds intentions, and a false positive must not silently erase a plan. The report explains WHY (one phrase about the file's purpose), not just "what". Thresholds are defaults; a large project may deliberately raise them (the numbers live here, in the rule's text).
+
+- **Paragraph-line.** Any `STATE.md` line longer than **~2000 chars** is narrative that belongs in `wiki/` (in STATE — a phrasing + a link, `state-rules.md` §5). Report: the top-N longest lines + their section. Catches the root cause before overall size does.
+- **Size.** File > **~30 KB** or a single section > **~10 KB** — report with the number and an estimate of how many tokens that is at each session start.
+- **"Done" buffer not collapsed** (`state-rules.md` §6: sits for a week, then → a wiki link / "N tasks, see git log" / removed). Report: entries in "Done" whose date is older than `_Updated:_` by **7–14 days** and still hanging there.
+- **Status drift inside STATE.** Items in "In progress" / "Next" carrying a completion marker (`✅`, `completed`, "CLOSED", "ACCEPTED") → should have moved to "Done" or disappeared. Report as a list.
+- **Structure.** The class's section set (slot S5) in fixed order; empty ones marked `_empty_`; the `_Updated:_` field present and parseable as a date. _(Don't duplicate the "what to do if the date is stale" logic — the freshness trigger is already always-on in `CLAUDE.md`; here just note the field's presence.)_
+- **STATE ↔ wiki/code.** An item in STATE asserting a fact that contradicts a wiki page or the code (`state-rules.md` §7) → flag (don't edit: STATE is not canonical, but it's not the source of truth about facts either).
+
 **Domain checks of the central type.** <<SLOT DOMAIN-LINT: a class with a central type adds its check here. Examples: `architecture/` pages missing the `implementation:` field or with broken paths in it (code drift, saas); a `claim` with status active/validated whose counter-evidence outweighs, and citations without a location (research); overdue commitments from the `STATE.md` "Commitments calendar" (business).>>
 
 ## Update check (by build fingerprint)

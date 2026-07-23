@@ -46,6 +46,9 @@ output/          ← Root for working files — **every class has it**. Created 
 HELP.md          ← A "how to work with me" cheat sheet for the human (on `guide`).
 CLAUDE.md        ← This file.
 STATE.md         ← Operational state (intentions, not facts; not canonical).
+.claude/         ← Environment machinery. settings.json + hooks/freshness_check.py —
+                   a SessionStart hook that forces the session-start checks (see
+                   "Operational state"). Plumbing; the human doesn't look here.
 ```
 
 Rules:
@@ -87,6 +90,8 @@ Rules:
 
 **All session-start checks are silent.** STATE freshness, lint freshness (§5 of "Discipline")<<SLOT DEADLINE-CHECK: classes with a commitments calendar (decision-lifecycle mechanic) add " and upcoming/overdue calendar commitments"; otherwise empty>> are mentioned in the first reply **only on deviation**. Nothing to report — Claude stays silent; it does not list "all clear".
 
+**These checks are forced by a `.claude/` hook (not the rule above alone).** A "silent check on the model's judgment" leaks: it requires an unprompted action before the first reply, and in practice gets skipped. So freshness is computed by a deterministic `SessionStart` hook (`.claude/hooks/freshness_check.py`) that, when something is overdue, injects the deviations into context as a silent note — one that cannot be missed. The prose rule remains the **floor**: if the hook didn't run (no `python3`, environment ignores it), Claude still does the check itself. The hook fixes nothing and shows the human nothing — it only reminds Claude to raise the matter in the human's language.
+
 ---
 
 ## Wiki: page types and operations
@@ -126,7 +131,7 @@ A role can be created right after assembly or later. Optionally, drop a role des
 2. **Supersession instead of silent disappearance.** The old stays, marked `superseded` and linked to its replacement.
 3. **No false precision.** No numeric confidence scores — credibility shows through the chain of sources.
 4. **Human in the write loop.** Claude proposes; the human confirms any nontrivial wiki mutation.
-5. **Maintenance (lint) is not optional.** Weekly. At session start Claude reads the date of the last `lint` entry in `wiki/log.md`; > 7 days — offers a run.
+5. **Maintenance (lint) is not optional.** Weekly. At session start Claude reads the date of the last `lint` entry in `wiki/log.md`; > 7 days — offers a run. A deterministic `SessionStart` hook (`.claude/`, see "Operational state") backs this check up — it computes the age and injects any deviation into context; the prose rule remains the floor if the hook didn't run.
 6. **Schema first, mechanism second.** Something feels wrong — fix this file or `methodology/` first; don't pile up workarounds.
 7. **Schema grows horizontally only.** A new top-level type in `wiki/` (flat) or a new top-level folder. Deepening types is forbidden. `raw/` is the exception.
 8. **Knowledge synthesis on closing a unit of work.** When a unit of work closes, Claude must review what new knowledge it produced and offer to record it in `wiki/` across all relevant types — not just the profile one. The human confirms (ADRs/principles — never silently). Skipping this = the wiki falls behind what we actually know. What a "unit of work" is — defined by the domain lifecycle (<<SLOT S6>>).

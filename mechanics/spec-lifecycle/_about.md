@@ -12,6 +12,7 @@
 
 - `methodology/spec-lifecycle.md` — this drop-in is installed (the mechanic's only new file).
 - `CLAUDE.md` — two pointer inserts (see wiring): the "Task spec flow / Sprints" block into the "Wiki: page types and operations" section; the `specs/` rule into "Architecture". (The always-on line about the execution cycle is inserted by the `software-engineering` mechanic, not this one.)
+- `methodology/lint.md` — one insert into the "Report-only" block: the spec-status-drift check (compositional, step 12). This is NOT the DOMAIN-LINT slot (that's taken by the class's central type) — a separate bullet, like `claim-graph`.
 - References (as neighbors in `methodology/`): `state-rules.md`, `ingest.md`. They must be present (inherited from base).
 - Creates during operation (not at install): `specs/<feature>-NNN-<slug>.md`, `specs/SPRINT-<NAME>.md`, ADRs in `wiki/decisions/`, entries in `STATE.md`.
 
@@ -37,3 +38,16 @@
 9. **Runtime data.** The rule "Runtime data lives in `data/`, not `wiki/`" is inserted by the `software-engineering` mechanic (the `data/` layer is part of code ownership). Don't duplicate it here.
 10. **Closing a research milestone (the synthesis pass) in `ingest.md`.** saas closes work at two points: task spec/sprint (above) AND research milestone. Append to `ingest.md` the section "## Closing a research milestone: the synthesis pass" — this mechanic's drop-in `ingest-closure-section.md` (consolidating knowledge across sources when a discovery milestone closes; symmetric to closing a spec). This removes the dead links to that section from `spec-lifecycle.md` and Discipline #8.
 11. **What NOT to add.** Don't duplicate `specs/active|completed|rejected/` as subfolders — status lives in frontmatter. Don't keep a parallel task list in STATE — it lives in the sprint spec.
+12. **`lint.md` → spec-status-drift check (compositional).** Into the "## Report-only (heuristic — requires human judgment)" block, as a separate bullet (NOT the DOMAIN-LINT slot — that's taken by the class's central type), add:
+
+    ```markdown
+    - **Spec status drift.** A spec with `status: active` whose work is done piles up silently and
+      distorts "what's in progress". Candidates for `completed`/`rejected` by signal (priority top-down):
+      (1) belongs to a sprint with `status: completed`/`rejected` while itself still `active`;
+      (2) an ADR was extracted from it (the spec appears in some ADR's `sources:`) — a strong closure signal;
+      (3) the file's git history has been frozen > **~14 days** (threshold configurable) while `active`.
+      **Markers in the spec BODY — "CLOSED", acceptance checkboxes — are UNRELIABLE** (they diverge from
+      reality both ways): sprint/ADR/git outrank the body; the body is a supporting signal, not grounds.
+      **Report-only, never an auto-flip:** wrongly closing live work is worse than drift. Be able to
+      suggest `rejected` too (rejected at a gate), not only `completed`. When in doubt — leave it, raise it.
+    ```
