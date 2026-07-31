@@ -20,6 +20,7 @@ A periodic check. Two levels with different authority.
 - ADRs with status `active` that contradict a newer ADR.
 - Pages over 800 lines.
 - Pages without a `sources:` field.
+- **A role's slice has fallen behind.** For each role in `roles/` — domain pages that fall into its zone but lack its marking (tag/prefix): collect a proposal list and offer to tag them (the same init pass, [roles.md](roles.md) step 4); never mass-edit, markings go on with confirmation. Catches writes made outside the role chat or before the role existed; role writes are marked at intake (`roles.md`, "Saving"), this check is the backstop for what has accumulated.
 - **Depth violation:** any `.md` in `wiki/<type>/<subdir>/...` (pages must sit flat in the type folder). Exceptions — `wiki/index.md` and `wiki/log.md`.
 - **Log dates not ascending:** an entry in `wiki/log.md` dated earlier than the previous one → report (the date was likely taken from a file mtime or from when the work was done, not from the environment). Don't sort automatically — whether to fix the date stamp or the entry position is the human's call.
 

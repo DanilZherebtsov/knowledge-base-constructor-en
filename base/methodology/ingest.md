@@ -12,6 +12,7 @@ When the human throws files into `input/` (the drop zone for incoming materials)
    - **Same thesis** → merge, add the source to `sources:`, update point-wise.
    - **New concept** → a new page in the fitting type folder, named for the concept (not for the file name). For types with prefix grouping — use the prefix. Type choice and format — [page-conventions.md](page-conventions.md).
    - **Contradiction** → annotate the conflict in the text, present both sides, escalate to the human for resolution. Never pick a side silently.
+   - **Working as a role** (`roles/<role>.md` is open) → the page gets the role's slice marking: the name prefix on a new page, the role's tag in `tags:` — both on a new page and on the one appended to (no tag → add it). Without the marking the finding drops out of the role's slice for good: marking at role creation is one-off, while writes keep coming. Mechanics — [roles.md](roles.md).
 4. **Cascade.** Scan the same type folder and the index for materially affected pages. Update them, refresh `updated:`.
 5. **Update `wiki/index.md`** — entries for the affected pages. Format — [index-log-format.md](index-log-format.md).
 6. **Append to `wiki/log.md`:**
