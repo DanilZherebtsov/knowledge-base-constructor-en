@@ -43,6 +43,10 @@ roles/           ← Role-chat definitions. `_template.md` is the sample.
 output/          ← Root for working files — **every class has it**. Created empty;
                    subfolders (drafts/, folders for live documents) appear as needed.
                  <<SLOT S4: extra working layers for classes with code — specs/ + src/ + data/>>
+tmp/             ← Disposable layer of a long pass: the progress journal, logs, intermediate
+                   chunks (one subfolder per run). Everything inside is deletable by
+                   definition; not created empty; under git — in .gitignore. Not to be
+                   confused with output/ (results live there).
 HELP.md          ← A "how to work with me" cheat sheet for the human (on `guide`).
 CLAUDE.md        ← This file.
 STATE.md         ← Operational state (intentions, not facts; not canonical).
@@ -162,6 +166,8 @@ Every nontrivial task goes through two phases: first **stop and think**, then ac
 
 1. **One task at a time.** 2. **Simplicity first.** 3. **Surgical changes.** 4. **Goal-driven execution** (success criteria before starting). 5. **In the human's language** — explain through action and benefit, not internal machinery (tool names, sandbox/permissions, technical causes, folder/type/operation names as terms). Need permission or something failed — say the meaning in plain words.
 
+**A long pass — with progress preserved.** The work runs over a set of items and does not fit into one sitting (a batch of files, a sweep of sources, a series of requests) — the result is written to disk **as it goes**, after each batch rather than at the end: an interruption of the chat, the session, or the machine must leave behind what was done, not zero. Continuation goes by the journal (what has already been processed), what is done is not redone; a failed item goes into the failures list and the pass moves on. The journal, logs, and intermediate chunks live in `tmp/<operation>-<date>/`; once the work is finished and the result accepted, offer cleanup as a list (what gets deleted / what stays), delete on confirmation and never before acceptance. For the project's own code the rule is stricter — see the code mechanic, if it is attached.
+
 ### Afterwards — capturing the principle
 
 A rule was born — "always X / never Y" — offer to record it in `wiki/principles/<applicability>.md` with its source. Only from concrete cases, never from general reasoning.
@@ -172,7 +178,7 @@ A rule was born — "always X / never Y" — offer to record it in `wiki/princip
 
 Applies to Claude's working deliverables. Artifacts inside `wiki/` — per [methodology/page-conventions.md](methodology/page-conventions.md).
 
-- **Where things go:** sent from outside, not ours to edit → `raw/`; knowledge → `wiki/` via ingest; working files → `output/` (+ `specs/` for classes with code — <<SLOT S4>>).
+- **Where things go:** sent from outside, not ours to edit → `raw/`; knowledge → `wiki/` via ingest; working files → `output/` (+ `specs/` for classes with code — <<SLOT S4>>); temporary artifacts of a long pass (progress journal, logs) → `tmp/`, not `output/`.
 - **File names.** Descriptive English, underscores; dated when appropriate.
 - **Dates.** `YYYY-MM-DD` in file names and YAML; natural English dates or `YYYY-MM-DD` in prose.
 - <<SLOT S8: domain conventions — currency and amount format (from the bootstrap interview, a universal question with no default) + units/special citation formats, if any>>

@@ -41,6 +41,7 @@ Based on the answers, Claude **proposes** a layout (never creates it silently): 
 
 - **Roles** — none are set up in advance; tell the human that any role can be created at any moment with "create role <name>" (see [roles.md](roles.md)), and that, optionally, they can drop a role description plus materials for its work into `input/` beforehand — then the role will be created qualified right away.
 - **The code folder** — never created empty. If code work was wired up (the code question in Step 1) — the folder appears when code actually arrives or gets created, by the human's decision. If it wasn't — the capability can be added later at any moment.
+- **`tmp/`** — the disposable layer of a long pass (progress journal, logs, intermediate chunks); not created empty, it appears at the first long pass. Under git — add `tmp/` to `.gitignore` at creation time, before the first write inside it.
 - Folders beyond the minimum, **including working-layer subfolders** (`drafts/`), — created when the need appears (the "Structure grows as needed" rule in [CLAUDE.md](../CLAUDE.md)).
 
 After bootstrap — if under git — commit `bootstrap: initialize structure`; without git, skip.
