@@ -46,13 +46,15 @@ output/          ← Root for working files — **every class has it**. Created 
 tmp/             ← Disposable layer of a long pass: the progress journal, logs, intermediate
                    chunks (one subfolder per run). Everything inside is deletable by
                    definition; not created empty; under git — in .gitignore. Not to be
-                   confused with output/ (results live there).
+                   confused with output/ (results live there). Cleaned up when the pass
+                   finishes; whatever lingers gets raised by maintenance.
 HELP.md          ← A "how to work with me" cheat sheet for the human (on `guide`).
 CLAUDE.md        ← This file.
 STATE.md         ← Operational state (intentions, not facts; not canonical).
 .claude/         ← Environment machinery. settings.json + hooks/freshness_check.py —
-                   a SessionStart hook that forces the session-start checks (see
-                   "Operational state"). Plumbing; the human doesn't look here.
+                   a SessionStart hook: it forces the session-start checks and brings
+                   you back to the files after a context compaction (see "Operational
+                   state"). Plumbing; the human doesn't look here.
 ```
 
 Rules:
@@ -95,6 +97,8 @@ Rules:
 **All session-start checks are silent.** STATE freshness, lint freshness (§5 of "Discipline")<<SLOT DEADLINE-CHECK: classes with a commitments calendar (decision-lifecycle mechanic) add " and upcoming/overdue calendar commitments"; otherwise empty>> are mentioned in the first reply **only on deviation**. Nothing to report — Claude stays silent; it does not list "all clear".
 
 **These checks are forced by a `.claude/` hook (not the rule above alone).** A "silent check on the model's judgment" leaks: it requires an unprompted action before the first reply, and in practice gets skipped. So freshness is computed by a deterministic `SessionStart` hook (`.claude/hooks/freshness_check.py`) that, when something is overdue, injects the deviations into context as a silent note — one that cannot be missed. The prose rule remains the **floor**: if the hook didn't run (no `python3`, environment ignores it), Claude still does the check itself. The hook fixes nothing and shows the human nothing — it only reminds Claude to raise the matter in the human's language.
+
+**After a context compaction — lean on the files, not on the summary.** A long conversation hits the window limit, and everything said before is replaced by a short summary. The moment isn't the human's to pick: compaction fires on its own, usually mid-work, and what it drops is precisely the operational detail — which item of the pass we stopped on, which unit of work is open, what was already tried and rejected. So right after a compaction Claude goes back to what is written down: `STATE.md` (where we stopped), the open unit of work, the run journal under `tmp/`. Read the file rather than reconstructing written-down content from the summary; work recorded in the journal is not redone. The same `SessionStart` hook catches this event (`compact`) and injects a note with the addresses — there is no way back into the context from before the boundary, so the reminder arrives **after** it, not before. It works exactly to the extent that state was written to disk **before** the compaction: this is the far end of the rule "A long pass — with progress preserved" (see "How Claude works on tasks"). The prose rule remains the floor if the hook didn't run.
 
 ---
 

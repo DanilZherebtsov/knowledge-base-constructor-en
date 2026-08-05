@@ -26,6 +26,8 @@ Don't run everything in one chat. The longer the conversation, the more old cont
 
 Nothing is lost: the project memory (the `wiki/` folder and the project rules) is visible from **every** chat. So splitting into short chats is safe — each one stays precise. A chat has grown too long — say "summarize this into a file", start a new chat, and feed the summary in.
 
+If a chat does hit the limit anyway, I compress the earlier conversation into a short summary and carry on from that — with less detail in it. For that case, right after the compaction I re-read what's written down (what's in progress, where we stopped) and continue from the files rather than from my memory of the conversation. That's a safety net, not a replacement: short chats are still more precise.
+
 ## Where things live
 
 - **Project memory (`wiki/`)** — decisions, facts, counterparties, with dates and sources. Permanent, visible from any chat.
