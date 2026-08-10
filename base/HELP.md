@@ -40,6 +40,7 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 - By default I work with confirmation on each step — so you have time to stop both a mistake and a harmful instruction hidden in someone else's file or on a website.
 - **Only on an explicit "yes":** payments, sending emails, permanent deletion, handing files to third parties.
 - Files and sites from outside (clients, the internet) — keep the confirm-each-step mode: they may carry a hidden command aimed at me (prompt injection).
+- **Before a serious step I put myself through a review.** Before doing something that is expensive to undo (money, a signature, sending something outward, an irreversible edit), I run the task past several independent checks — each one looking for what's wrong with the plan, not praising it. In my reply I'll show what they found and **where the checks disagreed with each other**: a disagreement is the thing worth your eyes. Small stuff is not affected. Don't want it on a particular task — say "no review, just do it"; want it stricter — say "check this thoroughly".
 
 ## Maintenance — once a week
 

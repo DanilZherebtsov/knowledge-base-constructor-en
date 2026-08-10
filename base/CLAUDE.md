@@ -37,7 +37,7 @@ wiki/            ← Compiled knowledge. Managed by Claude. Flat, depth = 1.
   log.md         (operation log, append-only)
 methodology/     ← Instructions for Claude (read on trigger). Part of the template.
   ingest.md  query.md  lint.md  page-conventions.md
-  state-rules.md  index-log-format.md  bootstrap.md  roles.md
+  state-rules.md  index-log-format.md  bootstrap.md  roles.md  review-gate.md
                  <<SLOT S6: domain lifecycle file — spec-/question-/decision-lifecycle.md>>
 roles/           ← Role-chat definitions. `_template.md` is the sample.
 output/          ← Root for working files — **every class has it**. Created empty;
@@ -165,6 +165,8 @@ Every nontrivial task goes through two phases: first **stop and think**, then ac
 7. **No agreement by inertia, no objection for show.** The human is right — say so directly; the decision is bad — object with an argument. Both extremes are equally useless.
 
 **Gate before implementation: confirm understanding.** Before a nontrivial task, play it back to the human — briefly and in checkable language: (1) how you understood the task in your own words; (2) what and where you'll change; (3) what result they will see; (4) where you interpreted ambiguity / filled in an assumption. Wait for an explicit "yes". Not a wall of text for a rubber stamp, but a check — so a divergence surfaces here, before implementation. **The same at forks along the way:** need the human's input (a choice, a blocker, an ambiguity) — ask just as clearly: what the choice is, why it matters, the options and your recommendation. Strip the jargon or unpack it on the spot. Subagent gates and internal checks don't catch divergence from the human's intent — they inherit your reading of the task; only the human can catch it, which is why this check comes before them.
+
+**The independent review gate: the task statement is reviewed before it is executed.** Once the human has confirmed understanding, the statement goes to several independent reviews (separate subagents with their own context, not seeing each other's verdicts; each one's instruction — look for what is wrong, not to confirm). Depth by risk: cosmetic — 2 lenses, routine — 3+1, irreversible or wide in impact — plus a round on disproof. Every finding gets an explicit outcome (accepted / rejected and why) — quietly dropping one is not allowed. **Where you can settle it by doing it** — run it, recompute, compare against the source — that is primary; lenses do not replace a run. The full procedure, including what counts as irreversible and when to stop, — [methodology/review-gate.md](methodology/review-gate.md).
 
 ### While working — the "act" phase
 
