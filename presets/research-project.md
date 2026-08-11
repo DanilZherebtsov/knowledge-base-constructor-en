@@ -1,6 +1,6 @@
 # Preset manifest: research-project
 
-version:       6            # CLAUDE.md fingerprint line = "research-project · v6"
+version:       7            # CLAUDE.md fingerprint line = "research-project · v7"
 title-word:    "research"
 central-type:  claims/ (added in place of the base discovery/; the wiki type set = claims/ · decisions/ · synthesis/ · principles/)
 authority:     "Sources beat the wiki (S7) + the claim-graph hardening: citation localization — lint-checkable (the localization rule itself — in base@26, do not restate)"
@@ -14,7 +14,7 @@ interview:     # INTERVIEW-Q
 raw-defaults:  [literature/, fieldwork/, conversations/, decisions/, datasets/ (opt.)]
 domain-lint:   "a claim with status active/validated whose Counter-evidence noticeably outweighs its Evidence (revision candidate) + citations without localization (list of spots `<page>:<line> — <fragment>`)"
 close-op:      "question-closed | Q-NNN — with links to the extracted claim/synthesis"
-mechanics:     [claim-graph, question-lifecycle]
+mechanics:     [claim-graph, question-lifecycle, design]
 
 ---
 
@@ -54,5 +54,6 @@ Soft claim limit — ≤ 100 lines (composite → split via `refines:`).
 
 ## Roles and unused mechanics (for assembly control)
 
+- **design** — ON (the visual competence; wired into every preset by default, ADR-0038). `methodology/design.md`, `BRAND.md` at the root (only by consent, offered after acceptance), the OWNED-DESIGN slot in `ingest.md`, the visual branch in the always-on dispatcher, the order line in "the act phase", the action phrase in HELP-OPS. The interview does not ask about it: the question would get a yes almost every time and discriminates nothing. For research that is first of all presentations and diagrams accompanying the results.
 - **roles** — **universal base machinery, not a class mechanic** (ADR-0027): `methodology/roles.md`, `roles/_template.md`, the "Roles" section, the bootstrap line — always from base. research **fills `ROLES-FILL`** with research examples (methodologist, fact-checker, skeptical reviewer); no concrete roles are pre-created, "create role" is available. The former refusal (ADR-0004) is lifted by ADR-0027.
 - **spec-lifecycle**, **decision-lifecycle** — not used (those belong to saas/business).

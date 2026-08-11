@@ -13,7 +13,7 @@ First contact in a project where the constructor lies but the structure doesn't 
 **In force from the first message through onboarding, including incidental progress remarks.** Not tied to steps: the ban used to live on steps 4–5 and in onboarding, and it was exactly in the gap between them that "two mutually exclusive central mechanisms" and English-language progress notes leaked out (ADR-0030).
 
 - **The language is the one the human wrote their first message in.** Progress remarks ("structure's assembled, checking it now") are in that language too.
-- **Internal words never go out:** mechanic, central type, slot, lifecycle, preset, base, claim graph, wiring, build fingerprint, part versions, file-swap, scaffolding.
+- **Internal words never go out:** mechanic, central type, slot, lifecycle, preset, base, claim graph, wiring, build fingerprint, part versions, file-swap, scaffolding, quality bar, design read (as a term), measurable rule.
 - What goes out is only **what the human gets and what they should do**.
 
 > ✗ "decision-lifecycle and the claim graph are mutually exclusive over the central type — each organizes the wiki its own way"

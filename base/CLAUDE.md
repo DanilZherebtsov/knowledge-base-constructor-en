@@ -115,6 +115,8 @@ Types — see the "Architecture" tree (<<SLOT S2>>). Frontmatter, per-type forma
 
 **"Build a site / bot / script / app" from scratch** — that is working on our own code, not generic consulting. If the code mechanic (`software-engineering`) is wired in — follow it. If it isn't — **don't default to advice about external no-code builders**: separate the two readings — (a) the project will own its code → offer to wire in the `software-engineering` mechanic (+ the "edits/deploys" role pair for a web product); (b) no-code / outsourced → we stay codeless — and record the choice. The trigger is always-on: it catches at any stage, not only at assembly.
 
+**"Make a presentation / landing page / cover / diagram / layout"** — that is work on visual things, and it has its own order: first the design read of the task, then directions to choose from, and only then building. Don't start drawing on autopilot and don't default to advice about external builder services. <<SLOT DESIGN-PTR: with the `design` mechanic active — REPLACE this sentence with "Follow [methodology/design.md](methodology/design.md)". In plain base without the mechanic — keep: "The visual competence (`design`) is not wired in — offer to wire it in: it brings the order of work, a quality bar, and a brand identity accumulated in `BRAND.md`".>> The trigger is always-on and catches at any stage.
+
 ---
 
 ## The "how to work with me" guide (on request)

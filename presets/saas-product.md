@@ -1,6 +1,6 @@
 # Preset manifest: saas-product
 
-version:       8            # preset manifest version; in the build fingerprint — saas-product@<versions.json>
+version:       9            # preset manifest version; in the build fingerprint — saas-product@<versions.json>
 title-word:    "product"
 central-type:  architecture  (added to the base decisions/discovery/synthesis/principles)
 authority:     "Code beats the wiki (classes with src/). Citation localization is a base rule (base@26), not restated in S7; its lint check — claim-graph/research only."
@@ -14,7 +14,7 @@ interview:     # INTERVIEW-Q
 raw-defaults:  [discovery/, decisions/, technical/, (business/), (brainstorms/)]   # WITHOUT `misc/` — that's the base/business catch-all; saas doesn't have one
 domain-lint:   "Code drift of the central type: pages with type: architecture that lack the implementation: field or have broken paths in it (code renamed/deleted — the page points into the void)."
 close-op:      none   # saas writes no domain close operation to wiki/log.md (explicitly "saas: none" in CLOSE-OP)
-mechanics:     [spec-lifecycle, software-engineering]
+mechanics:     [spec-lifecycle, software-engineering, design]
 
 ---
 
@@ -30,6 +30,8 @@ mechanics:     [spec-lifecycle, software-engineering]
 
 - **spec-lifecycle** — ON (the unit of work). `methodology/spec-lifecycle.md`, the `specs/` layer, the "Task spec flow" and "Sprints" sections in CLAUDE.md, the S6 pointer.
 - **software-engineering** — ON (the code competence). `methodology/software-engineering.md`, the code folder / `src/` / `data/`, the always-on execution-cycle line in the "act" phase, the runtime-`data/` rule, the OWNED-CODE/S4/S7 slots. Works paired with `spec-lifecycle`: the spec is the unit of work, this mechanic is the execution. The `_developer`/`_release-manager` role samples are offered on demand (roles are now always in base — ADR-0027).
+- **design** — ON (the visual competence; wired into every preset by default, ADR-0038). `methodology/design.md`, `BRAND.md` at the root (only by consent, offered after acceptance), the OWNED-DESIGN slot in `ingest.md`, the visual branch in the always-on dispatcher, the order line in "the act phase", the action phrase in HELP-OPS. The interview does not ask about it: the question would get a yes almost every time and discriminates nothing.
+  With both — `design` and `software-engineering` — there is **one cycle, the code one**: the visual enters it through the design read in the statement and a visual pass in the acceptance criteria; it opens no second gate.
 - **roles** — **universal base machinery, not a class mechanic** (ADR-0027). `roles/_template.md`, `roles.md`, and the "Roles" section are always present (from base); saas pre-creates no concrete roles, but "create role" works, and the product-role samples from `software-engineering` are offered on demand. The former "roles OFF" (ADR-0004) is lifted.
 - **claim-graph** — OFF. The central type is `architecture`, not `claims`; KNOWLEDGE-UNIT = page, not claim.
 - **question-lifecycle** — OFF. No `question-lifecycle.md`, CLOSE-OP = none (rather than `question-closed`).
