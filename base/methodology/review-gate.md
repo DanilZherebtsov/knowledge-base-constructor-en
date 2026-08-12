@@ -41,7 +41,7 @@ The strengthening is triggered by a **concrete flag** from the impact reviewer �
 ## What the reviewers are given
 
 - **Correctness and completeness** — does the statement solve the task as posed; is a requirement missing; are the acceptance criteria realistic.
-- **Impact on neighbouring areas** — what else in the system or in the business is affected; which obligations, agreements, contracts, invariants break; where the regressions are. Input — the knowledge in `wiki/`. Flags irreversibility and blast radius (see above).
+- **Impact on neighbouring areas** — what else in the system or in the business is affected; which obligations, agreements, contracts, invariants break; where the regressions are. Input — the knowledge in `wiki/`. Flags irreversibility and blast radius (see above). **If the wiki is empty on the area affected — report exactly that ("there was nothing to read"), not "no impact".** An empty lens counted as a clean one is the worst outcome a gate can have: it looks passed. What follows is the human's call: build that knowledge first, or proceed with the risk explicitly accepted.
 - **Disproof** (strengthened contour only) — the instruction is not "assess" but **disprove**: produce a scenario in which this decision does harm. Found nothing — say so; silence is a result too.
 
 **A request that is exhaustive by its nature** ("all the contracts", "every type of X", "the whole body of regulations") — the statement enumerates the items as an **explicit list**, not as one covering phrase. Otherwise a dropped item is invisible both to the reviewers and to the human.
