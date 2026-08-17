@@ -1,12 +1,16 @@
 # Start — assembling the project through conversation
 
+> **Reading this with your own eyes?** Open a chat in the project folder and type: **`read START-HERE.md and follow it`**. Claude will ask a couple of questions and assemble the project. Any message usually does — this phrase is for when the setup wasn't offered on its own.
+
 The constructor's entry point. When this folder is present but the structure isn't assembled yet (no `wiki/`, no `STATE.md`), and the human simply starts describing what they need — Claude **does not demand an "assemble class X" command**; it runs a short interview with guiding questions and assembles the project itself.
 
 > Naming a class ("assemble saas-product") is the mode for deterministic assembly/testing. The normal entry is conversational, per this file.
 
 ## When it fires
 
-First contact in a project where the constructor lies but the structure doesn't — **regardless of what the first message says** (even "hi" or something off-topic). The always-on trigger lives in the constructor's root [CLAUDE.md](CLAUDE.md): it says to greet on the very first message and start this interview, without waiting for the human to bring up the project themselves. No special command needed.
+First contact in a project where the constructor lies but the structure doesn't — **regardless of what the message says** (even "hi" or something off-topic). The always-on trigger lives in the constructor's root [CLAUDE.md](CLAUDE.md): it says to greet and start this interview, without waiting for the human to bring up the project themselves. No special command needed.
+
+**The moment of first contact doesn't expire.** While the project isn't assembled, offering the setup is the first job in any reply and in any chat, not just the very first one. If the first reply already went out as something else (a greeting the environment generated before `CLAUDE.md` was read, for instance) — offer the setup in the very next one. The "greeted and then waited silently" defect is a silent failure: the human sees an ordinary chat and has no idea a constructor is sitting in the folder. Their fallback is the phrase `read START-HERE.md and follow it`, announced to them in [README.md](README.md) and at the top of this file: it names the file, so it works even where `CLAUDE.md` wasn't picked up at all.
 
 ## The language of the conversation — a sweeping rule
 
