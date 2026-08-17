@@ -60,6 +60,24 @@ Findings reconciled → the statement is revised → the gate **repeats**, until
 
 **There are no numeric agreement scores or stopping thresholds.** "Agreement 0.8" looks like a measurement and is an invention — "Discipline", §3. What stops the gate is a structural signal (clean / statement defective), not a number.
 
+## The reviewers cannot be launched
+
+There may be no separate reviewers to be had: the tool is absent in this environment, launching them is forbidden by session policy, the call is refused. The gate is then **neither cancelled nor passed in silence** — it is passed weaker, and that is said out loud. A silent pass presented as a passed gate is the same empty lens counted as a clean one: it looks like it happened.
+
+**The refusal must be observable.** Try first, conclude after: "assumed it wasn't allowed" is not grounds — one shared context is cheaper and therefore pulls. The refusal applies to the task at hand and is not inherited onward through the session. A reviewer that did launch and then failed is a failed lens (reported as a gap), not an absent mechanism.
+
+**Irreversible and wide-impact work does not degrade.** On the strengthened contour there is no substitute: a disproof round run inside the shared context is not weakened but imitated, because it disproves its own work and already knows every earlier verdict. The reviewers cannot be launched and the task is irreversible → **stop and ask the human**, rather than pass with something weaker.
+
+**Below the strengthened contour — what remains:**
+
+1. **Doing it first.** Everything that converts into settling it by doing — a run, a recomputation, a check against the source — is converted (see "Where you can settle it by doing it"). When independence is lost this is the one part of the gate that loses nothing, so its share grows rather than staying put.
+2. **The remainder — passes with different instructions**, not the same number of lenses. Copies of one instruction inside a shared context do not create independence: a later pass reads the earlier ones and agrees with them. The variety of instructions is kept; the count is not.
+3. **The outcome is material for the human, not a verdict of "clean"** (the same wording as for classes with no executable check). What gets disclosed is exactly what changed: **the checks ran in one shared context and did not check each other** — in the human's language, without tool names. The line is needed only here: a normal pass says nothing about its own mode, otherwise the marker turns into a ritual and stops being read.
+
+**Reconnaissance is a different trade-off.** A recon pass over unfamiliar material needs not independence but breadth of context, so its honest degradation is a sequential sweep that writes each piece's result to disk as it goes. But **recon counts only by what has landed in `wiki/` as pages** (per module, per contract, per area — with the human's confirmation). Reading done in passing during the gate is not recon, however much of it there was, and it does not clear the empty-lens blocker.
+
 ## Reviewers write nothing
 
 A subagent only reports. Writing to `wiki/`, revising the statement, changes on disk — all through the main thread and with the human's confirmation ("Discipline", §4). Independent review widens the view; it does not get write access.
+
+**The pass runs inside the shared context** (section above) — the rule is the same: while the check is running, `wiki/`, the statement and the working files are not touched; edits come after the findings are reconciled. This is about write access, not about scratch: the pass's own journal goes to `tmp/`, as with any long pass. Otherwise a context compaction mid-pass leaves an empty disk and the line "a gate was running" in the summary — and the cheapest move becomes counting it as having happened.
