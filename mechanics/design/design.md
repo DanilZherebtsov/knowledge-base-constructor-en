@@ -40,6 +40,13 @@ Read `BRAND.md`, the actual files, the assets. Determine the state **from eviden
 
 **The brief wins.** Pinned aesthetics, eras, materials, fonts and palettes are honoured even when they conflict with a warning about a saturated pattern. Redirecting a clear brief toward your own taste is failure. The guessability test (§3.4) does not apply to a pinned brief. But **a pinned world pins the world, not its softest rendition**: an execution that matches what any model ships for that world failed the self-check at execution.
 
+**Someone else's brand identity is the single exception to "the brief wins."** A request to "make it like <company>" is neither executed literally nor turned down: it is **broken down by list**, with one question — "what exactly do you like about it?".
+
+- **Freely taken** (these are devices; nobody owns them): the principle · the arrangement and grid · rhythm and air · typography as a system (scale, contrast, weight) · colour strategy · motion · tone of voice.
+- **Not taken** (this is their identity): the logo and mark · a licensed typeface · recognisable brand elements · element-by-element reproduction after which the work reads as theirs.
+- **"An exact copy" is a legitimate item on that list when it is your own** — or when you have the source and the right. Then the rule inverts: copy **exactly, from the source, never from memory**, taking values literally — paddings, radii, sizes, line-heights — **without rounding to a 4/8px grid**; a screenshot is guidance, the code is the truth. No source — say so rather than reproducing from memory.
+- Name out loud which part is not being copied, and why. Substituting silently is worse than declining.
+
 **Someone else's system:** do not import its tokens and then override 90% of them; do not mix two systems in one tree; if the brief reads as a specific existing system, install the official package rather than recreating its CSS by hand.
 
 ---
@@ -93,6 +100,9 @@ A warm, bookish or child-facing subject does **not** soften the calibration: eve
 - `[eye]` **Copy is the product's own language.** Controls name their action, errors name the problem and the way out. Before shipping, re-read every visible string and rewrite what is broken, unclear, or sounds like a model trying to seem profound. **Boring copy beats cute invented copy.**
 - `[eye]` **Numbers:** from real data, or explicitly labelled as illustrative. Invented engineering precision is a defect.
 - `[eye]` **Coverage:** every brief requirement is present and findable within seconds.
+- `[measured]` **Hit targets no smaller than 44px** in screen mockups (not in the editor's own chrome). Smaller, and a finger cannot land on them.
+- `[eye]` **No fake chrome.** Do not draw a fake phone status bar (time · battery · signal) or a virtual keyboard: on a real device the system draws its own on top, and the layout looks doubled. The same inside a device frame on a desktop artboard.
+- `[eye]` **The layout must survive direct manipulation.** Groups of like things (buttons, chips, icons, cards, nav items) are laid out with `flex`/`grid` plus `gap`, not as inline siblings and not with per-element margins: `gap` survives dragging, deleting and duplicating, whitespace text nodes do not. Inline flow is for text with an `<a>`/`<strong>` inside a sentence, not for laying out blocks.
 - `[eye]` **The source has been re-read.** A rule that does nothing (overridden, never applied) is either a typo or dead code; it may not show up visually and will travel onward.
 
 ### Refuse
@@ -140,6 +150,21 @@ Surface habits: gradient text (emphasis comes from weight or size) · glass and 
 
 ---
 
+### The canvas — when the environment offers one
+
+The environment offers an artboard canvas (`/design`) — **run directions and acceptance there**: the human sees the mockups side by side, edits them by hand and saves a version. It doesn't — the previous order, with nothing lost. **The canvas is never made a dependency**: it is an early preview on paid plans, and its availability is not checked in advance.
+
+- **Division of labour:** the canvas shows, edits and accepts; **the file is delivered by the agent, from disk** — PDF, PPTX, HTML. Not a preference but the only route outward (see below).
+- **The canvas cannot be shared outside — treat that as a given, not a setting.** The editor always declares itself capable of handing over files, and the platform does not open such pages publicly; dropping that declaration at publish time does **not** buy you an external link — it only breaks export. Verified by trying. An outside person gets a file from the agent, never a link. Promising them a link is promising something that does not exist.
+- **Directions are shown once.** The canvas can offer them too; what to show is decided by this order, how to show it by the canvas. Our rule "compare options as a set in one frame" it executes natively.
+- **The human saved — read it back and continue from their version.** Republishing from stale working files **overwrites their edit silently**. Reading back is expensive (the whole page enters the context) — read on purpose: before your own edit and on notice of theirs, never just in case.
+- **A deck belongs on the canvas first of all.** N same-sized slides side by side is literally the contact sheet and the four acceptance lenses; in a chat that cannot be checked at all, and one slide at a time hides it.
+- **Name the degradations, don't work around them silently:** canvas export may not work; printing the page from the browser yields **a screenshot of the interface**, not the mockups, and is no use to a client.
+
+**And the rule above all of it: never build a decision on the unverified.** Marking a claim unverified is only half of it; the other half is that **a plan resting on such a claim does not get executed until it is checked**. Otherwise you get the worst outcome: the human was promised a consequence ("drop this and you get that"), waits for the result, there is none — and something that worked is broken as well. Nothing to verify with — say so and leave things as they are, rather than changing a working state on a hope. Telling someone about a button that does not exist is bad; **reworking the job around it is worse**.
+
+---
+
 ## 6. Recording — `BRAND.md`, and only by consent
 
 **The file is never created on its own.** A one-off good-looking presentation does not have to become the project's brand identity: it may contain not a single device the human wants repeated, and quietly turning it into a rulebook imposes a commitment they never made.
@@ -166,6 +191,12 @@ Two iron rules: **written after building, from what was built** (a rulebook writ
 **Landing page.** One goal-action. The first viewport answers "what is this and why" without scrolling and **demonstrates the mechanism rather than describing it**: show the subject at work, the specifics a competitor could not copy-paste. The memory test: someone left after one viewport — what would they describe an hour later? An honest answer of "a mood" means the concept has not committed. The scaffold test: **remove all the copy — the structure must still say what this block is.** **A section heading is an assertion, not a topic:** "What's inside", "Pricing", "FAQ" are a table of contents; "Eight things a normal chat cannot do" works. Check **every** heading, not the first. Navigation on one line, height ≤ 80px. Pace the scroll like a studio: dense passages alternate with quiet ones, and the page ends anchored by a real close.
 
 **A set of graphics.** **Medium inventory:** every visible region gets a means of production — raster · vector · code · an existing asset · **a deliberate refusal**; an unrecorded element gets silently dropped in the build, which is how "we approved a rich sketch and got a flat block" happens. **Scope lock by count:** N frames fixed before the start and reconciled against the actual count before delivery. **Consistency lock as two lists:** must match — palette, faces, spacing step, image treatment, tone of voice, mark placement; may vary — composition, density, focus; the over-salting test — **it stopped reading as one set**. One artifact = one file, no collages and no crops out of a shared board. Acceptance views the set **side by side**, as a contact sheet. Diagrams: the conclusion goes in the title, honest axes, no 3D.
+
+**Print — posters, fliers, brochures.** Author at **96 px per inch**: A4 — 794×1123, Letter — 816×1056, A5 — 559×794, Tabloid — 1056×1632. Body type no smaller than **12pt** (that is 16px); short labels and legal lines may go to 12px. Give headlines ~10% slack: exports fall back to the substitute face.
+
+- **A flier is read in passing, in under three seconds.** One dominant element — a headline of **six words at most**, set to read across a room (60pt+); everything else clearly subordinate. The five Ws — what · when · where · what it costs · one way to act — grouped tight and scannable, not dissolved into prose. Flat colour blocks and vector shapes over photos and gradients; high contrast. Whitespace beats more words. **Check that the colours still work in grayscale.**
+- **A trifold's panel order IS the fold order**, and this is exactly where trifolds go wrong: on the outside face the front cover is the **rightmost** panel (inside flap · back cover · front cover); the inside face reads as one three-panel spread. The cover makes one promise, the inside delivers it in three beats, the back carries logistics and contact.
+- **Print discipline:** think in physical units; no hairlines that vanish on paper; no huge dark flood fills — they drink ink.
 
 **Presentation.** **The first question: will there be a speaker, or does the deck travel as a file?** These are two different decks, and it also sets the metric.
 
