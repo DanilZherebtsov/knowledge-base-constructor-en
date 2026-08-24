@@ -17,6 +17,7 @@ The more precise the input, the less guessing on the output.
 - **"Cite the source for every fact"** — cures invention: when I'm required to point to a place in the document, I don't make things up.
 - **"Here's a sample of the format I want"** — I'll match your template.
 - **"Check the project memory before a serious task"** — I do this on my own, but on an important task you can nudge me for reliability: I'll re-read what's accumulated instead of starting from scratch.
+- **"Data from a PDF or a scan — reconcile the total against the source"** — when I lift a table out of a document I am parsing its **appearance**, not a record, and the typical corruption lives at the page breaks: a row that starts at the bottom of one sheet continues on the next. I check the seams myself and show you what did not add up; on data that matters, also ask me to recount the total (number of rows, sum of a column) — that catches what the eye does not.
 - **"Remember this: …"** — I turn a decision or fact into a project-memory entry with a date and a source. That's how the base grows as you work.
 - **A large batch of files:** "process the first 10, show me the result" → then "keep going the same way".
 
