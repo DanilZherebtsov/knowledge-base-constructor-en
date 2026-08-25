@@ -37,7 +37,7 @@ wiki/            ← Compiled knowledge. Managed by Claude. Flat, depth = 1.
   log.md         (operation log, append-only)
 methodology/     ← Instructions for Claude (read on trigger). Part of the template.
   ingest.md  query.md  lint.md  page-conventions.md
-  state-rules.md  index-log-format.md  bootstrap.md  roles.md  review-gate.md
+  state-rules.md  index-log-format.md  bootstrap.md  roles.md  review-gate.md  secrets-rules.md
                  <<SLOT S6: domain lifecycle file — spec-/question-/decision-lifecycle.md>>
 roles/           ← Role-chat definitions. `_template.md` is the sample.
 output/          ← Root for working files — **every class has it**. Created empty;
@@ -113,9 +113,11 @@ Types — see the "Architecture" tree (<<SLOT S2>>). Frontmatter, per-type forma
 
 **Domain flow of the unit of work** — <<SLOT S6: pointer to the class's lifecycle file>>. **`index.md`/`log.md` format** — [methodology/index-log-format.md](methodology/index-log-format.md).
 
-**"Build a site / bot / script / app" from scratch** — that is working on our own code, not generic consulting. If the code mechanic (`software-engineering`) is wired in — follow it. If it isn't — **don't default to advice about external no-code builders**: separate the two readings — (a) the project will own its code → offer to wire in the `software-engineering` mechanic (+ the "edits/deploys" role pair for a web product); (b) no-code / outsourced → we stay codeless — and record the choice. The trigger is always-on: it catches at any stage, not only at assembly.
+**"Build a site / bot / script / app" from scratch** — that is working on our own code, not generic consulting. If the code mechanic (`software-engineering`) is wired in — follow it. If it isn't — **don't default to advice about external no-code builders**: separate the two readings — (a) the project will own its code → offer to wire in the `software-engineering` mechanic (+ the "edits/deploys" role pair for a web product; how to attach — [methodology/lint.md](methodology/lint.md)); (b) no-code / outsourced → we stay codeless — and record the choice. The trigger is always-on: it catches at any stage, not only at assembly.
 
-**"Make a presentation / landing page / cover / diagram / layout"** — that is work on visual things, and it has its own order: first the design read of the task, then directions to choose from, and only then building. Don't start drawing on autopilot and don't default to advice about external builder services. <<SLOT DESIGN-PTR: with the `design` mechanic active — REPLACE this sentence with "Follow [methodology/design.md](methodology/design.md)". In plain base without the mechanic — keep: "The visual competence (`design`) is not wired in — offer to wire it in: it brings the order of work, a quality bar, and a brand identity accumulated in `BRAND.md`".>> The trigger is always-on and catches at any stage.
+**"Make a presentation / landing page / cover / diagram / layout"** — that is work on visual things, and it has its own order: first the design read of the task, then directions to choose from, and only then building. Don't start drawing on autopilot and don't default to advice about external builder services. <<SLOT DESIGN-PTR: with the `design` mechanic active — REPLACE this sentence with "Follow [methodology/design.md](methodology/design.md)". In plain base without the mechanic — keep: "The visual competence (`design`) is not wired in — offer to wire it in: it brings the order of work, a quality bar, and a brand identity accumulated in `BRAND.md`; how to attach — [methodology/lint.md](methodology/lint.md)".>> The trigger is always-on and catches at any stage.
+
+**"I need access" — getting into a server or a device over SSH, into an admin panel, a database, a cloud console, a paid API.** Before the human starts sending anything, say it: **credentials don't go into the chat** (the conversation is stored in full and cannot be scrubbed after the fact) — and immediately offer **one** channel that fits, with the commands: [methodology/secrets-rules.md](methodology/secrets-rules.md). A secret did land in the chat — treat it as leaked: offer to rotate or revoke it before the task goes on. The trigger is always-on and catches at any stage.
 
 ---
 

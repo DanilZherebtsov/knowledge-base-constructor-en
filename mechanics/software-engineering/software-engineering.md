@@ -1,6 +1,6 @@
 # Software engineering — the project writes, maintains, and deploys its own code
 
-Attached to classes that **work with their own code** — writing it from scratch, maintaining existing code, deploying (a landing page, a site, scripts, a bot, an app, a backend engine). Carries **all code-work competence** in one place: the code-writing cycle, a home for the code and ownership of it, reconnaissance of code that arrives ready-made, secrets discipline, reproducible deployment, a pair of product roles.
+Attached to classes that **work with their own code** — writing it from scratch, maintaining existing code, deploying (a landing page, a site, scripts, a bot, an app, a backend engine). Carries **all code-work competence** in one place: the code-writing cycle, a home for the code and ownership of it, reconnaissance of code that arrives ready-made, secrets discipline in code, reproducible deployment, a pair of product roles.
 
 Composes with **any** class lifecycle. For saas it works paired with `spec-lifecycle`: the spec gives the **unit of work** (what we do and how we track it), this mechanic gives the **execution** (how code gets written and verified). A class without a spec cycle (a landing page, business/research tooling) gets the same cycle and ownership without a mandatory spec. The mechanic does **not** claim the central wiki type — it is an add-on, not a foundation.
 
@@ -55,8 +55,11 @@ A change that touches the product's logic or behavior is written not "straight b
 
 ## Secrets discipline
 
+Taking credentials from the human is the general rule: the "I need access" catcher in `CLAUDE.md` and [secrets-rules.md](secrets-rules.md) (warn before they send anything; a channel instead of the chat; a leaked secret gets rotated). What owning code adds on top:
+
 - Secrets (`.env`, keys, tokens, configs with credentials) — only in a file under `.gitignore`. **Never** in `wiki/`, in git, or in chat.
-- Any config with credentials goes into `.gitignore` **before** a secret is written into it.
+- Any config with credentials **Claude writes into `.gitignore` itself** — **before** a secret is written into it. `.gitignore` does not switch off a file that is already tracked: that needs `git rm --cached <file>`, and a value that has reached history counts as leaked.
+- In code a secret is read **from the environment, not from a literal**: written into a source file it travels into the repository and into the application's logs along with the code, and rotation stops being cheap.
 
 ## Code changes
 

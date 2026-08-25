@@ -24,4 +24,4 @@ Don't wait for the human to bring up the task themselves: whatever their message
 
 ## After assembly
 
-The assembled project gets **its own** root `CLAUDE.md` (from `base/`, filled in) — it replaces this launcher file. The constructor scaffolding (`base/`, `mechanics/`, `presets/`, `START-HERE.md`, `ASSEMBLY.md`, `mechanics-catalog.md`, `EXPERIMENT.md`, this file) is deleted — see [START-HERE.md](START-HERE.md), step 5.
+The assembled project gets **its own** root `CLAUDE.md` (from `base/`, filled in) — it replaces this launcher file. The constructor scaffolding — everything that came with it, this file included — is deleted; the exact list and order are in [START-HERE.md](START-HERE.md), step 5.

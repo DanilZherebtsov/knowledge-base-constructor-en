@@ -44,7 +44,7 @@ Before every publish:
 
 - Secrets — only in `.env`/a secret store under `.gitignore`; never in code, the repository, or correspondence.
 - Access minimal and revocable (a dedicated deploy user, scoped tokens).
-- Any config with credentials goes into `.gitignore` before a secret is written into it.
+- Any config with credentials Claude writes into `.gitignore` itself before a secret is written into it; a file that is already tracked needs `git rm --cached`.
 
 ## Handoff protocol (shared with the developer)
 

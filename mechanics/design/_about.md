@@ -52,7 +52,7 @@ The mechanic is on in every preset; there is no routine deactivation. If a proje
 
 1. **Trigger:** the human asks for something visual; OR the gatekeeper in `ingest.md` caught an incoming brand identity; OR maintenance saw an upstream part the project does not have.
 2. **Action:** run wiring 1–7 against the live project. The mechanic is additive and needs no migration: it creates no new folders, and `BRAND.md` is a root-level file created by the human's consent during work.
-3. **Source of the files**, if the constructor scaffolding has been removed, is the upstream mirror (the same channel maintenance uses to compare versions).
+3. **Source of the files**, if the constructor scaffolding has been removed, is the upstream mirror (the same channel maintenance uses to compare versions) or a copy of the mirror sitting next to the project. The fetch procedure and the degradation floor ("couldn't fetch — say so plainly; never reconstruct from memory") — `base/methodology/lint.md`, the "Attach a capability the project doesn't have" section.
 
 ## The debt this mechanic carries
 
