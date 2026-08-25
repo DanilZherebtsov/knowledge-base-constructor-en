@@ -1,6 +1,6 @@
 # Preset manifest: saas-product
 
-version:       9            # preset manifest version; in the build fingerprint — saas-product@<versions.json>
+version:       10           # preset manifest version; in the build fingerprint — saas-product@<versions.json>
 title-word:    "product"
 central-type:  architecture  (added to the base decisions/discovery/synthesis/principles)
 authority:     "Code beats the wiki (classes with src/). Citation localization is a base rule (base@26), not restated in S7; its lint check — claim-graph/research only."
@@ -9,9 +9,8 @@ state-sections:[Stage, Path to goal, In progress now, Next (1–2 weeks), Comple
 domain-conv:   "Currency and amount format — from the bootstrap interview (universal question outside any slot, no default); the answer fills S8. No special citation format."
 interview:     # INTERVIEW-Q
   - "What is the product and who is it for; what stage is it at?"
-  - "What sources will be coming in (interviews/discovery, decision notes, technical documentation)?"
   - "Is there already code (src/) or runtime data (data/)?"
-raw-defaults:  [discovery/, decisions/, technical/, (business/), (brainstorms/)]   # WITHOUT `misc/` — that's the base/business catch-all; saas doesn't have one
+raw-defaults:  [discovery/, decisions/, technical/, business/, brainstorms/]   # a vocabulary of names for ingest, not a list of folders to create; WITHOUT `misc/` — that's the base/business catch-all; saas doesn't have one
 domain-lint:   "Code drift of the central type: pages with type: architecture that lack the implementation: field or have broken paths in it (code renamed/deleted — the page points into the void)."
 close-op:      none   # saas writes no domain close operation to wiki/log.md (explicitly "saas: none" in CLOSE-OP)
 mechanics:     [spec-lifecycle, software-engineering, design]

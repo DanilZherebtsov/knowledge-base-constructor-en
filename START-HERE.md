@@ -28,13 +28,16 @@ First contact in a project where the constructor lies but the structure doesn't 
 ## The interview (guiding questions, one or two at a time, wait for answers)
 
 **Step 1 — what kind of project (determines the STARTING preset).**
-Ask "What will you be doing in this project?" and pick a base from the answer:
-- building software/a product, code exists or will → **saas-product**;
-- research, accumulating knowledge from sources, no code → **research-project**;
-- running a business / personal affairs, decisions and counterparties → **business-run-general**;
-- fits nothing → "assemble custom" mode (à la carte from [mechanics-catalog.md](mechanics-catalog.md)).
+Ask "What will you be doing in this project?" and offer the options **in this wording and this order** — it describes the person's work, not the wiki's machinery, and the general-purpose option comes first (it is also the answer for "I don't know where this belongs"):
 
-Say the inference out loud and confirm: "Sounds like product development — I'll take **saas** as the base, right?" A preset is a starting point, not a cage.
+1. **Business / work / affairs (a general-purpose project — fits any kind of work)** → `business-run-general`;
+2. **Software / product development** → `saas-product`;
+3. **Research work (studies, a thesis, deep research)** → `research-project`;
+4. **Something else** → "assemble custom" mode (à la carte from [mechanics-catalog.md](mechanics-catalog.md)).
+
+Do not reword the options and do not reorder them: the person picks by the description of their work, not by a class name. If they answer in free text instead of picking — map that answer onto the same list.
+
+Say the inference out loud and confirm: "Sounds like product development — I'll set the project up for that, right?" The starting base is an entry point, not a cage.
 
 **Step 2 — the code question (the only thing asked about here).**
 
@@ -51,7 +54,7 @@ Yes → add the mechanic on top of the preset. It provides a code folder in the 
 **Don't ask about roles at assembly.** The role machinery exists in every project, always (base machinery, not a class mechanic — ADR-0027); at assembly time roles are usually premature. A role is created with "create role <name>" at any moment after assembly — the human learns this at onboarding (Step 6). Nothing gets deactivated.
 
 **Step 3 — instance data (the regular bootstrap interview).**
-"About the project" (what we're building, for whom, constraints), which sources will be coming in, **currency and amount format (ask always — there is NO default,** see the universal question in [base/methodology/bootstrap.md](base/methodology/bootstrap.md)**)**, other domain conventions (units / citation format), if any.
+"About the project" (what we're building, for whom, constraints), **currency and amount format (ask always — there is NO default,** see the universal question in [base/methodology/bootstrap.md](base/methodology/bootstrap.md)**)**, other domain conventions (units / citation format), if any. Do not ask about future sources: `raw/` starts empty, and subfolders appear at the first "process this".
 
 **Step 4 — show the layout in PLAIN language and assemble.**
 Before assembling, show the human a short summary to confirm — **in the user's language, no internal jargon** (do NOT say "mechanics / central type / ADR / cascade / layers / version labels / lifecycle"). Say it in human words: what the project is; which capabilities and helpers are on; the key domain facts (currency, roles); and that they just toss materials into `input/` while Claude handles the filing.

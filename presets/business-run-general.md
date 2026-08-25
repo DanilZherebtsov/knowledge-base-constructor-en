@@ -1,6 +1,6 @@
 # Preset manifest: business-run-general
 
-version:       9            # CLAUDE.md fingerprint line = "business-run-general · v9"
+version:       10           # preset manifest version; in the build fingerprint — business-run-general@<versions.json>
 title-word:    "the business"
 central-type:  entities/  (added to the base decisions/discovery/synthesis/principles)
 authority:     "Sources beat the wiki"  (citation localization is a base rule for every class as of base@26; not restated in S7. Its lint check — claim-graph/research only)
@@ -9,9 +9,8 @@ state-sections:[Snapshot, Open tracks, This week, Next (1–2 weeks), Commitment
 domain-conv:   "Currency and amount format — from the bootstrap interview (universal question outside any slot, no default); additionally record the main currency in 'About the project'"
 interview:     # INTERVIEW-Q
   - "What is the business, and what is the goal right now?"
-  - "What sources will be coming in? (contracts, price lists, correspondence, research…)"
   - "Date format and other domain conventions, if any are special."
-raw-defaults:  [dynamic — per the named sources + misc/]   # business is a class with dynamic raw/ (bootstrap creates it to fit the business); there is no fixed subfolder set
+raw-defaults:  [by the material's concern + misc/]   # business is a class with dynamic raw/: there is no fixed set of names; ingest names the subfolder after what actually arrived
 domain-lint:   "Overdue or near-due commitments from STATE.md, 'Commitments calendar' section, that have seen no movement for a long time"
 close-op:      "decision-closed | <choice>"
 mechanics:     [decision-lifecycle, design]   # roles — universal base machinery, not a class mechanic (ADR-0027)
@@ -28,8 +27,8 @@ mechanics:     [decision-lifecycle, design]   # roles — universal base machine
 - **S6** — `decision-lifecycle.md` (question in STATE → comparison in output/drafts/ → ADR in decisions/ → cascade into entities/).
 - **S7** — "Sources beat the wiki" (a class without code).
 - **S8** — currency and amount format from the bootstrap interview (no default).
-- **RAW-DEFAULTS** — dynamic raw/ subfolders (bootstrap creates them for the named sources + misc/).
-- **INTERVIEW-Q** — 3 questions (see interview above).
+- **RAW-DEFAULTS** — dynamic raw/ subfolders (ingest creates them by the concern of the material that arrived, catch-all `misc/`).
+- **INTERVIEW-Q** — 2 questions (see interview above).
 - **KNOWLEDGE-UNIT** — page (the base default, not `claim`); NOT filled — inherited from base.
 - **DOMAIN-LINT** — the check of STATE's "Commitments calendar" (near-due/overdue).
 - **CLOSE-OP** — `decision-closed | <choice>` in the log.

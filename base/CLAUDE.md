@@ -24,8 +24,8 @@ The root file holds **always-on rules and pointers**. Detailed procedures live i
 input/           ← Drop zone for incoming materials. Toss anything new here as is —
                    on "process this" Claude files it into raw/ (type + name) and absorbs
                    it into wiki/. Empties after processing. Not an archive (raw/ is).
-raw/             ← Raw sources, read-only. Bootstrap creates subfolders for the project's
-                   sources and lists them here; they grow as needed (free depth).
+raw/             ← Raw sources, read-only. Starts empty: ingest creates a subfolder when
+                   material actually arrives and lists it here (free depth).
 wiki/            ← Compiled knowledge. Managed by Claude. Flat, depth = 1.
   decisions/     (ADRs — what was decided and why; linked via supersession)
   discovery/     (knowledge about the project's outside world; grouped by name prefixes)

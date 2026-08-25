@@ -1,6 +1,6 @@
 # Preset manifest: research-project
 
-version:       7            # CLAUDE.md fingerprint line = "research-project · v7"
+version:       8            # preset manifest version; in the build fingerprint — research-project@<versions.json>
 title-word:    "research"
 central-type:  claims/ (added in place of the base discovery/; the wiki type set = claims/ · decisions/ · synthesis/ · principles/)
 authority:     "Sources beat the wiki (S7) + the claim-graph hardening: citation localization — lint-checkable (the localization rule itself — in base@26, do not restate)"
@@ -9,9 +9,8 @@ state-sections:[Stage, Path to goal, In progress now, Next (1–2 weeks), Answer
 domain-conv:   "Citations with localization: literature `(Smith 2024, p. 47)` / `(Smith 2024, §3.2)`; fieldwork `[interview-jones-2026-04-12.md, min. 14:30]`; web — with an anchor fragment. Without localization — `[location needed]`"
 interview:     # INTERVIEW-Q
   - "What is the main research question, and who is the audience of the result?"
-  - "What sources will be coming in (literature, field data, correspondence with experts)?"
   - "Will there be your own datasets (data/) or analysis code (src/)?"
-raw-defaults:  [literature/, fieldwork/, conversations/, decisions/, datasets/ (opt.)]
+raw-defaults:  [literature/, fieldwork/, conversations/, decisions/, datasets/]   # a vocabulary of names for ingest, not a list of folders to create
 domain-lint:   "a claim with status active/validated whose Counter-evidence noticeably outweighs its Evidence (revision candidate) + citations without localization (list of spots `<page>:<line> — <fragment>`)"
 close-op:      "question-closed | Q-NNN — with links to the extracted claim/synthesis"
 mechanics:     [claim-graph, question-lifecycle, design]
