@@ -54,7 +54,13 @@ Yes → add the mechanic on top of the preset. It provides a code folder in the 
 **Don't ask about roles at assembly.** The role machinery exists in every project, always (base machinery, not a class mechanic — ADR-0027); at assembly time roles are usually premature. A role is created with "create role <name>" at any moment after assembly — the human learns this at onboarding (Step 6). Nothing gets deactivated.
 
 **Step 3 — instance data (the regular bootstrap interview).**
-"About the project" (what we're building, for whom, constraints), **currency and amount format (ask always — there is NO default,** see the universal question in [base/methodology/bootstrap.md](base/methodology/bootstrap.md)**)**, other domain conventions (units / citation format), if any. Do not ask about future sources: `raw/` starts empty, and subfolders appear at the first "process this".
+"About the project" (what we're building, for whom, constraints) — ask it **in this wording**:
+
+> One last thing — tell me in a couple of lines what this is about: what you do, who it's for, whether there are important constraints (deadlines, budget, partners). Short is fine, **but more detail is better**. That's enough for me to assemble the project.
+
+The invitation to answer at length is deliberate, and bold on purpose: what is said here goes into "About the project" and on into all the project's work, and picking that context up later costs more.
+
+Then — **currency and amount format (ask always — there is NO default,** see the universal question in [base/methodology/bootstrap.md](base/methodology/bootstrap.md)**)**, other domain conventions (units / citation format), if any. Do not ask about future sources: `raw/` starts empty, and subfolders appear at the first "process this".
 
 **Step 4 — show the layout in PLAIN language and assemble.**
 Before assembling, show the human a short summary to confirm — **in the user's language, no internal jargon** (do NOT say "mechanics / central type / ADR / cascade / layers / version labels / lifecycle"). Say it in human words: what the project is; which capabilities and helpers are on; the key domain facts (currency, roles); and that they just toss materials into `input/` while Claude handles the filing.
