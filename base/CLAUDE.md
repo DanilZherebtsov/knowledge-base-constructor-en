@@ -48,7 +48,7 @@ tmp/             ← Disposable layer of a long pass: the progress journal, logs
                    definition; not created empty; under git — in .gitignore. Not to be
                    confused with output/ (results live there). Cleaned up when the pass
                    finishes; whatever lingers gets raised by maintenance.
-HELP.md          ← A "how to work with me" cheat sheet for the human (on `guide`).
+HELP.md          ← A "how to work with me" cheat sheet for the human (on `help`).
 CLAUDE.md        ← This file.
 STATE.md         ← Operational state (intentions, not facts; not canonical).
 .claude/         ← Environment machinery. settings.json + hooks/freshness_check.py —
@@ -123,7 +123,7 @@ Types — see the "Architecture" tree (<<SLOT S2>>). Frontmatter, per-type forma
 
 `HELP.md` in the root is a human-facing cheat sheet: setting a task, a new chat per task, the memory map, safety, maintenance, techniques. The human edits it; don't touch it on ingest/maintenance.
 
-**Trigger (ALWAYS-ON).** The user's **entire** message equals one of `guide` / `help` / `manual` (case-insensitive, with or without a leading slash) → show `HELP.md`. The same words **inside a sentence** ("write a manual for X", "I need help with this contract") are a normal task, not a help request.
+**Trigger (ALWAYS-ON).** The user's **entire** message equals one of `help` / `guide` / `manual` (case-insensitive, with or without a leading slash) → show `HELP.md`. The same words **inside a sentence** ("write a manual for X", "I need help with this contract") are a normal task, not a help request.
 
 ---
 

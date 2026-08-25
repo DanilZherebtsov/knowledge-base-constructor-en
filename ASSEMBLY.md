@@ -27,8 +27,8 @@ The normal entry is conversational, via [START-HERE.md](START-HERE.md): an inter
    - "The project is assembled, the constructor's temporary files are cleared away. How to use it:"
    - **Materials** — "New materials — tickets, call notes, emails, changelogs, anything — toss them into the `input/` folder, then say 'process this'. I'll file and absorb them into the project's memory."
    - **A new chat per task** — "Start each new task in a new chat. No need to keep chats — everything important I save into the project's memory on disk (`wiki/`) as we work, and it's visible from any chat."
-   - **The guide** — "Anytime, type `guide` — I'll show you in detail what I can do in this project."
-   Notes (stage, layers not yet created, git) are NOT put in the handoff — deliberately shorter; the human reads the current state from `STATE.md`, and the full list of capabilities from `HELP.md` via `guide`.
+   - **The guide** — "Anytime, type `help` — I'll show you in detail what I can do in this project." (Announce the word **without a slash**: in Claude Code `/help` is intercepted by the CLI's built-in command. The other aliases — `guide`, `manual` — keep working, but name only one word to the human.)
+   Notes (stage, layers not yet created, git) are NOT put in the handoff — deliberately shorter; the human reads the current state from `STATE.md`, and the full list of capabilities from `HELP.md` via `help`.
 
 ## Result
 

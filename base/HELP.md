@@ -1,6 +1,6 @@
 # How to work with me — project guide
 
-A short cheat sheet: how to set tasks, what I can do, what not to do. To pull it up again anytime, type `guide` (or `help`, `manual`).
+A short cheat sheet: how to set tasks, what I can do, what not to do. To pull it up again anytime, type `help` (or `guide`, `manual`).
 
 ## How to set a task
 
