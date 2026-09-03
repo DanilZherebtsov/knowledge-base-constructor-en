@@ -23,7 +23,7 @@ The root file holds **always-on rules and pointers**. Detailed procedures live i
 ```
 input/           ← Drop zone for incoming materials. Toss anything new here as is —
                    on "process this" Claude files it into raw/ (type + name) and absorbs
-                   it into wiki/. Empties after processing. Not an archive (raw/ is).
+                   it into wiki/. Empties after processing; originals then live in raw/.
 raw/             ← Raw sources, read-only. Starts empty: ingest creates a subfolder when
                    material actually arrives and lists it here (free depth).
 wiki/            ← Compiled knowledge. Managed by Claude. Flat, depth = 1.
@@ -44,25 +44,22 @@ output/          ← Root for working files — **every class has it**. Created 
                    subfolders (drafts/, folders for live documents) appear as needed.
                  <<SLOT S4: extra working layers for classes with code — specs/ + src/ + data/>>
 tmp/             ← Disposable layer of a long pass: the progress journal, logs, intermediate
-                   chunks (one subfolder per run). Everything inside is deletable by
-                   definition; not created empty; under git — in .gitignore. Not to be
-                   confused with output/ (results live there). Cleaned up when the pass
-                   finishes; whatever lingers gets raised by maintenance.
+                   chunks (one subfolder per run). Everything inside is deletable by definition;
+                   not created empty; under git — in .gitignore. Not output/ (results live there).
+archive/         ← Aged-out material from output/ and tmp/ that is not worth deleting: things
+                   we generated, not primary sources (those are raw/). Not created empty; in .gitignore.
 HELP.md          ← A "how to work with me" cheat sheet for the human (on `help`).
 CLAUDE.md        ← This file.
 STATE.md         ← Operational state (intentions, not facts; not canonical).
-.claude/         ← Environment machinery. settings.json + hooks/freshness_check.py —
-                   a SessionStart hook: it forces the session-start checks and brings
-                   you back to the files after a context compaction (see "Operational
-                   state"). Plumbing; the human doesn't look here.
+.claude/         ← Environment machinery: settings.json + hooks/freshness_check.py — a SessionStart
+                   hook: session-start checks and re-grounding after compaction ("Operational state").
 ```
 
 Rules:
 
 - **`raw/` is immutable.** Append-only. The original wording matters when re-verifying later.
 - **`wiki/` is managed by Claude.** The human reads it but doesn't edit by hand. It grows through: (a) ingest of a source from `raw/`; (b) write-back of an answer into `synthesis/` after a query; (c) extracting an ADR from an accepted decision; (d) recording a principle from an incident. If the wiki is wrong — fix the source in `raw/` (or tell Claude), and it recompiles.
-- **Wiki depth = 1.** One level of thematic subfolders (the types above), no deeper. 30+ homogeneous pages in one type → expand horizontally (a new top-level type or name prefixes), not subfolders.
-- **`raw/` is the exception.** Inside `raw/`, depth as needed is allowed (a store navigated by the human).
+- **Wiki depth = 1.** One level of thematic subfolders (the types above), no deeper. 30+ homogeneous pages in one type → expand horizontally (a new top-level type or name prefixes), not subfolders. The exception is `raw/`: inside it, depth as needed is allowed (a store navigated by the human).
 - **`methodology/` is part of the template, not a working area.** Edited only by the human when revising the methodology.
 - <<SLOT S7: authority rule — "**Code beats the wiki**" (classes with `src/`) OR "**Sources beat the wiki**" (classes without code). The `claim-graph` mechanic adds "**citation localization — lint-checkable**": the localization rule itself lives unconditionally in `page-conventions.md` as of base@26 and every class gets it — here only the hardening into a check, not a restatement of the rule.>>
 - **git is optional.** Under version control — Claude commits after ingest/bootstrap; otherwise history lives in `wiki/log.md` and page dates, and "commit" steps are skipped.
@@ -190,7 +187,7 @@ A rule was born — "always X / never Y" — offer to record it in `wiki/princip
 
 Applies to Claude's working deliverables. Artifacts inside `wiki/` — per [methodology/page-conventions.md](methodology/page-conventions.md).
 
-- **Where things go:** sent from outside, not ours to edit → `raw/`; knowledge → `wiki/` via ingest; working files → `output/` (+ `specs/` for classes with code — <<SLOT S4>>); temporary artifacts of a long pass (progress journal, logs) → `tmp/`, not `output/`.
+- **Where things go:** sent from outside, not ours to edit → `raw/`; knowledge → `wiki/` via ingest; working files → `output/` (+ `specs/` for classes with code — <<SLOT S4>>); temporary artifacts of a long pass (progress journal, logs) → `tmp/`, not `output/`; aged-out material from `output/`/`tmp/` that is not worth deleting → `archive/` ([lint.md](methodology/lint.md)).
 - **File names.** Descriptive English, underscores; dated when appropriate.
 - **Dates.** `YYYY-MM-DD` in file names and YAML; natural English dates or `YYYY-MM-DD` in prose.
 - <<SLOT S8: domain conventions — currency and amount format (from the bootstrap interview, a universal question with no default) + units/special citation formats, if any>>

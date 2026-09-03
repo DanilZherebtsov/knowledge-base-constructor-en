@@ -6,7 +6,7 @@ Composes with **any** class lifecycle. For saas it works paired with `spec-lifec
 
 ## The code folder — root-level, named for what it is
 
-- Working code lives in **a root folder named for what it is** (`landing/`, `src/`, `scripts/`, `bot/`) — **not** in `raw/` (a read-only archive there) and **not** in `output/` (disposable working files there).
+- Working code lives in **a root folder named for what it is** (`landing/`, `src/`, `scripts/`, `bot/`) — **not** in `raw/` (read-only primary sources there) and **not** in `output/` (disposable working files there).
 - The folder is created **by human decision** at the moment the project **first gets code** — via two paths: *working code arrives* (the gatekeeper in [ingest.md](ingest.md)) **or** *it is decided to build code from scratch* (a request like "make a site / bot / app" while there is no code folder yet). Both paths lead to the same branch: create the folder + (per the gate below) offer the roles. The folder is not created empty at initialization (bootstrap). Beyond that the paths differ in one thing: **working code arrives** — a reconnaissance pass follows (the section below), because the code came in with no knowledge of itself; **built from scratch** — knowledge of the system grows alongside the code through ordinary ingest, and no reconnaissance is needed.
 - Several heterogeneous assets — several root folders (`landing/`, `bot/`), each named for what it is.
 

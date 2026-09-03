@@ -48,6 +48,8 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 
 Say "run maintenance" — I'll check the integrity of the project memory and pull in updates without breaking your entries. A good habit is once a week.
 
+I'll also tell you if old files have piled up on the workbench and offer to sort them: what to set aside for later, and what to delete. I never delete or move anything on my own — I'll ask about each one separately.
+
 ## When something goes wrong
 
 - **Stuck** → stop me, say "tell me briefly what you did" — and give a new direction.

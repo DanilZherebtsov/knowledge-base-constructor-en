@@ -11,6 +11,8 @@ A periodic check. Two levels with different authority.
 - Broken internal links with a single same-named file elsewhere → fix the path.
 - `sources:` links to moved raw files with a single candidate → fix.
 - Missing mutual links between obviously related pages → add.
+- A file in `archive/` that is absent from `archive/index.md` → append a line marked `[origin unknown]`: where it came from cannot be recovered, and the stub must show that rather than impersonate a complete journal.
+- An `archive/index.md` line with outcome "into archive" pointing at a missing file → mark `[MISSING]` (don't delete). Lines with outcome "deleted" or "kept" are exempt — there is no file for them by construction.
 
 ## Report-only (heuristic — requires human judgment)
 
@@ -22,7 +24,8 @@ A periodic check. Two levels with different authority.
 - Pages without a `sources:` field.
 - **A role's slice has fallen behind.** For each role in `roles/` — domain pages that fall into its zone but lack its marking (tag/prefix): collect a proposal list and offer to tag them (the same init pass, [roles.md](roles.md) step 4); never mass-edit, markings go on with confirmation. Catches writes made outside the role chat or before the role existed; role writes are marked at intake (`roles.md`, "Saving"), this check is the backstop for what has accumulated.
 - **Depth violation:** any `.md` in `wiki/<type>/<subdir>/...` (pages must sit flat in the type folder). Exceptions — `wiki/index.md` and `wiki/log.md`.
-- **Working residue of a long pass has been left lying around.** Subfolders of `tmp/` older than 7 days (progress journals, logs, intermediate chunks) → name them as a list with their age and offer cleanup. **Never delete them yourself, not even here:** normally the pass itself offers cleanup once the result has been accepted (`CLAUDE.md`, "A long pass"), while this check catches runs that never got that far — interrupted, or the human moved on. Since the outcome of the pass is unknown, what's inside may be the only copy of what was done; hence a list and a question, nothing more. An empty `tmp/`, or none at all, is normal — stay silent.
+- **The working layers have grown over.** Walk `output/` and `tmp/`: top-level items (file or folder) in `output/` older than **~30 days** → name them as a list with their age and offer **retirement** (the "Retiring into `archive/`" section below). Show the **15–20 oldest plus a tail count** — a list covering the whole folder does not get sorted, it gets scrolled past. **Never delete or move anything yourself.** No candidates — say what was examined ("checked N items, nothing has been left lying around") rather than staying silent: in a mature project an empty `output/` is an anomaly, and silence is indistinguishable from a broken check. A folder's age is that of its **newest** file (while it is still being written to, it is alive). **mtime is a lower bound:** moving the project, a `clone` and git operations reset it, so "everything is fresh" on a non-empty folder is a reason to say the dating looks reset, not to report "clean".
+- **Working residue of a long pass has been left lying around.** Subfolders of `tmp/` older than 7 days (progress journals, logs, intermediate chunks) → name them as a list with their age and offer cleanup **or a move into `archive/`**, if what is inside turns out to be not residue but a result worth keeping. **Never delete them yourself, not even here:** normally the pass itself offers cleanup once the result has been accepted (`CLAUDE.md`, "A long pass"), while this check catches runs that never got that far — interrupted, or the human moved on. Since the outcome of the pass is unknown, what's inside may be the only copy of what was done; hence a list and a question, nothing more. An empty `tmp/`, or none at all, is normal — stay silent.
 - **Log dates not ascending:** an entry in `wiki/log.md` dated earlier than the previous one → report (the date was likely taken from a file mtime or from when the work was done, not from the environment). Don't sort automatically — whether to fix the date stamp or the entry position is the human's call.
 
 ### `STATE.md` hygiene (read silently every session → size = context tax)
@@ -37,6 +40,29 @@ A periodic check. Two levels with different authority.
 - **STATE ↔ wiki/code.** An item in STATE asserting a fact that contradicts a wiki page or the code (`state-rules.md` §7) → flag (don't edit: STATE is not canonical, but it's not the source of truth about facts either).
 
 **Domain checks of the central type.** <<SLOT DOMAIN-LINT: a class with a central type adds its check here. Examples: `architecture/` pages missing the `implementation:` field or with broken paths in it (code drift, saas); a `claim` with status active/validated whose counter-evidence outweighs, and citations without a location (research); overdue commitments from the `STATE.md` "Commitments calendar" (business).>>
+
+## Retiring into `archive/`
+
+`archive/` is for **material we generated that has aged out**: things that settled in `output/` and `tmp/`, lost their relevance, but are not worth deleting outright. It is a different dimension from `raw/`: that one holds the **primary sources** we compile the wiki from, and they are immutable (in a conflict with the wiki, the source wins).
+
+**The human decides, not the check.** Claude collects candidates, shows what it knows about each, and gives a one-line recommendation — but the human picks the outcome. Computing the outcome on its own was tested against live data and does not work: most items simply lack the signal it would need.
+
+**For each candidate show:** what it is (name, type, age), who links to it, and the recommendation. Then one of three outcomes, each **item by item and confirmed**; a blanket "yes, sort it all out" is not accepted — the working layer may have no second copy.
+
+1. **Into `archive/`** — aged out, but throwing it away would hurt: it went outside, it is the only copy, it may have to be produced later. **Function decides, not extension**: a question that went to a person as `.md` is as much a record as a `.docx`.
+2. **Delete** — the knowledge is already in the wiki (name the page) or the result is reproducible (name the script or command). Can name neither — this is not outcome 2.
+3. **Keep** — the work is alive. Recorded with a date and **not shown again before the next threshold**, otherwise the list never shrinks and people stop reading it.
+
+**What the link search does not see** — say it out loud instead of passing it off as a clean result: pattern-based access (`glob`, `rglob`, reading a whole folder), links without a file name ("the artifact is in `output/`"), mentions inside `.docx`/`.xlsx`/`.pptx`. An unreadable format is **not** "no links". Exclude `wiki/log.md` and `wiki/index.md` from the search area: a journal and a catalogue mention everything that ever went through ingest, and would shield everything.
+
+**Special cases.** A folder older than the threshold — open one level and sort its items, don't move it wholesale. Something that came from outside (a file someone filled in, material that was sent) is not our artifact but a primary source: offer `raw/`, not the archive. A same-stem neighbour (`X` and `X.zip`, `X` and `X_v2`) — call it out as a pair regardless of age and ask which version is the real one.
+
+**Archive rules.**
+- Flat, no state subfolders. Don't rename files — renaming breaks the links that still point at them.
+- **Secrets and personal data** — check and strip them **before** the move, by the same rule as on the way into `raw/` ([ingest.md](ingest.md)).
+- **`archive/index.md` is a retirement journal, not a wiki page** (no frontmatter, outside ingest and outside `page-conventions.md`). One line per outcome, deletions included: `| date | what | from | outcome | closed by (wiki page / command) |`. The line is written **before** the action: otherwise deleting is cheaper than archiving, and cheaper here means more irreversible.
+- The archive is read from; nothing is re-sorted or cleaned inside it.
+- **Only generated material goes in** — from `output/` and `tmp/`. `raw/` is immutable; `wiki/` uses supersession; in classes with code, `specs/` keep their status in frontmatter. `scripts/` and `data/`, where a class has them, have no cycle of their own — a known remainder, not closed here.
 
 ## Update check (by build fingerprint)
 
