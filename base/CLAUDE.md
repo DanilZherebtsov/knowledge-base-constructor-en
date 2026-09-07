@@ -70,11 +70,7 @@ Rules:
 
 ## Source hierarchy
 
-1. **CLAUDE.md** — always-on rules and context.
-2. **`methodology/`** — operation details. On trigger, not in the background.
-3. **Wiki** (`wiki/`) — canonical knowledge from ingest.
-4. **Raw sources** (`raw/`) — the primary source when in doubt.
-5. **Auto-memory** (`MEMORY.md`, `memory/`) — a cross-session cache, **not canonical**.
+1. **CLAUDE.md** — always-on rules and context. 2. **`methodology/`** — operation details, on trigger, not in the background. 3. **Wiki** (`wiki/`) — canonical knowledge from ingest. 4. **Raw sources** (`raw/`) — the primary source when in doubt. 5. **Auto-memory** (`MEMORY.md`, `memory/`) — a cross-session cache, **not canonical**.
 
 **memory vs wiki:** always trust the wiki. **wiki vs source:** re-check the source and fix the wiki (don't assume the wiki "knows better" — that's how drift creeps in). **Writing to memory:** new knowledge goes to `wiki/` first, via ingest; memory gets only a short pointer.
 
@@ -86,10 +82,7 @@ Rules:
 
 `STATE.md` in the root is the single place for current plans and progress. **Its structure is a fixed set of sections** (<<SLOT S5: the class's section list; the mechanics live in [methodology/state-rules.md](methodology/state-rules.md)>>). Empty sections stay, marked `_empty_`.
 
-**Triggers (for Claude):**
-- At session start — read STATE.md silently (the "where we left off" context).
-- On "where did we leave off / what's in progress / what's next / blockers" — STATE.md is the primary source.
-- If `_Updated:_` is older than 7 days — in the first reply offer: "STATE is N days stale, what changed?".
+**Triggers (for Claude):** at session start — read STATE.md silently (the "where we left off" context); on "where did we leave off / what's in progress / what's next / blockers" — STATE.md is the primary source; if `_Updated:_` is older than 7 days — in the first reply offer: "STATE is N days stale, what changed?".
 
 **All session-start checks are silent.** STATE freshness, lint freshness (§5 of "Discipline")<<SLOT DEADLINE-CHECK: classes with a commitments calendar (decision-lifecycle mechanic) add " and upcoming/overdue calendar commitments"; otherwise empty>> are mentioned in the first reply **only on deviation**. Nothing to report — Claude stays silent; it does not list "all clear".
 
@@ -149,9 +142,7 @@ A role can be created right after assembly or later. Optionally, drop a role des
 
 ## How Claude works on tasks
 
-Every nontrivial task goes through two phases: first **stop and think**, then act. "Think" is not only "what is being asked" but also "is this the thing worth doing": evaluate the request, don't execute it on autopilot.
-
-**Nontrivial** — where a choice is needed (between approaches, wordings) or a plan (several steps/files). **Trivial** (no "think" phase needed): a typo, a rename, retelling a single page. When in doubt — treat as nontrivial.
+Every nontrivial task goes through two phases: first **stop and think**, then act. "Think" is not only "what is being asked" but also "is this the thing worth doing": evaluate the request, don't execute it on autopilot. **Nontrivial** — where a choice is needed (between approaches, wordings) or a plan (several steps/files). **Trivial** (no "think" phase needed): a typo, a rename, retelling a single page. When in doubt — treat as nontrivial.
 
 ### Before starting — the "think" phase
 
@@ -171,9 +162,18 @@ Every nontrivial task goes through two phases: first **stop and think**, then ac
 
 ### While working — the "act" phase
 
-1. **One task at a time.** 2. **Simplicity first.** 3. **Surgical changes.** 4. **Goal-driven execution** (success criteria before starting). 5. **In the human's language** — explain through action and benefit, not internal machinery (tool names, sandbox/permissions, technical causes, folder/type/operation names as terms). Need permission or something failed — say the meaning in plain words.
+1. **One task at a time.** 2. **Simplicity first.** 3. **Surgical changes.** 4. **Goal-driven execution** (success criteria before starting).
 
-**A long pass — with progress preserved.** The work runs over a set of items and does not fit into one sitting (a batch of files, a sweep of sources, a series of requests) — the result is written to disk **as it goes**, after each batch rather than at the end: an interruption of the chat, the session, or the machine must leave behind what was done, not zero. Continuation goes by the journal (what has already been processed), what is done is not redone; a failed item goes into the failures list and the pass moves on. The journal, logs, and intermediate chunks live in `tmp/<operation>-<date>/`; once the work is finished and the result accepted, offer cleanup as a list (what gets deleted / what stays), delete on confirmation and never before acceptance. For the project's own code the rule is stricter — see the code mechanic, if it is attached.
+**In the human's language — in every message to them, not only in the final report.** The longer the work runs, the more of your text comes from code, logs, and your reviewers' findings — and the less of it from the human's own words. So once a message is written, read the whole of it before sending and answer four questions. Don't excuse omissions with brevity, or unclear words with precision: the message must be both complete and clear. Something is off — rewrite the message, don't append "let me know if anything is unclear".
+
+- **Am I taking back something I told them earlier? Am I deciding something on their behalf that they will pay for in money, time, or rework?** Then write a separate message, send it at once without waiting for the work to finish, and end it with a question. Open with the retraction itself — "what I told you yesterday was wrong: …" — not with how you found out. As item six inside a long report they will not notice it — which means you did not say it.
+- **Does this move what they asked for? What do they gain or lose by it?** The task is the one the work started for, in their words; not your own step and not the latest refinement. Write about it when something changed: closed, stalled, going the wrong way, or only partly closed — then say what is left. Going as it was — stay silent, except in the first message after a long stretch of work. Then say what they gain or lose; count it in money, days, or volume of work. Can't count it quickly — say in one sentence that there is no figure; where there is a figure, don't repeat that caveat. Explain the cause so the human can argue with it: "the program doesn't know how big one piece is", not "the engine refused to convert because of a guard".
+- **Is this message enough for them to decide without opening files and without asking again?** Measure completeness against the decision you are asking them to make right now: for that decision say what changes, what problem it closes, what problem it creates, what it costs, and what they are choosing between — in ordinary sentences, not sections with headings. What you decided yourself and are not asking to change — one line for all of it, so the human still has time to stop you. Write the outcome of every reviewer's finding into a file — the gate above requires it; into the message take, in your own words, what changes the human's decision, and a link to the file instead of that content is not allowed. Shorten the language, not the content: drop names and housekeeping detail, but not what they need in order to choose.
+- **Is there a word in this message the human never wrote in this chat?** That means a file, function, or folder name; a line, position, or version number; an error, standard, or article code; a name that you or the program gave a thing rather than they did; your working words — lens, task statement, blocker, ingest, maintenance. Look at why the word is there. It names a thing they will look for on their side or use to check you (which object, which document, which line item) — keep it and explain it in one phrase the first time you write it. It explains how the program works inside — drop it, that is for you and not for them. Unsure which half a word belongs to — drop it. Can't remember whether they wrote it, and dropping it is not an option — keep it and gloss it in parentheses.
+
+**Don't throw precision away:** numbers, codes, file names, calculations go to the end of the message under the word "Details", or into a file with the link right there. The human writes in technical words themselves — answer in kind. You are a subagent reporting not to the human but to whoever called you — write precisely, with names and numbers. Don't tell the human you checked your language: clarity shows in the message itself. The human said they didn't understand, or asked you to rewrite — read [methodology/human-language.md](methodology/human-language.md) and rewrite by it.
+
+**A long pass — with progress preserved.** The work runs over a set of items and does not fit into one sitting (a batch of files, a sweep of sources, a series of requests) — the result is written to disk **as it goes**, after each batch rather than at the end: an interruption of the chat, the session, or the machine must leave behind what was done, not zero. Continuation goes by the journal (what has already been processed), what is done is not redone; a failed item goes into the failures list and the pass moves on. The journal, logs, and intermediate chunks live in `tmp/<operation>-<date>/`; **the journal's first line is the task in the human's own words** — once the conversation is compacted there is nowhere left to get them. Once the work is finished and the result accepted, offer cleanup as a list (what gets deleted / what stays), delete on confirmation and never before acceptance. For the project's own code the rule is stricter — see the code mechanic, if it is attached.
 
 **Extraction from a document is a hypothesis, not a reading.** Data lifted from a foreign format (a PDF, a scan, a page's layout, another system's export) is obtained by parsing a **rendering**, not a record: we reconstruct the structure by guesswork — and the guess stays silent when it is wrong, handing back plausible rows instead of an error. It goes wrong **at the boundaries**: a row that starts at the bottom of a page continues on the next one and gets cut in two or glued to its neighbor; the same happens at the seam between batches, at the end of a section, at the pagination edge. So before the bulk run — a sample taken **precisely at the boundaries** (not at the first rows: the middle always parses correctly), and afterwards — **reconciliation of the whole against the source** using something counted independently: the number of records, the sum of a column, the last item. Anything that does not add up, or is unclear, goes into the rejects list and to the human — not into the result as an empty value. Until an extraction has been reconciled, nothing is built on top of it: whatever is built will have to be redone as well. For the project's own code the rule is stricter — see the code mechanic, if it is attached.
 

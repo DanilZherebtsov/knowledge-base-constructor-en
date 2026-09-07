@@ -52,6 +52,8 @@ The strengthening is triggered by a **concrete flag** from the impact reviewer �
 
 Findings reconciled → the statement is revised → the gate **repeats**, until it comes back clean.
 
+**The reconciliation is a working document, not a message to the human.** The outcome of every finding is written to a file in `tmp/<operation>-<date>/`; that is where the requirement above is satisfied. Printing that file to the human is not allowed — this is exactly how a wall of text is born, with the important part drowned in it. What goes out is an address to them under the "In the human's language" rule (`CLAUDE.md`): in your own words, whatever changes their decision — and a retraction of something you told them earlier, or a choice with a price, does not wait for the reconciliation: it goes out as a separate message at once. A link to the file in place of the content will not do: the human decides from the message.
+
 ## When to stop
 
 **The number of lenses is tied to the surface, not to anxiety.** However many distinct areas genuinely need looking at — that many lenses. A genuinely wide task legitimately gets more; multiplying identical reviewers over the same piece is not quality, it is noise and a queue.

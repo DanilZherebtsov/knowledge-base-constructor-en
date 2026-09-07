@@ -57,6 +57,7 @@ I'll also tell you if old files have piled up on the workbench and offer to sort
 - **Looks made up** → "re-check every number against the sources, flag where you didn't find it".
 - **Can't see a file** → check the folder is connected; give the exact path if needed.
 - **I misread you, or my answer is unclear** → ask me to explain in plain words, or rephrase the task.
+- **No idea what I'm even talking about** → say "show me where I wrote that". I have to either point at your own message containing the word, or rewrite without it.
 
 ## What I can do in this project
 
