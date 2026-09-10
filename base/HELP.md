@@ -34,7 +34,8 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 - **Project memory (`wiki/`)** — decisions, facts, counterparties, with dates and sources. Permanent, visible from any chat.
 - **Project rules (`CLAUDE.md`)** — how I behave in this project specifically; I read them at the start of every chat.
 - **`STATE.md`** — what's in progress now and what's next (plans, not facts).
-- **Chat context** — I hold it during the conversation. Whatever matters I save into project memory as we go — and I'll offer to keep what's worth keeping; you can also just say "remember this". That's why a new chat loses nothing: what's saved is visible from any chat, and only the back-and-forth that was never written down goes away.
+- **The workbench (`output/`)** — my results: tables, documents, reports from tasks. I name where I put each one in my reply; want it somewhere else — tell me where.
+- **Chat context** — I hold it during the conversation. If we solved your question and along the way learned something that will be needed again (your decision, a new fact, the cause of a failure, your correction), I'll offer in one line to save it to project memory (the `wiki/` folder); it's your call. In Claude Code many of my replies are also checked by a fast model that can prompt me; then the window may show a "Stop hook error" line — that's a prompt, not a failure, and the reply may take a few seconds longer. Cowork mode has no such check: I may miss something or rush — if something matters, say "remember this", and if I'm saving without your "yes", stop me. What's saved is visible from any chat; only what was never written down goes away with the chat.
 
 ## Safety
 
@@ -58,6 +59,9 @@ I'll also tell you if old files have piled up on the workbench and offer to sort
 - **Can't see a file** → check the folder is connected; give the exact path if needed.
 - **I misread you, or my answer is unclear** → ask me to explain in plain words, or rephrase the task.
 - **No idea what I'm even talking about** → say "show me where I wrote that". I have to either point at your own message containing the word, or rewrite without it.
+- **In Claude Desktop I ask for permission to delete, but no window appears** → switch the mode by the input box to the one where I ask for permission (it's currently called "Manual"): in automatic mode such requests can be refused before they ever reach you. You can switch back afterwards.
+- **The `_to_delete` folder** — things you allowed me to remove but I couldn't delete; drag it to the Trash (Recycle Bin on Windows).
+- **The project-memory check gets in the way** (a "Stop hook error" line, a slower reply) → say "turn off the memory check"; to turn it back on — "turn the memory check back on".
 
 ## What I can do in this project
 

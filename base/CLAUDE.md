@@ -51,14 +51,15 @@ archive/         ← Aged-out material from output/ and tmp/ that is not worth d
 HELP.md          ← A "how to work with me" cheat sheet for the human (on `help`).
 CLAUDE.md        ← This file.
 STATE.md         ← Operational state (intentions, not facts; not canonical).
-.claude/         ← Environment machinery: settings.json + hooks/freshness_check.py — a SessionStart
-                   hook: session-start checks and re-grounding after compaction ("Operational state").
+.claude/         ← Environment machinery: settings.json + hooks/ — a SessionStart hook (session-start
+                   checks and re-grounding after compaction, "Operational state"), the consent note
+                   and the reply reviewer (the "Request resolved" rule).
 ```
 
 Rules:
 
 - **`raw/` is immutable.** Append-only. The original wording matters when re-verifying later.
-- **`wiki/` is managed by Claude.** The human reads it but doesn't edit by hand. It grows through: (a) ingest of a source from `raw/`; (b) write-back of an answer into `synthesis/` after a query; (c) extracting an ADR from an accepted decision; (d) recording a principle from an incident. If the wiki is wrong — fix the source in `raw/` (or tell Claude), and it recompiles.
+- **`wiki/` is managed by Claude.** The human reads it but doesn't edit by hand. It grows through: (a) ingest of a source from `raw/`; (b) write-back of an answer into `synthesis/` after a query; (c) extracting an ADR from an accepted decision; (d) recording a principle from an incident; (e) knowledge that came out in a conversation (the "Request resolved" rule). If the wiki is wrong — fix the source in `raw/` (or tell Claude), and it recompiles.
 - **Wiki depth = 1.** One level of thematic subfolders (the types above), no deeper. 30+ homogeneous pages in one type → expand horizontally (a new top-level type or name prefixes), not subfolders. The exception is `raw/`: inside it, depth as needed is allowed (a store navigated by the human).
 - **`methodology/` is part of the template, not a working area.** Edited only by the human when revising the methodology.
 - <<SLOT S7: authority rule — "**Code beats the wiki**" (classes with `src/`) OR "**Sources beat the wiki**" (classes without code). The `claim-graph` mechanic adds "**citation localization — lint-checkable**": the localization rule itself lives unconditionally in `page-conventions.md` as of base@26 and every class gets it — here only the hardening into a check, not a restatement of the rule.>>
@@ -109,13 +110,13 @@ Types — see the "Architecture" tree (<<SLOT S2>>). Frontmatter, per-type forma
 
 **"I need access" — getting into a server or a device over SSH, into an admin panel, a database, a cloud console, a paid API.** Before the human starts sending anything, say it: **credentials don't go into the chat** (the conversation is stored in full and cannot be scrubbed after the fact) — and immediately offer **one** channel that fits, with the commands: [methodology/secrets-rules.md](methodology/secrets-rules.md). A secret did land in the chat — treat it as leaked: offer to rotate or revoke it before the task goes on. The trigger is always-on and catches at any stage.
 
+**"The deletion didn't go through" in Claude Desktop — "Operation not permitted" or an automatic-mode refusal while erasing files the human named or approved.** Don't say "I can't" and don't give a terminal command: the procedure is in [methodology/lint.md](methodology/lint.md), "Deletion when the environment blocks it". A service file a program erases on its own (git, saving a file) is not this case. The trigger is always-on and catches at any stage.
+
 ---
 
 ## The "how to work with me" guide (on request)
 
-`HELP.md` in the root is a human-facing cheat sheet: setting a task, a new chat per task, the memory map, safety, maintenance, techniques. The human edits it; don't touch it on ingest/maintenance.
-
-**Trigger (ALWAYS-ON).** The user's **entire** message equals one of `help` / `guide` / `manual` (case-insensitive, with or without a leading slash) → show `HELP.md`. The same words **inside a sentence** ("write a manual for X", "I need help with this contract") are a normal task, not a help request.
+`HELP.md` in the root is a human-facing cheat sheet: setting a task, a new chat per task, the memory map, safety, maintenance, techniques. The human edits it; don't touch it on ingest/maintenance. **Trigger (ALWAYS-ON).** The user's **entire** message equals one of `help` / `guide` / `manual` (case-insensitive, with or without a leading slash) → show `HELP.md`; the exception is the answer "Manual" right after my request to switch modes (that continues a deletion, [methodology/lint.md](methodology/lint.md)). The same words **inside a sentence** ("write a manual for X", "I need help with this contract") are a normal task, not a help request.
 
 ---
 
@@ -136,7 +137,7 @@ A role can be created right after assembly or later. Optionally, drop a role des
 5. **Maintenance (lint) is not optional.** Weekly. At session start Claude reads the date of the last `lint` entry in `wiki/log.md`; > 7 days — offers a run. A deterministic `SessionStart` hook (`.claude/`, see "Operational state") backs this check up — it computes the age and injects any deviation into context; the prose rule remains the floor if the hook didn't run.
 6. **Schema first, mechanism second.** Something feels wrong — fix this file or `methodology/` first; don't pile up workarounds.
 7. **Schema grows horizontally only.** A new top-level type in `wiki/` (flat) or a new top-level folder. Deepening types is forbidden. `raw/` is the exception.
-8. **Knowledge synthesis on closing a unit of work.** When a unit of work closes, Claude must review what new knowledge it produced and offer to record it in `wiki/` across all relevant types — not just the profile one. The human confirms (ADRs/principles — never silently). Skipping this = the wiki falls behind what we actually know. What a "unit of work" is — defined by the domain lifecycle (<<SLOT S6>>).
+8. **Knowledge synthesis on closing a unit of work.** When a unit of work closes, Claude must review what new knowledge it produced and offer to record it in `wiki/` across all relevant types — not just the profile one. The human confirms (ADRs/principles — never silently). Skipping this = the wiki falls behind what we actually know.  A conversation without a unit of work is caught by the "Request resolved" rule ("How Claude works on tasks"). What a "unit of work" is — defined by the domain lifecycle (<<SLOT S6>>).
 
 ---
 
@@ -177,6 +178,24 @@ Every nontrivial task goes through two phases: first **stop and think**, then ac
 
 **Extraction from a document is a hypothesis, not a reading.** Data lifted from a foreign format (a PDF, a scan, a page's layout, another system's export) is obtained by parsing a **rendering**, not a record: we reconstruct the structure by guesswork — and the guess stays silent when it is wrong, handing back plausible rows instead of an error. It goes wrong **at the boundaries**: a row that starts at the bottom of a page continues on the next one and gets cut in two or glued to its neighbor; the same happens at the seam between batches, at the end of a section, at the pagination edge. So before the bulk run — a sample taken **precisely at the boundaries** (not at the first rows: the middle always parses correctly), and afterwards — **reconciliation of the whole against the source** using something counted independently: the number of records, the sum of a column, the last item. Anything that does not add up, or is unclear, goes into the rejects list and to the human — not into the result as an empty value. Until an extraction has been reconciled, nothing is built on top of it: whatever is built will have to be redone as well. For the project's own code the rule is stricter — see the code mechanic, if it is attached.
 
+**Request resolved — check what was learned and offer to record it in the wiki.** Works without a task too: here, closure means the human's request is resolved. It is resolved when you gave the answer or result that closes it — or the human made it clear the question is settled: "thanks", "it works", "got it", "ok", or simply moved on to something else. Don't wait for words of thanks.
+
+At that point — a short review: what did this conversation turn up that will be needed beyond it and would otherwise have to be figured out again:
+
+1. **The human's decision** — chose among options, agreed with yours, announced it themselves, dropped a path (with the reason). Your recommendation, while they haven't answered, is not yet a decision.
+2. **A fact about the project or the outside world** that you will rely on from now on — including one you found yourself while working: a price, a deadline, a contact, how another program or service behaves, a data format.
+3. **A confirmed cause of a failure** — non-obvious or in someone else's system.
+4. **The human's correction** about how the project works or how things are done here.
+
+Doesn't count: one-off information unrelated to the work; a choice of wording, colour, file name; an edit to the current draft ("shorter"); a typo in what you just wrote; a routine code change; what is already written in the project's files (the file itself is the source); the result of the work itself — the file is already saved, what gets recorded is what was learned along the way; what is already in the wiki and matches (check against the page itself, not the line in `wiki/index.md`); if it contradicts — offer, always and at once.
+
+Found something — as the last line of the text for the human, before "Details", offer to record it: what was learned and why it will be useful, in the human's words, one line for everything. Call the place "project memory" — that is the wiki (`wiki/`), not Claude Code's built-in memory (auto-memory, `MEMORY.md`); on first mention in a chat, explain: "(the `wiki/` folder, visible from any chat)". If the reply ends with a question awaiting the human's decision (an understanding check, a fork, a retraction), move the offer to the next reply, but no later than the final one, even if that ends with a question. Found nothing — say nothing about it.
+
+- **Consent.** Write only after a reply that is about the recording itself: "yes", "go ahead", "save it" to your question about recording; "ok" counts too if the recording question was the last line of your message; a direct request to you to record ("remember this", "save it to memory") is consent as well. The human telling you what they themselves are writing down or dictating ("writing down the inputs: …") is not a request: offer, don't write. An on-topic reply ("we're staying", "we'll take X", a new question) is not consent: don't write. An unanswered offer gets one reminder for the whole chat, in the reply where you wrap up; you may add new facts to it, but don't repeat the question every turn, and without reproach ("you still haven't answered" is not allowed). Declined — don't repeat it in this chat.
+- **Where.** Into `wiki/` via ingest ([methodology/ingest.md](methodology/ingest.md), "Knowledge from the conversation"). The "always X / never Y" form goes to `wiki/principles/` (the "Afterwards — capturing the principle" rule below); timing and consent — as here.
+- **Reply reviewer — a `.claude/` hook.** In Claude Code your finished reply is also looked at by a separate fast model: if it finds knowledge you didn't offer to record, it sends you back with it. The human already sees the reply: add one separate offer line, don't repeat the reply, and don't talk about the check. If the offer was already made or the human declined — add nothing: reminders follow "Consent" only. Always do your own review: the reviewer is a safety net, not a replacement. Don't mention the consent note that precedes your turn. The human asks to turn the check off — create an empty file `.claude/knowledge-check.off`; to turn it back on — delete it.
+- **Long work** without replies from the human — findings along the way as a line in the run journal in `tmp/`, to the human — as a list at the end. **You are a subagent** — you don't offer to the human: mark decisions and corrections in your report; a fact from a project file is not a finding.
+
 ### Afterwards — capturing the principle
 
 A rule was born — "always X / never Y" — offer to record it in `wiki/principles/<applicability>.md` with its source. Only from concrete cases, never from general reasoning.
@@ -187,7 +206,7 @@ A rule was born — "always X / never Y" — offer to record it in `wiki/princip
 
 Applies to Claude's working deliverables. Artifacts inside `wiki/` — per [methodology/page-conventions.md](methodology/page-conventions.md).
 
-- **Where things go:** sent from outside, not ours to edit → `raw/`; knowledge → `wiki/` via ingest; working files → `output/` (+ `specs/` for classes with code — <<SLOT S4>>); temporary artifacts of a long pass (progress journal, logs) → `tmp/`, not `output/`; aged-out material from `output/`/`tmp/` that is not worth deleting → `archive/` ([lint.md](methodology/lint.md)).
+- **Where things go:** a working file from a task (table, document, report), unless the human named another place, goes into `output/` (into a subfolder where the project's rules say so), and that is not a question for the human: in Claude Desktop the environment's instruction is to put results in the connected folder (simple ones straight into its root); the project's `output/` sits inside that folder, and where exactly inside is decided by the project's rules, not the environment's default. State the path from the project root in your reply. If a file with that name already exists, the task doesn't ask you to change that very file, and it wasn't made in this chat, ask whether to replace it or use a new name. The list: sent from outside, not ours to edit → `raw/`; knowledge → `wiki/` via ingest; working files → `output/` (+ `specs/` for classes with code — <<SLOT S4>>); temporary artifacts of a long pass (progress journal, logs) → `tmp/`, not `output/`; aged-out material from `output/`/`tmp/` that is not worth deleting → `archive/` ([lint.md](methodology/lint.md)).
 - **File names.** Descriptive English, underscores; dated when appropriate.
 - **Dates.** `YYYY-MM-DD` in file names and YAML; natural English dates or `YYYY-MM-DD` in prose.
 - <<SLOT S8: domain conventions — currency and amount format (from the bootstrap interview, a universal question with no default) + units/special citation formats, if any>>
