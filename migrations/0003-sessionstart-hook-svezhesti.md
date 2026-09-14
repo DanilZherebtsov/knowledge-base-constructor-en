@@ -44,6 +44,8 @@ From the mirror (`constructor/base/.claude/`):
 ```
 If such a hook is already present (re-running the migration) — don't duplicate. Idempotent.
 
+**An environment refusal (for 2A and 2B).** Copying `settings.json`/the hook or writing into an existing file was refused by automatic mode (the reply mentions "auto mode classifier") — don't work around it and don't hand the human JSON: the procedure is the section "Writing hooks when automatic mode blocks it" in the mirror's `base/methodology/lint.md`. Carry on with the remaining steps.
+
 ## Step 3. Update the STANDARD-layer prose to `base@28`
 
 From the mirror (`constructor/base/`), preserving instance content (filled slots, "About the project", domain sections):

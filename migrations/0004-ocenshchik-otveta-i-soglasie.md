@@ -49,13 +49,17 @@ Copy `base/.claude/hooks/consent_nudge.py` and `base/.claude/hooks/judge.py` fro
 
 A command with `consent_nudge.py` / `judge.py` is already there (in `settings.json` or `settings.local.json`) — don't duplicate.
 
+### An environment refusal during installation (for 2A and 2B)
+
+Copying the hook files or writing into `settings.json` was refused by automatic mode (the reply mentions "auto mode classifier") — don't work around it and don't hand the human JSON to paste: the procedure is the section "Writing hooks when automatic mode blocks it" in the mirror's `base/methodology/lint.md` (one question for the whole pass, at the end). Carry on with the remaining steps; do raise the fingerprint — the "The project-memory check isn't working" item will see the check is not attached.
+
 ## Step 3. The reviewer's prose
 
 From the mirror, keeping the instance's content (filled slots, "About the project", domain sections). Find places by headings and text, not by line numbers; what is already inserted — don't duplicate:
 1. `CLAUDE.md` — the "Request resolved — …" block right before `### Afterwards — capturing the principle`; in the "Knowledge synthesis on closing a unit of work" item, after "Skipping this = the wiki falls behind what we actually know." — the sentence about "Request resolved" (don't touch the item's tail with the slot — the class mechanic filled it); in "It grows through" — "(e) …"; replace the `.claude/` tree line.
 2. `methodology/ingest.md` — the pointer after the "Triggered by phrases…" line; the addition to "**Same thesis**"; the "Knowledge from the conversation" section — at the very end of the file, after all sections, including ones added by mechanics. Don't replace the file wholesale.
 3. `methodology/bootstrap.md` — the `.claude/` description.
-4. `methodology/lint.md` — the "The project-memory check isn't working" item in "Report-only".
+4. `methodology/lint.md` — the "The project-memory check isn't working" item in "Report-only", and the section "Writing hooks when automatic mode blocks it" before "Update check" (the item refers to it).
 
 ## Step 4. The other parts of base@43
 
