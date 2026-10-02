@@ -49,7 +49,9 @@ Today there is exactly one such question — **working with code (`software-engi
 
 > "Will there be your own code — a site, a bot, scripts, dashboards?"
 
-Yes → add the mechanic on top of the preset. It provides a code folder in the root, a code-writing cycle (subagent checks → implementation → tests → report), ownership discipline, and, for a web product, an "edits / deploys" role pair. Composes with any preset; with saas it pairs with specs (the spec is the unit of work, this mechanic is the execution). Can be wired in later too — "we'll be writing code" at any moment.
+**Don't ask if working with code is already in the starting preset.** Open the manifest of the preset picked at step 1 (`presets/<class>.md`, the `mechanics:` line): if `software-engineering` is there, don't ask — the answer changes nothing (today that is `saas-product`, including when a free-text answer was mapped to it). This is the same skip condition as in [base/methodology/bootstrap.md](base/methodology/bootstrap.md). In that case, name working with code explicitly in the step 4 summary — that is the only place where a person who picked this starting point by mistake will see it. For the other presets and "Something else" — ask.
+
+Yes → add the mechanic on top of the preset. It provides a code folder in the root, a code-writing cycle (subagent checks → implementation → tests → report), ownership discipline, and, for a web product, an "edits / deploys" role pair. Composes with any preset; in saas it is already part of the starting preset, paired with specs (the spec is the unit of work, this mechanic is the execution). Can be wired in later too — "we'll be writing code" at any moment.
 
 **The central type is not discussed with the human.** Which unit of knowledge the project needs (claim graph vs the class lifecycle) is inferred from the step 1 answer against the criterion in [mechanics-catalog.md](mechanics-catalog.md) ("Criterion for the central type"). A clash between two contenders is resolved by the assembler itself — [ASSEMBLY.md](ASSEMBLY.md), step 4.
 
