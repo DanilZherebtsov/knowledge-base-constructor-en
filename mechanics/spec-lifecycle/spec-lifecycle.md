@@ -37,7 +37,7 @@ When a milestone from "Path to goal" requires **≥3 task specs**, it is formali
 **Execution algorithm:**
 1. The sprint spec defines the task set (in broad strokes; detailed as work proceeds). **The plan passes the independent review gate before tasks start** (the same gate as in the execution cycle — [software-engineering.md](software-engineering.md)): is the decomposition right; are the design conditions and assumptions too broad/narrow; which modules the task bundle touches as a whole. Plan-level defects (a wrong gate condition, a missed dependency) are cheapest to catch here — before the first line of code.
 2. Take the next task → **write a task spec** (`<feature>-NNN-...`, as usual) → drive it through the **execution cycle** ([software-engineering.md](software-engineering.md): task statement → independent review gate → implementation → repeat gate → report) → close by the task's acceptance.
-3. Learned something new along the way → **edit the sprint spec** (add/remove/reword tasks).
+3. Learned something new along the way → **edit the sprint spec** (add/remove/reword tasks). An added task is extra work: the "Extra work" test (`CLAUDE.md`); if it shifts a deadline given to the human — ask them, don't edit the spec silently.
 4. Next task. When all are closed and the sprint's acceptance is met — the sprint spec → `completed`.
 
 **No duplicates with STATE.** The task list lives **only in the sprint spec**. STATE "In progress now" links to the active sprint + the active task (one line each), without repeating the list; "Path to goal" lists the milestones, the active milestone = the active sprint.

@@ -57,6 +57,7 @@ I'll also tell you if old files have piled up on the workbench and offer to sort
 - **Stuck** → stop me, say "tell me briefly what you did" — and give a new direction.
 - **Gave you the wrong thing** → don't start over: "this doesn't fit because X — redo Y".
 - **Looks made up** → "re-check every number against the sources, flag where you didn't find it".
+- **I'm doing more than needed** — re-checking what hasn't changed, stretching the work over hours or days → say "this isn't needed for the task". Before any check beyond the task I look at what has changed in what it checks; a needed but lengthy one I first offer to you with its price. Want everything re-checked in full — just say so.
 - **Can't see a file** → check the folder is connected; give the exact path if needed.
 - **I misread you, or my answer is unclear** → ask me to explain in plain words, or rephrase the task.
 - **No idea what I'm even talking about** → say "show me where I wrote that". I have to either point at your own message containing the word, or rewrite without it.

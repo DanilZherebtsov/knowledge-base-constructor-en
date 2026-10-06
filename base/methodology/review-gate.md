@@ -6,7 +6,7 @@ Read on trigger from `CLAUDE.md` ("How Claude works on tasks"). With the code me
 
 ## What the gate catches, and what it does not
 
-**Catches:** a missed requirement, an unrealistic acceptance criterion, a neighbouring area disturbed, an unnoticed irreversibility.
+**Catches:** a missed requirement, an unrealistic acceptance criterion, a neighbouring area disturbed, an unnoticed irreversibility, a superfluous step the goal does not require.
 
 **Does not catch divergence from the human's intent.** Reviewers inherit your reading of the task and will be wrong together with you. That is why "confirm understanding" (`CLAUDE.md`) comes **before** the gate, not instead of it: first the human confirms the task was understood correctly, and only then is the statement itself reviewed.
 
@@ -40,7 +40,7 @@ The strengthening is triggered by a **concrete flag** from the impact reviewer �
 
 ## What the reviewers are given
 
-- **Correctness and completeness** — does the statement solve the task as posed; is a requirement missing; are the acceptance criteria realistic.
+- **Correctness, completeness, and the superfluous** — does the statement solve the task as posed; is a requirement missing; are the acceptance criteria realistic; are there steps the goal does not require (the "Extra work" test in `CLAUDE.md`).
 - **Impact on neighbouring areas** — what else in the system or in the business is affected; which obligations, agreements, contracts, invariants break; where the regressions are. Input — the knowledge in `wiki/`. Flags irreversibility and blast radius (see above). **If the wiki is empty on the area affected — report exactly that ("there was nothing to read"), not "no impact".** An empty lens counted as a clean one is the worst outcome a gate can have: it looks passed. What follows is the human's call: build that knowledge first, or proceed with the risk explicitly accepted.
 - **Disproof** (strengthened contour only) — the instruction is not "assess" but **disprove**: produce a scenario in which this decision does harm. Found nothing — say so; silence is a result too.
 
@@ -50,7 +50,9 @@ The strengthening is triggered by a **concrete flag** from the impact reviewer �
 
 **Every finding gets an explicit outcome** — accepted (what exactly changes) or rejected (why). Collapsing three objections into one line, restating an inconvenient one more softly, or quietly dropping it — forbidden. This is a floor rule: it always applies and costs nothing.
 
-Findings reconciled → the statement is revised → the gate **repeats**, until it comes back clean.
+**A finding that adds work goes through the "Extra work" test** (`CLAUDE.md`). An accepted one names in its outcome the risk it closes (question (2)); a rejection names which question of the test failed and how; a finding that shows a chain of dependency on what changed is rejected only by proof that the chain does not exist. A rejected finding is written into the statement as a line "not doing this, because…" — otherwise the next round raises it again. Any change to a deadline given to the human — in a separate message to them at once, not as a line in the reconciliation.
+
+Findings reconciled → the statement is revised → the gate **repeats**, until it comes back clean — no findings the goal needs remain.
 
 **The reconciliation is a working document, not a message to the human.** The outcome of every finding is written to a file in `tmp/<operation>-<date>/`; that is where the requirement above is satisfied. Printing that file to the human is not allowed — this is exactly how a wall of text is born, with the important part drowned in it. What goes out is an address to them under the "In the human's language" rule (`CLAUDE.md`): in your own words, whatever changes their decision — and a retraction of something you told them earlier, or a choice with a price, does not wait for the reconciliation: it goes out as a separate message at once. A link to the file in place of the content will not do: the human decides from the message.
 
