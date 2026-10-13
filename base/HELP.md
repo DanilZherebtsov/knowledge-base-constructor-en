@@ -18,6 +18,7 @@ The more precise the input, the less guessing on the output.
 - **"Here's a sample of the format I want"** — I'll match your template.
 - **"Check the project memory before a serious task"** — I do this on my own, but on an important task you can nudge me for reliability: I'll re-read what's accumulated instead of starting from scratch.
 - **"Data from a PDF or a scan — reconcile the total against the source"** — when I lift a table out of a document I am parsing its **appearance**, not a record, and the typical corruption lives at the page breaks: a row that starts at the bottom of one sheet continues on the next. I check the seams myself and show you what did not add up; on data that matters, also ask me to recount the total (number of rows, sum of a column) — that catches what the eye does not.
+- **"Show me the check catches an error"** — a check I wrote (a reconciliation, a count, a test) can miss errors and still answer "it all reconciles". So when a result rests on such a check, I first deliberately corrupt a copy of the data — where an error is easiest to miss, say in the last row or at a page seam — and see whether the check notices; I don't touch the original. I tell you only if I couldn't test it or it missed an error where you've already seen the result. Want to see the experiment for yourself — say this phrase. It shows the check catches that kind of error, not that it catches everything.
 - **"Remember this: …"** — I turn a decision or fact into a project-memory entry with a date and a source. That's how the base grows as you work.
 - **A large batch of files:** "process the first 10, show me the result" → then "keep going the same way".
 
@@ -25,7 +26,7 @@ The more precise the input, the less guessing on the output.
 
 Don't run everything in one chat. The longer the conversation, the more old context I'm holding, and the easier I get confused. Task changed — start a new chat.
 
-Nothing is lost: the project memory (the `wiki/` folder and the project rules) is visible from **every** chat. So splitting into short chats is safe — each one stays precise. A chat has grown too long — say "summarize this into a file", start a new chat, and feed the summary in.
+Nothing is lost: the project memory (the `wiki/` folder and the project rules) is visible from **every** chat. So splitting into short chats is safe — each one stays precise. A chat has grown too long, or you want to continue part of the work separately — say "hand this off to a new chat". I'll write down where we stopped — in the task's file or in a separate note — and give you a phrase: paste it first into the new chat. Anything important we haven't saved to project memory yet, I'll mark there too and offer to save — in the new chat or at maintenance.
 
 If a chat does hit the limit anyway, I compress the earlier conversation into a short summary and carry on from that — with less detail in it. For that case, right after the compaction I re-read what's written down (what's in progress, where we stopped) and continue from the files rather than from my memory of the conversation. That's a safety net, not a replacement: short chats are still more precise.
 
@@ -35,6 +36,7 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 - **Project rules (`CLAUDE.md`)** — how I behave in this project specifically; I read them at the start of every chat.
 - **`STATE.md`** — what's in progress now and what's next (plans, not facts).
 - **The workbench (`output/`)** — my results: tables, documents, reports from tasks. I name where I put each one in my reply; want it somewhere else — tell me where.
+- **My notes folder (`tmp/`)** — what I write for myself so the work can continue: records of how a long job is going, handoffs to a new chat. Don't clean it out yourself: a note may hold something important that isn't saved yet. At maintenance I'll name what has been left lying around, and I remove it only on your "yes".
 - **Chat context** — I hold it during the conversation. If we solved your question and along the way learned something that will be needed again (your decision, a new fact, the cause of a failure, your correction), I'll offer in one line to save it to project memory (the `wiki/` folder); it's your call. In Claude Code many of my replies are also checked by a fast model that can prompt me; then the window may show a "Stop hook error" line — that's a prompt, not a failure, and the reply may take a few seconds longer. Cowork mode has no such check: I may miss something or rush — if something matters, say "remember this", and if I'm saving without your "yes", stop me. What's saved is visible from any chat; only what was never written down goes away with the chat.
 
 ## Safety
@@ -50,7 +52,7 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 
 Say "run maintenance" — I'll check the integrity of the project memory and pull in updates without breaking your entries. A good habit is once a week.
 
-I'll also tell you if old files have piled up on the workbench and offer to sort them: what to set aside for later, and what to delete. I never delete or move anything on my own — I'll ask about each one separately.
+I'll also tell you if old files have piled up on the workbench or in my notes folder and offer to sort them: what to set aside for later, and what to delete. I never delete or move anything on my own — I'll ask about each one separately.
 
 ## When something goes wrong
 
