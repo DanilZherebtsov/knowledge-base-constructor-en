@@ -40,8 +40,9 @@ methodology/     ← Instructions for Claude (read on trigger).
   state-rules.md  index-log-format.md  bootstrap.md  roles.md  review-gate.md  secrets-rules.md
                  <<SLOT S6: domain lifecycle file — spec-/question-/decision-lifecycle.md>>
 roles/           ← Role-chat definitions. `_template.md` is the sample.
-output/          ← Root for working files — **every class has it**. Created empty;
-                   subfolders (drafts/, folders for live documents) appear as needed.
+output/          ← Project documents and working results — **every class has it**. Created
+                   empty. Designated folders — subfolders the human named: a line below,
+                   name/ (designated: what goes in).
                  <<SLOT S4: extra working layers for classes with code — specs/ + src/ + data/>>
 tmp/             ← Temporary material: written for the next step of the work, not for the
                    human — the journal of a long pass, a review's reconciliation file, a handoff
@@ -50,11 +51,12 @@ tmp/             ← Temporary material: written for the next step of the work, 
                    one a result was produced or accepted with). Lives while the next step needs
                    it; removed on the human's "yes"; not created empty; under git — in
                    .gitignore. Not output/ (results live there).
-archive/         ← Aged-out material from output/ and tmp/ that is not worth deleting: things
+archive/         ← Aged-out material from tmp/ that is not worth deleting: things
                    we generated, not primary sources (those are raw/). Not created empty; in .gitignore.
 HELP.md          ← A "how to work with me" cheat sheet for the human (on `help`).
 CLAUDE.md        ← This file.
 STATE.md         ← Operational state (intentions, not facts; not canonical).
+BACKLOG.md       ← Deferred items (not in progress).
 .claude/         ← Environment machinery: settings.json + hooks/ (see "Operational state"
                    and the "Request resolved" rule).
 ```
@@ -82,7 +84,7 @@ Rules:
 
 ## Operational state
 
-`STATE.md` in the root is the single place for current plans and progress: intentions, not statements about the world, so it is outside the source hierarchy and doesn't conflict with the wiki. **Its structure is a fixed set of sections** (<<SLOT S5: the class's section list; the mechanics live in [methodology/state-rules.md](methodology/state-rules.md)>>). Empty sections stay, marked `_empty_`.
+`STATE.md` in the root is the single place for current plans and progress: intentions, not statements about the world, so it is outside the source hierarchy and doesn't conflict with the wiki. Deferred items go to `BACKLOG.md`: it is not read at session start; open it when a milestone closes or "Next" is empty, before a task in a new area, on a question about plans beyond two weeks, and on "what's in the backlog". **Its structure is a fixed set of sections** (<<SLOT S5: the class's section list; the mechanics live in [methodology/state-rules.md](methodology/state-rules.md)>>). Empty sections stay, marked `_empty_`.
 
 **Triggers (for Claude):** at session start — read STATE.md silently (the "where we left off" context); on "where did we leave off / what's in progress / what's next / blockers" — STATE.md is the primary source; if `_Updated:_` is older than 7 days — in the first reply offer: "STATE is N days stale, what changed?".
 
@@ -205,7 +207,7 @@ Found something — as the last line of the text for the human, before "Details"
 
 ### Afterwards — capturing the principle
 
-A rule was born — "always X / never Y" — offer to record it in `wiki/principles/<applicability>.md` with its source. Only from concrete cases, never from general reasoning.
+A rule was born — "always X / never Y" — offer to record it in `wiki/principles/<applicability>.md` with its source. Only from concrete cases, never from general reasoning. Its number — per `page-conventions.md`.
 
 ---
 
@@ -213,7 +215,7 @@ A rule was born — "always X / never Y" — offer to record it in `wiki/princip
 
 Applies to Claude's working deliverables. Artifacts inside `wiki/` — per [methodology/page-conventions.md](methodology/page-conventions.md).
 
-- **Where things go:** a working file from a task (table, document, report), unless the human named another place, goes into `output/` (into a subfolder where the project's rules say so), and that is not a question for the human: in Claude Desktop the environment's instruction is to put results in the connected folder (simple ones straight into its root); the project's `output/` sits inside that folder, and where exactly inside is decided by the project's rules, not the environment's default. State the path from the project root in your reply. If a file with that name already exists, the task doesn't ask you to change that very file, and it wasn't made in this chat, ask whether to replace it or use a new name. The list: sent from outside, not ours to edit → `raw/`; knowledge → `wiki/` via ingest; working files → `output/` (+ `specs/` for classes with code — <<SLOT S4>>); temporary material for the next step of the work → `tmp/`, not `output/`; aged-out material from `output/`/`tmp/` that is not worth deleting → `archive/` ([lint.md](methodology/lint.md)).
+- **Where things go:** a working file from a task (table, document, report), unless the human named another place, goes into `output/` (into the designated folder for such documents, if there is one), and that is not a question for the human: in Claude Desktop the environment's instruction is to put results in the connected folder (simple ones straight into its root); the project's `output/` sits inside that folder, and where exactly inside is decided by the project's rules, not the environment's default. State the path from the project root in your reply. The human told you to keep a kind of document in a folder of its own ("keep contracts in `output/contracts`") — that is a designated folder; "don't move to the archive" and bringing things back from the archive also go by [lint.md](methodology/lint.md) ("Designated folders in `output/`", "Moving"). If a file with that name already exists, the task doesn't ask you to change that very file, and it wasn't made in this chat, ask whether to replace it or use a new name. If a document you are asked to continue isn't in its place, bring it back from `output/archive/` — don't start a second one. The list: sent from outside, not ours to edit → `raw/`; knowledge → `wiki/` via ingest; working files → `output/` (+ `specs/` for classes with code — <<SLOT S4>>); temporary material for the next step of the work → `tmp/`, not `output/`; aged-out material from `tmp/` that is not worth deleting → `archive/`; aged-out files in `output/` are moved away by maintenance ([lint.md](methodology/lint.md)).
 - **Handoff to a new chat** ("hand this off to a new chat", "give me a handoff", "dump the context for a new chat") — the human asks to continue the work or take up a new task in another chat: what to write and where — [methodology/state-rules.md](methodology/state-rules.md), "Handoff to a new chat" (the task's own file, a spec, or `tmp/` — that section decides; it is not a question for the human). A summary the human is going to read is not a handoff but a result: it goes to `output/`.
 - **File names.** Descriptive English, underscores; dated when appropriate.
 - **Dates.** `YYYY-MM-DD` in file names and YAML; natural English dates or `YYYY-MM-DD` in prose.

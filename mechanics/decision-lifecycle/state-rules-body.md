@@ -6,11 +6,11 @@ Inserted by wiring into base `state-rules.md`: replaces the S5 slot region ("## 
 
 1. **Snapshot** — a picture of "where we stand": the stage of the business, key numbers with a source. Not a plan — the current picture.
 2. **Open tracks** — parallel finite efforts in progress (open a location, launch a product). Each — with its own outcome and a link to the key decisions/comparisons in the wiki. There are usually several tracks, running in parallel.
-3. **This week** — what is in flight right now (one or two tasks).
-4. **Next (1–2 weeks)** — the near-term backlog, one-liners. Beyond the horizon — into "Open tracks".
+3. **This week** — what is in flight right now (one or two tasks). The path to the comparison's working file goes in the item.
+4. **Next (1–2 weeks)** — the near-term backlog, one-liners. Beyond the horizon: on a track we are pursuing — into "Open tracks"; the deferred — into `BACKLOG.md`.
 5. **Commitments calendar** — recurring and dated commitments (rent, taxes, payroll, renewals, reporting): due date + cadence. Related documents — by link to `entities/`/`decisions/`. Mechanics — below.
-6. **Blockers, risks, and decisions waiting on me** — what is in the way (a blocker), what could get in the way (a risk + a plan B), what awaits your word (with a link to `output/drafts/` or `synthesis/`).
-7. **Recently completed** — the buffer zone before collapsing.
+6. **Blockers, risks, and decisions waiting on me** — what is in the way (a blocker), what could get in the way (a risk + a plan B), what awaits your word (with a link to `output/drafts/` or `synthesis/`). Everything that awaits the human's word lives here, not in `BACKLOG.md`.
+7. **Recently completed** — the buffer (rule 6 below).
 
 **Granularity mirrors the horizon of understanding.** Early on, a track is 2–3 lines in broad strokes. As it approaches, it gets broken down. Don't atomize prematurely — that is false precision.
 
@@ -21,6 +21,8 @@ Once a significant item is completed, Claude moves it from "This week" to "Recen
 ## Commitments calendar — how it is kept
 
 STATE's section 5 is not a task list but a list of **commitments**: things that recur or have a hard external deadline with consequences for missing it (a fine, penalties, a broken contract, a revoked license). A task is done once and closed; a commitment cannot be "completed" — only serviced until the next cycle.
+
+**What is not here.** The calendar is not moved into `BACKLOG.md`. An item with a due date that is not a commitment ("come back to the question after 14 Oct") is a line with its due date in "Open tracks" or "Next".
 
 **What goes in.** Rent, taxes and contributions, payroll and regular payouts, renewal of contracts / licenses / domains / insurance, periodic reporting, recurring payments to suppliers.
 

@@ -35,7 +35,8 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 - **Project memory (`wiki/`)** — decisions, facts, counterparties, with dates and sources. Permanent, visible from any chat.
 - **Project rules (`CLAUDE.md`)** — how I behave in this project specifically; I read them at the start of every chat.
 - **`STATE.md`** — what's in progress now and what's next (plans, not facts).
-- **The workbench (`output/`)** — my results: tables, documents, reports from tasks. I name where I put each one in my reply; want it somewhere else — tell me where.
+- **`BACKLOG.md`** — things put off for later; it appears once there is something to put off. I don't read it at the start of a chat; I open it when we're choosing the next piece of work or you ask about longer-term plans.
+- **Project documents (`output/`)** — my results and your documents. I name where I put each one in my reply. Want to keep some documents in a folder of their own — say "keep contracts in `output/contracts`": from then on I put them there myself. Files that haven't changed for a month and aren't in your folders I move to `output/archive/` during maintenance — look there for anything that seems missing.
 - **My notes folder (`tmp/`)** — what I write for myself so the work can continue: records of how a long job is going, handoffs to a new chat. Don't clean it out yourself: a note may hold something important that isn't saved yet. At maintenance I'll name what has been left lying around, and I remove it only on your "yes".
 - **Chat context** — I hold it during the conversation. If we solved your question and along the way learned something that will be needed again (your decision, a new fact, the cause of a failure, your correction), I'll offer in one line to save it to project memory (the `wiki/` folder); it's your call. In Claude Code many of my replies are also checked by a fast model that can prompt me; then the window may show a "Stop hook error" line — that's a prompt, not a failure, and the reply may take a few seconds longer. Cowork mode has no such check: I may miss something or rush — if something matters, say "remember this", and if I'm saving without your "yes", stop me. What's saved is visible from any chat; only what was never written down goes away with the chat.
 
@@ -50,9 +51,9 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 
 ## Maintenance — once a week
 
-Say "run maintenance" — I'll check the integrity of the project memory and pull in updates without breaking your entries. A good habit is once a week.
+Say "run maintenance" — I'll check the integrity of the project memory and pull in updates without touching your entries in the project memory. A good habit is once a week.
 
-I'll also tell you if old files have piled up on the workbench or in my notes folder and offer to sort them: what to set aside for later, and what to delete. I never delete or move anything on my own — I'll ask about each one separately.
+I'll also tidy the documents folder: files that haven't changed for a month and aren't in your folders I'll move to `output/archive/` — I delete nothing, and it can be undone. The first time I'll show you the list and ask; after that I move them myself — if you'd rather I didn't, say "don't move" (changed your mind — "move again"). About folders where nothing has changed for a month, I'll ask. From the work plan (`STATE.md`) I'll remove the lines about finished work older than a week and keep no more than the ten latest — I'll show you what I removed. In my notes folder I'll name what has been lying around and remove it only on your "yes".
 
 ## When something goes wrong
 

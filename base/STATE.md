@@ -5,6 +5,8 @@ _Updated: YYYY-MM-DD_
 > Not canonical: reflects intentions and progress, not facts. Rules — [methodology/state-rules.md](methodology/state-rules.md).
 >
 > The structure is a fixed set of sections. Empty sections stay, marked `_empty_`, and are not deleted.
+>
+> The date above is `_Updated: YYYY-MM-DD_`; a note, if any, goes after the closing `_`.
 
 <<SLOT S5: the class's section list. Base ships the generalized set below — replace/rename it for the class.
 Examples: saas/research — Stage / Path to goal / In progress now / Next / Completed last week / Blockers and risks / (a domain 7th);

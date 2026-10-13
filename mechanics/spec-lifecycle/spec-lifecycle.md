@@ -1,8 +1,8 @@
 # Task spec flow
 
-A spec is the document of a specific feature or task: the problem, what will change, the implementation, the acceptance criteria. Specs live in the top-level `specs/` folder — a **third class of artifacts**: not disposable scratch (like `output/`) and not compiled knowledge (like `wiki/`), but long-lived working documents of development — mutable while the task is active, frozen after.
+A spec is the document of a specific feature or task: the problem, what will change, the implementation, the acceptance criteria. Specs live in the top-level `specs/` folder — a **third class of artifacts**: not a document for the human (like `output/`) and not compiled knowledge (like `wiki/`), but long-lived working documents of development — mutable while the task is active, frozen after.
 
-**Why a separate folder, not `output/` and not status subfolders.** An active spec is a document code is written against for weeks; "a workbench, can be cleaned up" doesn't fit it. Meanwhile `active/completed/rejected/` subfolders would duplicate STATE.md, and parallel lists are forbidden ([state-rules.md](state-rules.md), rule 1). The solution: a flat `specs/`, **status in frontmatter**, STATE.md as the index of active ones.
+**Why a separate folder, not `output/` and not status subfolders.** An active spec is a document code is written against for weeks; a folder from which aged-out material leaves for the archive doesn't fit it. Meanwhile `active/completed/rejected/` subfolders would duplicate STATE.md, and parallel lists are forbidden ([state-rules.md](state-rules.md), rule 1). The solution: a flat `specs/`, **status in frontmatter**, STATE.md as the index of active ones.
 
 ## Spec frontmatter
 
@@ -21,7 +21,7 @@ Status is mandatory — it is how STATE and `grep "status: active" specs/*` find
 
 | Stage | status | Where | What |
 |---|---|---|---|
-| **Backlog** (not taken up) | — | STATE.md "Next" / "Path to goal" | One line. No file. |
+| **Backlog** (not taken up) | — | the near-term — STATE.md "Next" / "Path to goal"; "someday" — `BACKLOG.md` | One line. No file. |
 | **In progress** | `active` | `specs/<feature>-NNN-<slug>.md` + STATE "In progress now" | Full spec, mutable. |
 | **Landed** | `completed` | `specs/...` (frozen) + ADR in `wiki/decisions/` + code in `src/` | Core → ADR; the spec is kept as a snapshot. |
 | **Rejected** | `rejected` | `specs/...` (frozen); optionally an ADR | The unique record of "why we did NOT do it". |
@@ -88,7 +88,7 @@ How exactly code gets written against an active spec (task statement → indepen
 
 **Transition condition.** If the task statement enumerated an exhaustive list of elements ([software-engineering.md](software-engineering.md), "Blocker inside scope"), the transition to `completed` is possible only when **every** element has an outcome — done, or the human explicitly excluded it with the reason recorded in the spec. The `completed` status does not mask silent leftovers.
 
-When the feature has landed in code and the acceptance criteria are met, **Claude offers to extract an ADR** (never automatically — only on confirmation): the architectural core (choice of approach, rejected alternatives, consequences) moves to `wiki/decisions/adr-NNNN-<slug>.md`. Bidirectional links: the ADR's `sources:` points to the spec or PR, the spec's `adr:` field — to the ADR.
+When the feature has landed in code and the acceptance criteria are met, **Claude offers to extract an ADR** (never automatically — only on confirmation): the architectural core (choice of approach, rejected alternatives, consequences) moves to `wiki/decisions/adr-NNNN-<slug>.md`. Bidirectional links: the ADR's `sources:` points to the spec or PR, the spec's `adr:` field — to the ADR. The ADR's number — per [page-conventions.md](page-conventions.md).
 
 Then the spec is **frozen, not deleted**: `status: completed`, and an inoculation against rot is added to its header:
 
@@ -96,7 +96,7 @@ Then the spec is **frozen, not deleted**: `status: completed`, and an inoculatio
 
 Why keep it instead of deleting: an ADR is deliberately terse and does not hold the full task statement, the considered edge cases, the rollout plan. The snapshot remains valuable as the history of the iteration. The rot risk (a stale spec looks authoritative) is neutralized by the inoculation — the spec honestly declares itself a snapshot, not a source of truth about current behavior. Future changes to the same code area spawn new specs; the old one remains the record of its iteration.
 
-In STATE the task moves to "Completed last week", from where a week later it collapses into a link to the ADR.
+In STATE the task moves to "Completed last week", from where a week later it is deleted (the ADR stays in the wiki).
 
 ## Assessing new knowledge at completion (mandatory)
 
@@ -114,7 +114,7 @@ This is the **development layer** of closing. The symmetric closing of the **res
 
 ## Rules
 
-- **Don't spawn specs speculatively.** A full spec is written when the task is taken up or right before that. Ideas for later — one-liners in STATE, not files.
+- **Don't spawn specs speculatively.** A full spec is written when the task is taken up or right before that. Ideas for later — a line in `BACKLOG.md`, not a spec file.
 - **`completed`/`rejected` are frozen.** After freezing, substantive changes go through a new ADR or a new spec, not by retroactively editing the frozen file.
 - **`rejected` is always recorded when the refusal is meaningful** ("we decided not to do X because Y"). It is the only record of the unbuilt — there will never be code for it, and git shows nothing either. Optionally duplicated by an ADR with `status: rejected` if the decision is large.
 - **`specs/` is not `wiki/`.** No mandatory lint/ingest and no `sources:` requirements as in the wiki; these are working documents edited by the human and Claude. But frontmatter with `status` is mandatory.

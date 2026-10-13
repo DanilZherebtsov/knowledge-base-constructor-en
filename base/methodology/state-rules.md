@@ -1,6 +1,8 @@
 # STATE.md — structure and update rules
 
-`STATE.md` at the root is the single place for current plans and progress. The wiki stores knowledge (append-mostly, sourced, atomic); STATE stores intentions (frequent rewrites, no sources, everything in one file for at-a-glance review).
+`STATE.md` at the root is the single place for current plans and progress. The wiki stores knowledge (append-mostly, sourced, atomic); STATE stores intentions (frequent rewrites, no sources, kept short — it is read at the start of every chat).
+
+**STATE holds the current and the near-term, the path to the goal, and commitments.** Anything "for later" in it is a tax on every chat: deferred items go to `BACKLOG.md` (the section below). Cleaning STATE is not a reason to write into the wiki: the details of a current item go into the class's unit of work, those of a deferred one — into BACKLOG, and knowledge reaches the wiki by its own routes (ingest, "Discipline" item 8, "Request resolved").
 
 ## Structure
 
@@ -12,13 +14,23 @@ A fixed set of sections, always in the same order. Empty ones stay, marked `_emp
 
 ## Update rules
 
-1. **Source of truth.** STATE is the single place for the current plan. No parallel lists.
-2. **Claude updates at three moments:** (a) silently reads it at session start; (b) after an item is finished, moves it into the "completed" buffer; (c) after an ingest that shifts priorities — proposes an edit, the human confirms.
+1. **Source of truth.** STATE is the single place for the current plan, `BACKLOG.md` — for deferred items. There are no other parallel lists.
+2. **Claude updates at three moments:** (a) silently reads it at session start; (b) after an item is finished, moves it into the "completed" buffer with today's date; (c) after an ingest that shifts priorities — proposes an edit, the human confirms. A deferred item appeared — straight into `BACKLOG.md`, not into STATE.
 3. **The human updates at two:** a change of priorities; a new blocker. Via chat or by hand.
-4. **Freshness by date.** The `_Updated:_` field is mandatory. The session-start freshness trigger (what to do when it is stale) lives in CLAUDE.md (always-on); it is not duplicated here.
-5. **Link to the wiki with markdown links.** An item that references knowledge does so via `[Title](wiki/type/slug.md)`. The knowledge lives in the wiki; STATE holds the phrasing and the link.
-6. **The "completed" buffer.** An item sits for a week, then collapses: one that produced a wiki page → a link to it; under git, routine with no trace → a line "N tasks over the period …, see git log"; without git — deleted. The memory of work lives in wiki/git, not in STATE.
-7. **STATE is not canonical.** On conflict with the wiki/code, the truth is there. Lint may flag a divergence, never fixes it automatically.
+4. **Freshness by date.** The `_Updated:_` field is mandatory and is written as a line of its own that starts like this: `_Updated: YYYY-MM-DD_` — ISO date only, nothing but the date between the underscores. A note, if needed, is one short phrase after the closing `_`: with a phrase inside the underscores, or with a spelled-out date, the session-start check finds no date and stays silent, as it would with a fresh STATE. The session-start freshness trigger (what to do when it is stale) lives in CLAUDE.md (always-on); it is not duplicated here.
+5. **Link to the wiki with markdown links.** An item that references knowledge does so via `[Title](wiki/type/slug.md)`. The knowledge lives in the wiki; STATE holds the phrasing and the link; the details of a current item live in the class's unit of work, those of a deferred one — in BACKLOG. A unit of work's working file in `output/` is named in the item by its path — that is how maintenance sees the file is alive.
+6. **The completed buffer** (the class's section: "Completed last week", "Answered last week", or "Recently completed"). An item is a list entry: the date it was moved into the buffer, what was done, a link. Maintenance itself deletes items older than 7 days counted from `_Updated:_`, and of those that remain — everything beyond the ten most recent ([lint.md](lint.md)). The memory of work lives in the units of work and the wiki; in git — if STATE was committed; otherwise what is deleted is kept nowhere.
+7. **STATE is not canonical.** On conflict with the wiki/code, the truth is there. Lint may flag a divergence but does not fix it itself (in STATE, maintenance itself only cleans the buffer — rule 6).
+
+## `BACKLOG.md` — deferred items
+
+A file in the root for what we are not doing now and are not taking up in the next two weeks: "someday" items, tech debt, things started and dropped, things awaiting the human's decision that are not about the current work (in the business class, everything that awaits their word stays in STATE), risks outside the current work. It is not read at the start of a chat.
+
+- **Not here — an item with a due date.** A due date is a date by which, or after which, the item must be raised: a deadline, "after DD Mon", a recurrence; the date an item was written down or deferred is not a due date. The file is not read at session start, so the date would be missed; such an item stays in STATE as a line with its due date: a commitment — in the commitments calendar, if the class has one; anything else — in "Path to goal" (in the business class — in "Open tracks" or "Next"). The tail of the current task doesn't go here either, until the human has given it an outcome.
+- **Created with the first deferred item**, never created empty. A file with this name already exists and has no header as below — it is not ours: ask the human where to keep deferred items. "Keep them here" — add the header; they named another file — replace `BACKLOG.md` with its name in `CLAUDE.md` (the "Architecture" tree and "Operational state"): the name of the file for deferred items is always taken from there.
+- **Header:** `# BACKLOG — deferred (not in progress)` and the line "Not read at the start of a chat. When an item is taken into work, its line moves to STATE and is deleted here. Not canonical."
+- **Sections** — as needed, with fixed names: "Awaiting a decision", "Started and dropped", "Someday", "Tech debt", "Open questions", "Risks". An item is a phrasing, the date it was deferred, and a link (unit of work, wiki, working file).
+- **When to read it:** a milestone or a unit of work has closed, or "Next" is empty — we are choosing what comes next; a question about plans beyond two weeks; "what's in the backlog", "what about tech debt"; taking up a task in a new area — look through "Risks", "Tech debt", "Started and dropped" on its topic.
 
 ## Handoff to a new chat
 

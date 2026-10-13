@@ -38,6 +38,15 @@ A page that accumulates observations: each entry starts with `## [YYYY-MM-DD] Ti
 
 Inside a flat type folder, pages are grouped by **name prefix** — the leading token of the file name (`<prefix>-<slug>.md`). The prefix replaces subfolders (depth = 1) and serves as a filter key: visible in `index.md` links and via `ls <type>/<prefix>-*`. That is how a role/query finds its slice without reading the whole wiki.
 
+## ADR and principle numbers
+
+A number is the next after the largest, with the same digit count as its neighbours. For ADRs it runs across the whole wiki. For principles — within a series: the series is the letter part of the ID (`P-D52` — series `D`); for IDs with no letters (`P-01`) — as the project has it: across the wiki, or from the start in each file. Look for the largest not only in the branch that is open:
+
+- among the files of the working folder, including those not committed yet;
+- under git — in all branches, local and remote. From the project root: `GIT_TERMINAL_PROMPT=0 git fetch --all` (it failed — count by what there is and tell the human), then for each branch from `git for-each-ref --format='%(refname)' refs/heads refs/remotes` — `git -c core.quotePath=false ls-tree --name-only <branch> wiki/decisions/` (ADRs) and `git grep -h -E '^#+ P-' <branch> -- wiki/principles` (principles). There are more branches on the server than you can see (`git ls-remote --heads origin`) — say so: the survey is incomplete.
+
+Before merging your branch into the shared one — check once more: the number has been taken meanwhile — renumber before the merge, not after. Repeats that happen anyway are found by maintenance ([lint.md](lint.md), "Numbers issued twice").
+
 ## Page types — format
 
 ### decisions/ — ADR (universal)
@@ -53,7 +62,7 @@ Consequences: <what gets easier, what gets harder>
 Alternatives considered: <briefly, with the reason for rejection>
 Sources: <citations/links>
 ```
-Decisions are marked `superseded`, never deleted. The flow leading up to an ADR — <<SLOT S6: the class's lifecycle file>>.
+Decisions are marked `superseded`, never deleted. Number — the "ADR and principle numbers" section above. The flow leading up to an ADR — <<SLOT S6: the class's lifecycle file>>.
 
 ### synthesis/ — written-back answers
 
@@ -61,7 +70,7 @@ Comparisons, retrospectives, cross-cutting analyses, briefings. Required: an int
 
 ### principles/ — rules extracted from work
 
-A rule "always X / never Y" from an incident → a page per applicability (`process.md`, `domain.md`, …). Entry format: `## P-XX — name`, **Rule / Why / When to apply / Precedent / Source**. Without a source a principle is not recorded. Read before a nontrivial task (the "think" phase).
+A rule "always X / never Y" from an incident → a page per applicability (`process.md`, `domain.md`, …). Entry format: `## P-XX — name` (the number — the "ADR and principle numbers" section above), **Rule / Why / When to apply / Precedent / Source**. Without a source a principle is not recorded. Read before a nontrivial task (the "think" phase).
 
 ### discovery/ — knowledge about the outside world
 

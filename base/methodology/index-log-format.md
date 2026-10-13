@@ -20,4 +20,5 @@ Operations in the log:
 - `ingest | <source>` — after every ingest, with the list of cascade-updated pages.
 - `lint | found N issues, fixed M` — after every lint.
 - `bootstrap | initialization` — once, when the structure is first set up.
+- `folders | …`, `move | …`, `state | leave it: …`, `numbers | …` — the human's answers to maintenance's questions and its own marks ([lint.md](lint.md)); from them it decides whether to ask again.
 - <<SLOT CLOSE-OP: the domain operation for closing a unit of work — research: `question-closed | Q-NNN`; business: `decision-closed | <choice>`; saas: none>>.

@@ -13,7 +13,7 @@
 - `methodology/question-lifecycle.md` — placed (the mechanic itself).
 - `methodology/state-rules.md` — body filled in (the S5 region + rule 2b) from `state-rules-body.md`.
 - `CLAUDE.md` (target) — the S6 pointer is added and the discipline item "synthesis on closing a unit of work" is verified.
-- `STATE.md` (target) — question working files are referenced from sections 3–5 and 7.
+- `STATE.md` (target) — question working files are referenced from sections 3–5.
 - `wiki/claims/`, `wiki/synthesis/`, `wiki/decisions/`, `wiki/principles/`, `wiki/log.md` — the target types the extracted canon lands in, plus the `question-closed | Q-NNN` entry.
 - `output/` — the active question's working file `q-NNN-<slug>.md`.
 
