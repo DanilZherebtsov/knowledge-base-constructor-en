@@ -83,7 +83,7 @@ The assembled project `CLAUDE.md` (from `base/`, filled in) goes to the root, **
 > ✓ "The project is assembled, the structure is in place. What's left is to remove the temporary files that helped assemble it — deleting them needs your permission: a window will appear, allow it."
 
 **Step 6 — a short onboarding.**
-Give the human a concise handoff in plain language, in three strokes: (1) they toss materials into `input/` and say "process this"; (2) each new task is best started in a new chat — what's saved lives in the project memory (`wiki/`), visible from any chat, and I'll offer to save what matters as we go; (3) anytime, `help` shows the detailed guide to what you can do in this project. **Do NOT list operations line by line in the message** — the detailed list (roles and the class flow included) lives in `HELP.md`, filled at assembly. The exact handoff text — [ASSEMBLY.md](ASSEMBLY.md), step 9.
+Give the human a concise handoff in plain language, in three strokes: (1) they toss materials into `input/` and say "process this"; (2) each new task is best started in a new chat — what's saved lives in the project memory (`wiki/`), visible from any chat, and I'll offer to save what matters as we go; (3) anytime, `help` shows the detailed guide to what you can do in this project; replies — on top what to decide now, below the rest; too long — "simpler". **Do NOT list operations line by line in the message** — the detailed list (roles and the class flow included) lives in `HELP.md`, filled at assembly. The exact handoff text — [ASSEMBLY.md](ASSEMBLY.md), step 9.
 
 ## The principle
 

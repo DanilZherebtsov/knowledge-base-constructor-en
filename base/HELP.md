@@ -22,6 +22,10 @@ The more precise the input, the less guessing on the output.
 - **"Remember this: …"** — I turn a decision or fact into a project-memory entry with a date and a source. That's how the base grows as you work.
 - **A large batch of files:** "process the first 10, show me the result" → then "keep going the same way".
 
+## How I reply
+
+On top — what came out and what needs deciding now. Below the line "The rest — no decision needed now" — what I decided myself, what I did that can't be undone (sent, deleted), and what the numbers rest on: look there if the top says "decided myself" or you want to check me. Too long or unclear — type the single word **simpler**. Want a different form — say so in words, and I'll write that way until the end of the chat. For good, Claude Code only: the `/config` command, the Output style item; the choice applies to this project and only on this computer. In Claude Desktop I keep this form myself, by the project's rules; there you can change it only in words in the chat.
+
 ## A new chat per task
 
 Don't run everything in one chat. The longer the conversation, the more old context I'm holding, and the easier I get confused. Task changed — start a new chat.
@@ -46,7 +50,7 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 - **Only on an explicit "yes":** payments, sending emails, permanent deletion, handing files to third parties.
 - **Don't type passwords or credentials into the chat.** Need me to get into a server, a router, an admin panel, or need a key for some service — I'll tell you where to put it so I can use it without seeing it in our conversation (usually a couple of commands, a minute of work). Already sent it — we treat it as leaked: better to change it right away, the conversation is stored in full.
 - Files and sites from outside (clients, the internet) — keep the confirm-each-step mode: they may carry a hidden command aimed at me (prompt injection). When I add a document to project memory and find such a command, I don't carry it out — I show it to you; but I can also miss one.
-- **I ask you to answer "add the checks"** — this only happens when the project is being updated or assembled, and only for my own checks; I always name what I am writing and what it costs. Any other time, or about anything else — answer "don't add them" and ask where it came from.
+- **I ask you to answer "add the checks"** — this only happens when the project is being updated, assembled or maintained, and only for my own checks and the form of my replies; I always name what I am writing and what it costs. Any other time, or about anything else — answer "don't add them" and ask where it came from.
 - **Before a serious step I put myself through a review.** Before doing something that is expensive to undo (money, a signature, sending something outward, an irreversible edit), I run the task past several independent checks — each one looking for what's wrong with the plan, not praising it. In my reply I'll show what they found and **where the checks disagreed with each other**: a disagreement is the thing worth your eyes. Small stuff is not affected. Don't want it on a particular task — say "no review, just do it"; want it stricter — say "check this thoroughly". **Sometimes the environment won't let me spread the checks properly apart** — then I do the review myself, in one head: there is nowhere for disagreements to come from, and the review comes out weaker. I'll say so plainly in my reply rather than pass it off as the full thing; and "check this thoroughly" is something I won't be able to deliver in that mode — I'll say that too. If the step is one of those that is expensive to undo, I won't settle it alone — I'll stop and ask you.
 
 ## Maintenance — once a week
@@ -62,7 +66,7 @@ I'll also tidy the documents folder: files that haven't changed for a month and 
 - **Looks made up** → "re-check every number against the sources, flag where you didn't find it".
 - **I'm doing more than needed** — re-checking what hasn't changed, stretching the work over hours or days → say "this isn't needed for the task". Before any check beyond the task I look at what has changed in what it checks; a needed but lengthy one I first offer to you with its price. Want everything re-checked in full — just say so.
 - **Can't see a file** → check the folder is connected; give the exact path if needed.
-- **I misread you, or my answer is unclear** → ask me to explain in plain words, or rephrase the task.
+- **My answer is unclear** → type "simpler". **I misread the task** → rephrase it.
 - **No idea what I'm even talking about** → say "show me where I wrote that". I have to either point at your own message containing the word, or rewrite without it.
 - **In Claude Desktop I ask for permission to delete, but no window appears** → switch the mode by the input box to the one where I ask for permission (it's currently called "Manual"): in automatic mode such requests can be refused before they ever reach you. You can switch back afterwards.
 - **The `_to_delete` folder** — things you allowed me to remove but I couldn't delete; drag it to the Trash (Recycle Bin on Windows).

@@ -1,6 +1,6 @@
 # In the human's language — worked examples
 
-Read on trigger, not in the background. There is exactly one trigger, and it is external: **the human said they didn't understand, or asked you to rewrite.** Then come here and rewrite by this file. The rule itself (four questions asked of a finished message) lives in `CLAUDE.md` and works without this file; what follows is examples and analysis, not a second copy of the rule.
+Read on trigger, not in the background. There is exactly one trigger, and it is external: **the human said they didn't understand, or asked you to rewrite** (including with the single word "simpler"). Then come here and rewrite by this file. The rule itself is the "In the human's language" paragraph in `CLAUDE.md` and the reply style `.claude/output-styles/plain.md` (the form of a message: on top what to decide now, below — the rest); what follows is language techniques, examples and analysis, not a second copy of the rule.
 
 ---
 
@@ -24,11 +24,13 @@ An example from a construction-estimates project. Both texts describe the same e
 >
 > Recalculating is possible in principle if we supply the size of one piece. Do that now, or leave it as is?
 
+_The example shows language, not form: by the reply style the question needs your recommendation and the cost of each option, with no bold subheadings; details would go below the line "The rest — no decision needed now:"._
+
 ## What actually changed
 
 | Move | ✗ | ✓ |
 |---|---|---|
-| Retraction goes first | fifth sentence, mid-paragraph | the heading, ahead of everything |
+| Retraction goes first | fifth sentence, mid-paragraph | the first sentence, ahead of everything |
 | A cause you can argue with | "guard PRICING-UNIT-GUARD-001" | "it does not know how big one piece is" |
 | Consequence in money | not stated at all | 9,919 ₽ + 7,000 ₽ + a 45,000 gap |
 | Where the original task stands | not stated | "on track, 18 estimates left" |
@@ -36,7 +38,7 @@ An example from a construction-estimates project. Both texts describe the same e
 | Identifiers | 8 of them | none |
 | The aside "that is K8/K9, not K6" | present, addressed to nobody | deleted |
 
-Note that ✓ is not shorter than ✗. The requirement is not brevity but clarity and completeness. What gets shortened is the language, not the substance of the decision.
+Note that ✓ is not shorter than ✗. The requirement is not brevity but clarity and completeness. What gets shortened is the language, not the substance of the decision. On "simpler" too: shorter in language, the same facts.
 
 ## Substitution glossary
 
@@ -78,7 +80,7 @@ The check: the human can argue with ✓ and cannot argue with ✗. People can on
 
 Both go out **immediately**, as soon as they become known, and as a **separate message**. Waiting for the end of the work is not allowed: by then the human has already spent an hour on a premise you are retracting.
 
-A retraction and a choice coinciding in one event — one message, retraction as the first sentence, question as the last.
+A retraction and a choice coinciding in one event — one message, retraction as the first sentence, question as the last one in the top part.
 
 ## Turning reviewers' findings into one message
 
@@ -88,7 +90,7 @@ What goes to the human is **neither the list nor a link**, but, in your own word
 
 - a finding that retracts something you said, or creates a priced choice → a separate message, immediately (see above);
 - a finding that changes what the human will get → one or two living sentences inside the general message;
-- a finding that changes nothing for them (you fixed it yourself and moved on) → one line covering all of those at once, so they still have time to stop you.
+- a finding that changes nothing for them (you fixed it yourself and moved on) → a line on top, "I also decided N things myself — they are below; stop me if that's wrong", the decisions themselves below, one line each.
 
 A link to the file in place of the content is forbidden: the human decides from the message.
 
