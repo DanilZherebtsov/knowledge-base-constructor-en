@@ -85,7 +85,7 @@ There may be no separate reviewers to be had: the tool is absent in this environ
 
 **Below the strengthened contour — what remains:**
 
-1. **Doing it first.** Everything that converts into settling it by doing — a run, a recomputation, a check against the source — is converted (see "Where you can settle it by doing it"). When independence is lost this is the one part of the gate that loses nothing, so its share grows rather than staying put.
+1. **Doing it first.** Everything that converts into settling it by doing — a run, a recomputation, a check against the source — is converted (see "If you can settle it by doing it, settle it by doing it"). When independence is lost this is the one part of the gate that loses nothing, so its share grows rather than staying put.
 2. **The remainder — passes with different instructions**, not the same number of lenses. Copies of one instruction inside a shared context do not create independence: a later pass reads the earlier ones and agrees with them. The variety of instructions is kept; the count is not.
 3. **The outcome is material for the human, not a verdict of "clean"** (the same wording as for classes with no executable check). What gets disclosed is exactly what changed: **the checks ran in one shared context and did not check each other** — in the human's language, without tool names. The line is needed only here: a normal pass says nothing about its own mode, otherwise the marker turns into a ritual and stops being read.
 
