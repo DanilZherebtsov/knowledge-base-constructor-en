@@ -6,9 +6,23 @@ The single version journal of the constructor. As of 2.0.0 the product has **one
 
 **Discipline (for the constructor developer).** **Bumped `version` in `versions.json` — write the `## X.Y.Z` entry here in the SAME commit**, in both editions of the journal with the same version, and raise line 3 of the main file in both editions. Without the entry, a project catches an update during maintenance that it can neither classify nor explain to the human. The gatekeeper `publish-constructor.yml` → `.github/scripts/check_changelogs.py` blocks mirror publication if the top `## X.Y.Z` entry of either journal or line 3 of either main file has diverged from `version`.
 
-**What goes into an entry (otherwise it's useless for triage on the other side):** the impact label — `[instruction]` (prose/rule, wiki knowledge untouched) or `[format]` (a new field/section on wiki pages → add "how to adopt": what to fill in, as we go or all at once); and the **concrete substance** — which files/rules changed and why, in terms that let the project judge on its own what is affected and translate it for the human. Not "aligned with vN": a terse entry hides the edits.
+**What goes into an entry (otherwise it's useless for triage on the other side):** the impact label — `[instruction]` (prose/rule, wiki knowledge untouched) or `[format]` (a new field/section on wiki pages → add a "How to accept": what to fill in, as we go or all at once); and the **concrete substance** — which files/rules changed and why, in terms that let the project judge on its own what is affected and translate it for the human. Not "aligned with vN": a terse entry hides the edits.
+
+**A human action outside the project** (restart the app, change its setting, do something in their account) — only under "How to accept". An entry without "How to accept" whose archive change is only line 3 is taken by a project without a question (`methodology/lint.md`, step 4a), and the action never reaches the human.
+
+**Program sections.** An entry may be split by the subheadings `### Claude only`, `### Codex only`, `### Qwen Code only` — no other `###` in entries (gatekeeper). A section runs to the next `###` or `##`; the part of the entry before the first section is common, for everyone. **Everything common, a common "How to accept" included, goes before the first section; sections stand at the end of the entry** — otherwise a common item becomes part of another program's section and never reaches canon projects. A section names only its own program; a section's "How to accept" goes inside it; an item for two programs — in both sections. From 2.1.0 the common part does not name Codex or Qwen — they get a section (paths and file names in `code` are fine). Changes to archive files — only in the common part or in the `Claude only` section: canon projects don't read other programs' sections. The wiki format is shared: `[format]` is always for everyone. One version in both journal editions has one set of sections, and `[format]` in both or in neither.
+
+**A published entry is not rewritten:** don't remove or move its sections and "How to accept" — with a new version or without one: lagging projects read old entries. Adding a "How to accept" is allowed, but it won't reach projects already past that version: a forgotten action is delivered only by a new version.
 
 ---
+
+## 2.1.0 [instruction]
+
+**The number without a question, and program sections.** The version number is shared by every edition of the constructor, including future ones for other apps. If the only change an update makes in a project is the number on line 3 of `CLAUDE.md`, maintenance raises it without asking "take it?" and without retelling the changelog, and writes `update | from A.B.C to X.Y.Z, number only` to `wiki/log.md`. Strict conditions and the proofs in the reply — `methodology/lint.md`, "Update check", step 4a; any doubt — the usual report with a question. Changelog entries may be split into `### <program> only` sections (step 4).
+
+- **For the reading agent:** a section of an entry under the subheading `### <another program> only` is not for you: don't retell it to the human and don't carry out its "How to accept".
+- **Files:** `methodology/lint.md` — steps 4, 4a, 5 of the "Update check" and the "maintenance already ran today" branch; line 3 of `CLAUDE.md`. The agent's rules outside maintenance, the hooks and the help are unchanged.
+- **How to accept:** by steps 5–8 of the "Update check", with no special actions: `methodology/lint.md` — by merge. To the human: "from now on, if an update changes nothing for you, I quietly raise the version number — no questions; anything that concerns you I still ask about."
 
 ## 2.0.1 [instruction]
 
