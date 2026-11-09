@@ -10,6 +10,13 @@ The single version journal of the constructor. As of 2.0.0 the product has **one
 
 ---
 
+## 2.0.1 [instruction]
+
+**Help not tied to a particular app.** `HELP.md` no longer names apps, their settings, or internal mechanisms: removed are `/config` and Output style, "Claude Code", "Claude Desktop", "the Code tab", "Stop hook error", "turn off the memory check", the "Manual" mode, "(prompt injection)". Rewritten more plainly: tables from a PDF, testing your own check with a planted error, "add the checks", the review before a serious step, "Can't see a file", the request to switch modes; the mode is named the same everywhere — "the mode where I ask permission". In "When something goes wrong" — a new line: an unfamiliar line in the window or noticeably slower replies — ask me what it is and paste the line into the chat.
+
+- **Behavior does not change:** the rules and hooks are the same; the memory-check switch works on the human's request as before (`CLAUDE.md`, "Reply reviewer"); where to switch modes, the agent says itself at the moment it asks (`methodology/lint.md`).
+- **How to accept:** by steps 5–8 of the "Update check" section (`methodology/lint.md`) — only `HELP.md` (by merge, with the human's "yes") and line 3 of `CLAUDE.md` change. To the human: "the help is rewritten more plainly, without app names and their settings; how to work with me hasn't changed". Declined the new help — keep `HELP.md`, still raise line 3, with a line in `wiki/log.md` (`setup | HELP.md kept`). The journal already has `setup | on the move: HELP.md kept` — don't offer the help, say so in one line, raise line 3.
+
 ## 2.0.0 [instruction]
 
 **A ready-made project instead of assembly.** The constructor is downloaded as one ready-made project (the mirror's archive); there is no more interview assembly, presets, slots, or attaching mechanics.

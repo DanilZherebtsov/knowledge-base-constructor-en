@@ -1,6 +1,6 @@
 # CLAUDE.md — the project's LLM wiki
 
-> **Version:** 2.0.0
+> **Version:** 2.0.1
 
 The core idea: each source is compiled once into a permanent, interlinked wiki; when answering, Claude reads the wiki and goes back to the raw source only to integrate something new or resolve a contradiction.
 
