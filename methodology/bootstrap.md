@@ -2,7 +2,7 @@
 
 Missing wiki type folders, `specs/`, `data/`, `scripts/`, or a code folder are normal, not a reason to restore anything: they appear with their first page or on first need.
 
-The project arrives ready-made: `CLAUDE.md`, `HELP.md`, `STATE.md`, `methodology/`, `roles/`, `.claude/` (environment machinery: the `SessionStart` hook that forces the session-start checks, the consent note and the rewrite on the word "simpler", the reply reviewer and the reply style `output-styles/plain.md`), stubs for `wiki/index.md`, `wiki/log.md`, `input/`, `raw/`, `output/`. This file is only for restoring: it runs when something on this list is missing or a file is broken, or on request ("restore the structure"). **Never** from `query`/`lint` — they only report. The hooks and the reply style are restored by maintenance ([lint.md](lint.md), "The project-memory check isn't working", "Reply style not enabled").
+The project arrives ready-made: `CLAUDE.md`, `HELP.md`, `STATE.md`, `methodology/`, `roles/`, `.claude/` (environment machinery: the `SessionStart` hook that forces the session-start checks, the consent note and the rewrite on the word "simpler", the reply reviewer, the `raw/` guard (`PreToolUse`) and the reply style `output-styles/plain.md`), stubs for `wiki/index.md`, `wiki/log.md`, `input/`, `raw/`, `output/`. This file is only for restoring: it runs when something on this list is missing or a file is broken, or on request ("restore the structure"). **Never** from `query`/`lint` — they only report. The hooks and the reply style are restored by maintenance ([lint.md](lint.md), "The project-memory check isn't working", "The `raw/` guard is not in place", "Reply style not enabled").
 
 ## Restore (what is missing, without overwriting what exists)
 
