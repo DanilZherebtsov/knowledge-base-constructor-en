@@ -16,6 +16,13 @@ The single version journal of the constructor. As of 2.0.0 the product has **one
 
 ---
 
+## 2.3.0 [instruction]
+
+**Reply in the human's language.** A new paragraph in `CLAUDE.md` before "In the human's language": the agent replies in the language the human writes in — the language itself (English, Russian), not plain wording. The language is judged by the human's own phrases: pasted text, service notes, `help` and a single word mid-conversation don't change it; no such phrases — the language of the rules. Words from other languages and letters from other scripts stay out of replies (stray foreign words, Chinese characters, Thai letters). Not translated and not counted as insertions: code, commands, file and path names, links, service labels and fields in files, program and brand names, UI labels as on screen, names of people and organizations in Latin script (if one has a name in the human's language — that name), the human's own words; a quote in another language comes with a translation. A request for a translation or a text in another language changes the language of that text only. Documents whose reader is the human are in their language; an existing file is extended in the file's language. The reason: models that insert words from other languages into replies.
+
+- **Files:** `CLAUDE.md` — a new paragraph in "How Claude works on tasks" → "While working — the "act" phase"; line 3. The hooks, the help and `methodology/` are unchanged.
+- **How to accept:** by steps 5–8 of the "Update check", with no special actions: `CLAUDE.md` — by merge. To the human: "a rule was added: I reply in the language you write in, without stray words from other languages; code, commands and names stay as they are".
+
 ## 2.2.0 [instruction]
 
 **Three rules under a direct request.** (1) The agent doesn't edit, rename, move out of a subfolder or delete a file in `raw/`, even when the human asks directly: an error found is recorded as knowledge from the conversation (a `raw/from-chat/` note and a page linking to it and to the source). The header and secret removal when placing a source — before the move, in `input/`; the "to review" marks of a big source — on its wiki page or in `BACKLOG.md`. (2) A request to make a document at a path where such a file already lies is not a request to replace it: ask. In an update, a new file from the mirror where the project has its own at the same path — don't overwrite, show the differences and ask. (3) A "yes" answers only the question asked: if several are open and the reply doesn't say which, say how you took it, and nothing irreversible, no wiki write and no replacing someone else's file until they answer that one.
