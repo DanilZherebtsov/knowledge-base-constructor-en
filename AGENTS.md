@@ -1,6 +1,6 @@
 # AGENTS.md — the project's LLM wiki
 
-> **Version:** 3.0.0
+> **Version:** 3.1.0
 
 The core idea: each source is compiled once into a permanent, interlinked wiki; when answering, the agent reads the wiki and goes back to the raw source only to integrate something new or resolve a contradiction.
 
