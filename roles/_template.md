@@ -12,11 +12,11 @@
 
 ## My wiki slice (prefixes and tags)
 
-<How the role finds its pages: e.g. `discovery/<prefix>-*`, tag `<tag>`. Claude filters via `wiki/index.md` + `grep` on `tags:`, reads only the matches.>
+<How the role finds its pages: e.g. `discovery/<prefix>-*`, tag `<tag>`. The agent filters via `wiki/index.md` + `grep` on `tags:`, reads only the matches.>
 
 ## What to read at the start
 
-- `CLAUDE.md` — shared context.
+- `AGENTS.md` — shared context.
 - my wiki slice (above) and the related raw materials.
 
 ## Where to write findings

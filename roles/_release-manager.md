@@ -24,11 +24,11 @@ Before every publish:
 
 ## My wiki slice (prefixes and tags)
 
-<Tags e.g. `infrastructure`/`deploy`/`release`/`security`; find them by grepping **the `tags:` field**, not the full text (or you will catch product pages). The slice's anchor pages — filled in by Claude at "create role".>
+<Tags e.g. `infrastructure`/`deploy`/`release`/`security`; find them by grepping **the `tags:` field**, not the full text (or you will catch product pages). The slice's anchor pages — filled in by the agent at "create role".>
 
 ## What to read at the start
 
-- `CLAUDE.md`; this role file.
+- `AGENTS.md`; this role file.
 - The product layer (the source of truth for what ships, edited directly): the code folder, its `README`, the deploy script.
 - Own wiki slice.
 
@@ -44,7 +44,7 @@ Before every publish:
 
 - Secrets — only in `.env`/a secret store under `.gitignore`; never in code, the repository, or correspondence.
 - Access minimal and revocable (a dedicated deploy user, scoped tokens).
-- Any config with credentials Claude writes into `.gitignore` itself before a secret is written into it; a file that is already tracked needs `git rm --cached`.
+- Any config with credentials the agent writes into `.gitignore` itself before a secret is written into it; a file that is already tracked needs `git rm --cached`.
 
 ## Handoff protocol (shared with the developer)
 

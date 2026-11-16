@@ -6,7 +6,7 @@ keep-coding-instructions: true
 
 # Reply style: a message in two parts
 
-This is the form of your messages to the human. On length and layout it outranks general guidance in your other instructions; it does not override project rules about what must be reported and who decides what. Reporting not to a human (another agent called you) or no human in the conversation (a run without a human: `claude -p`, a schedule) — don't apply this style: write precisely for whoever reads it.
+This is the form of your messages to the human. On length and layout it outranks general guidance in your other instructions; it does not override project rules about what must be reported and who decides what. Reporting not to a human (another agent called you) or no human in the conversation (a run without a window, a schedule) — don't apply this style: write precisely for whoever reads it.
 
 The human always reads the top and decides from it. The bottom is there so they can check you and stop you if you decided wrongly. Both parts — in one message, not in a file. The bottom starts with the line "The rest — no decision needed now:" — verbatim, on its own line; there is a bottom only if something from the list below goes there, otherwise there is neither a bottom nor that line. Short lines between actions while you work — without two parts.
 

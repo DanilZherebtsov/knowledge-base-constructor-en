@@ -1,6 +1,6 @@
 # Credentials and secrets — how the human hands them over safely
 
-The rule kicks in when a task runs into **getting into something**: a server, a VM, a router or another device over SSH, a site's admin panel, a database, a cloud console, a paid API, a mailbox, a payment dashboard. The always-on trigger is in `CLAUDE.md`; the order of steps and the channels are here.
+The rule kicks in when a task runs into **getting into something**: a server, a VM, a router or another device over SSH, a site's admin panel, a database, a cloud console, a paid API, a mailbox, a payment dashboard. The always-on trigger is in `AGENTS.md`; the order of steps and the channels are here.
 
 ## The order — in one reply, before the first step of the task
 
@@ -10,20 +10,20 @@ The rule kicks in when a task runs into **getting into something**: a server, a 
 
 ## The ladder of channels — top down
 
-**Rung 1 — the secret never reaches Claude at all.** A tool holds the access, and the human authorizes it once, themselves:
+**Rung 1 — the secret never reaches the agent at all.** A tool holds the access, and the human authorizes it once, themselves:
 
-- **SSH to a server / VM / device** — a key instead of a password: the human runs `ssh-copy-id <user>@<host>` (or uploads the public key through the device's web interface — the typical path for a router) and adds an alias to `~/.ssh/config`. From then on Claude runs `ssh <alias>` and sees neither the password nor the key.
-- **A CLI with its own login** — the human runs `gh auth login`, `aws configure`, `az login`, `gcloud auth login`, `docker login`, `vercel login` once, or puts `~/.pgpass` in place for `psql`. From then on Claude simply calls the command.
+- **SSH to a server / VM / device** — a key instead of a password: the human runs `ssh-copy-id <user>@<host>` (or uploads the public key through the device's web interface — the typical path for a router) and adds an alias to `~/.ssh/config`. From then on the agent runs `ssh <alias>` and sees neither the password nor the key.
+- **A CLI with its own login** — the human runs `gh auth login`, `aws configure`, `az login`, `gcloud auth login`, `docker login`, `vercel login` once, or puts `~/.pgpass` in place for `psql`. From then on the agent simply calls the command.
 
 This is the best outcome: the secret appears neither in the conversation nor in the project's files.
 
 **Rung 2 — the command itself needs the value** (a token, an API key, a connection string):
 
-- **A `.env` file in the project root.** The order is: **Claude writes the file name into `.gitignore` first** (no `.gitignore` — it creates one), and only then the human creates the file **in their own editor**, without dictating its contents into the chat. The guard line appears **before** a secret is inside — the other way round does not work. The project is not under git — say plainly that there will be no protection from an accidental commit. The file is already tracked by git — `.gitignore` won't switch it off: that needs `git rm --cached <file>`, and if it has already reached history or a remote, the secret counts as leaked (see below).
+- **A `.env` file in the project root.** The order is: **the agent writes the file name into `.gitignore` first** (no `.gitignore` — it creates one), and only then the human creates the file **in their own editor**, without dictating its contents into the chat. The guard line appears **before** a secret is inside — the other way round does not work. The project is not under git — say plainly that there will be no protection from an accidental commit. The file is already tracked by git — `.gitignore` won't switch it off: that needs `git rm --cached <file>`, and if it has already reached history or a remote, the secret counts as leaked (see below).
 - **Or a secret manager:** `op read "op://<vault>/<item>/<field>"` (1Password CLI), `security find-generic-password -w -s <name>` (Keychain, macOS), `pass show <name>`.
-- Claude uses the value **through the variable name** (`$TOKEN`), never through its contents: it doesn't open the file, doesn't print the value into a reply, and doesn't paste it into a command as text.
+- The agent uses the value **through the variable name** (`$TOKEN`), never through its contents: it doesn't open the file, doesn't print the value into a reply, and doesn't paste it into a command as text.
 
-**Rung 3 — someone else's web interface** (an admin panel, a bank client, a marketplace dashboard). Claude does not log in there on the human's behalf. Either the human issues a separate API key or a scoped service account — and the task returns to rung 2 — or they take that step themselves while Claude prepares what to paste and where to click.
+**Rung 3 — someone else's web interface** (an admin panel, a bank client, a marketplace dashboard). The agent does not log in there on the human's behalf. Either the human issues a separate API key or a scoped service account — and the task returns to rung 2 — or they take that step themselves while the agent prepares what to paste and where to click.
 
 ## Hygiene — whatever the channel
 

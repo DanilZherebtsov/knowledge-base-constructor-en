@@ -19,7 +19,7 @@ The entry date is the environment's date at the moment of writing, not the file'
 Operations in the log:
 - `ingest | <source>` — after every ingest, with the list of cascade-updated pages.
 - `lint | found N issues, fixed M` — after every lint (except the "already ran today" reply).
-- `start | About the project` — once, when the first contact has written the "About the project" section into `CLAUDE.md`.
+- `start | About the project` — once, when the first contact has written the "About the project" section into `AGENTS.md`.
 - `folders | …`, `move | …`, `state | leave it: …`, `numbers | …` — the human's answers to maintenance's questions and its own marks ([lint.md](lint.md)); from them it decides whether to ask again.
 - `update | …`, `setup | …` — constructor updates and project settings ([lint.md](lint.md)).
 - `decision-closed | <choice>` — a decision was made and extracted into an ADR ([decision-lifecycle.md](decision-lifecycle.md)); closing a spec writes no entry of its own.

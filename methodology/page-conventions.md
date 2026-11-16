@@ -107,4 +107,4 @@ The frontmatter additionally carries an `implementation:` field listing the path
 - `<code-folder>/<path>` — what is implemented here
 ```
 
-The field is a path check (lint catches a missing field and broken paths), not a detector of semantic divergence: when the code changes, the execution cycle updates the page ([software-engineering.md](software-engineering.md)). The truth about behavior is the code — the "code in the code folder beats the wiki" rule in `CLAUDE.md`.
+The field is a path check (lint catches a missing field and broken paths), not a detector of semantic divergence: when the code changes, the execution cycle updates the page ([software-engineering.md](software-engineering.md)). The truth about behavior is the code — the "code in the code folder beats the wiki" rule in `AGENTS.md`.

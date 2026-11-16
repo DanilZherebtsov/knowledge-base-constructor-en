@@ -37,7 +37,8 @@ If a chat does hit the limit anyway, I compress the earlier conversation into a 
 ## Where things live
 
 - **Project memory (`wiki/`)** — decisions, facts, counterparties, with dates and sources. Permanent, visible from any chat.
-- **Project rules (`CLAUDE.md`)** — how I behave in this project specifically; I read them at the start of every chat.
+- **Project rules (`AGENTS.md`)** — how I behave in this project specifically; I read them at the start of every chat. Next to it lies a one-line `CLAUDE.md` — one of the programs reads these rules through it; no need to delete it.
+- **Program specifics (`methodology/environment/`)** — the project works in several programs; what to set up once in each and how it differs is there. If at the start of a chat I say some check isn't working, I'll also say what to do.
 - **`STATE.md`** — what's in progress now and what's next (plans, not facts).
 - **`BACKLOG.md`** — things put off for later; it appears once there is something to put off. I don't read it at the start of a chat; I open it when we're choosing the next piece of work or you ask about longer-term plans.
 - **Project documents (`output/`)** — my results and your documents. I name where I put each one in my reply. Want to keep some documents in a folder of their own — say "keep contracts in `output/contracts`": from then on I put them there myself. Files that haven't changed for a month and aren't in your folders I move to `output/archive/` during maintenance — look there for anything that seems missing. If a file with the same name is already there and wasn't made in this chat, I'll ask: replace it or use another name.
@@ -70,6 +71,7 @@ I'll also tidy the documents folder: files that haven't changed for a month and 
 - **Can't see a file** → tell me which folder it's in, or put it in the project folder (for example, in `input/`).
 - **My answer is unclear** → type "simpler". **I misread the task** → rephrase it.
 - **No idea what I'm even talking about** → say "show me where I wrote that". I have to either point at your own message containing the word, or rewrite without it.
+- **I ask you to approve the project's checks** → some programs run my automatic checks only after your approval, and after a project update it sometimes has to be given again. I'll tell you where.
 - **I ask you to switch modes** → this happens when, in automatic mode, the app itself turns down my permission requests (to delete a file, to change project settings) without showing them to you. Switch to the mode where I ask permission — I'll tell you where. You can switch back afterwards.
 - **The `_to_delete` folder** — things you allowed me to remove but I couldn't delete; drag it to the Trash (Recycle Bin on Windows).
 - **An unfamiliar line shows up in the window (say, with the word "error"), or my replies got noticeably slower** → ask me what it is and paste the line here: I'll explain what I know and tell you whether it can be removed.

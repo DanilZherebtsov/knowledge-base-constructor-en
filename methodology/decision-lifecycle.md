@@ -2,7 +2,7 @@
 
 Work is a stream of choices: supplier, location, pricing, hiring, legal structure, stack, hosting, walking away from an option. Every meaningful choice must leave an **ADR** in `wiki/decisions/` — otherwise six months later it's unclear why it was done this way, and the decision quietly gets relitigated.
 
-**The decision is the unit of work for a choice between options** (code we come back to is run by a spec — [spec-lifecycle.md](spec-lifecycle.md)). Closing the unit = `decision-closed`: the choice is made, the canon extracted, the produced knowledge synthesized (see CLAUDE.md "Discipline", the rule on synthesis at closing).
+**The decision is the unit of work for a choice between options** (code we come back to is run by a spec — [spec-lifecycle.md](spec-lifecycle.md)). Closing the unit = `decision-closed`: the choice is made, the canon extracted, the produced knowledge synthesized (see AGENTS.md "Discipline", the rule on synthesis at closing).
 
 **Decisions have no separate lifecycle folder.** Their state is expressed through `STATE.md` (the agenda) and `wiki/` (the result). This is a deliberate refusal of the `decisions/{open,deciding,done}/` scheme: it would duplicate STATE.md's sections, and parallel lists are forbidden ([state-rules.md](state-rules.md), rule 1).
 
@@ -21,7 +21,7 @@ When a question is taken up for analysis — a file is created in `output/drafts
 
 ## The "under analysis → decided" transition (the main gesture)
 
-When the choice is made, **Claude proposes extracting the canon** (never automatically — only upon confirmation):
+When the choice is made, **the agent proposes extracting the canon** (never automatically — only upon confirmation):
 
 - **An ADR in `wiki/decisions/`** — the decision itself: context, what was chosen, consequences, rejected alternatives with reasoning. Format and number — [page-conventions.md](page-conventions.md).
 - **Cascade into `entities/`** — the chosen counterparty gets or updates its page (terms, a "chosen" mark, a link to the ADR).

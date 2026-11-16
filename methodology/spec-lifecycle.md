@@ -37,7 +37,7 @@ When a milestone from "Path to goal" requires **≥3 task specs**, it is formali
 **Execution algorithm:**
 1. The sprint spec defines the task set (in broad strokes; detailed as work proceeds). **The plan passes the independent review gate before tasks start** (the same gate as in the execution cycle — [software-engineering.md](software-engineering.md)): is the decomposition right; are the design conditions and assumptions too broad/narrow; which modules the task bundle touches as a whole. Plan-level defects (a wrong gate condition, a missed dependency) are cheapest to catch here — before the first line of code.
 2. Take the next task → **write a task spec** (`<feature>-NNN-...`, as usual) → drive it through the **execution cycle** ([software-engineering.md](software-engineering.md): task statement → independent review gate → implementation → repeat gate → report) → close by the task's acceptance.
-3. Learned something new along the way → **edit the sprint spec** (add/remove/reword tasks). An added task is extra work: the "Extra work" test (`CLAUDE.md`); if it shifts a deadline given to the human — ask them, don't edit the spec silently.
+3. Learned something new along the way → **edit the sprint spec** (add/remove/reword tasks). An added task is extra work: the "Extra work" test (`AGENTS.md`); if it shifts a deadline given to the human — ask them, don't edit the spec silently.
 4. Next task. When all are closed and the sprint's acceptance is met — the sprint spec → `completed`.
 
 **No duplicates with STATE.** The task list lives **only in the sprint spec**. STATE "In progress now" links to the active sprint + the active task (one line each), without repeating the list; "Path to goal" lists the milestones, the active milestone = the active sprint.
@@ -82,13 +82,13 @@ When a task is taken up, `specs/<feature>-NNN-<slug>.md` is created (e.g. `auth-
 
 ## The execution cycle — in `software-engineering.md`
 
-How exactly code gets written against an active spec (task statement → independent review gate by subagents → implementation → repeat gate by running tests → report; loop on errors; escalation of blockers outside scope) is **code competence**, not part of the unit of work. The full protocol — [software-engineering.md](software-engineering.md). The spec serves as the cycle's **input** (its "task statement" step); a sprint plan passes the same gate before tasks start. Naming the task is enough ("take task X" / "let's implement X, it's a sprint") — Claude unrolls the cycle on its own. A gap inside scope is written into the active spec (it is mutable); a blocker outside scope is escalated to the human and recorded in the spec's/sprint's `blocked_by:` and in `STATE.md` "Blockers, risks, and decisions waiting on me".
+How exactly code gets written against an active spec (task statement → independent review gate by subagents → implementation → repeat gate by running tests → report; loop on errors; escalation of blockers outside scope) is **code competence**, not part of the unit of work. The full protocol — [software-engineering.md](software-engineering.md). The spec serves as the cycle's **input** (its "task statement" step); a sprint plan passes the same gate before tasks start. Naming the task is enough ("take task X" / "let's implement X, it's a sprint") — the agent unrolls the cycle on its own. A gap inside scope is written into the active spec (it is mutable); a blocker outside scope is escalated to the human and recorded in the spec's/sprint's `blocked_by:` and in `STATE.md` "Blockers, risks, and decisions waiting on me".
 
 ## The "active → completed" transition (the main gesture)
 
 **Transition condition.** If the task statement enumerated an exhaustive list of elements ([software-engineering.md](software-engineering.md), "Blocker inside scope"), the transition to `completed` is possible only when **every** element has an outcome — done, or the human explicitly excluded it with the reason recorded in the spec. The `completed` status does not mask silent leftovers.
 
-When the feature has landed in code and the acceptance criteria are met, **Claude offers to extract an ADR** (never automatically — only on confirmation): the architectural core (choice of approach, rejected alternatives, consequences) moves to `wiki/decisions/adr-NNNN-<slug>.md`. Bidirectional links: the ADR's `sources:` points to the spec or PR, the spec's `adr:` field — to the ADR. The ADR's number — per [page-conventions.md](page-conventions.md).
+When the feature has landed in code and the acceptance criteria are met, **the agent offers to extract an ADR** (never automatically — only on confirmation): the architectural core (choice of approach, rejected alternatives, consequences) moves to `wiki/decisions/adr-NNNN-<slug>.md`. Bidirectional links: the ADR's `sources:` points to the spec or PR, the spec's `adr:` field — to the ADR. The ADR's number — per [page-conventions.md](page-conventions.md).
 
 Then the spec is **frozen, not deleted**: `status: completed`, and an inoculation against rot is added to its header:
 
@@ -100,7 +100,7 @@ In STATE the task moves to "Recently completed", from where a week later it is d
 
 ## Assessing new knowledge at completion (mandatory)
 
-**On closing any work — an individual task spec OR a sprint (and also a standalone task without a spec) — Claude must review the new knowledge and propose adding it to `wiki/`.** Not just ADRs. **Walk through all wiki types declared in this project** — the current list is kept by the "Architecture" tree in `CLAUDE.md` (the base set is the six below; the project may have added its own horizontal extensions — walk those too). For each type, ask whether knowledge of that kind was born:
+**On closing any work — an individual task spec OR a sprint (and also a standalone task without a spec) — the agent must review the new knowledge and propose adding it to `wiki/`.** Not just ADRs. **Walk through all wiki types declared in this project** — the current list is kept by the "Architecture" tree in `AGENTS.md` (the base set is the six below; the project may have added its own horizontal extensions — walk those too). For each type, ask whether knowledge of that kind was born:
 
 - **decisions/ (ADR)** — was an architectural/product choice made (with rejected alternatives)?
 - **architecture/** — did a contract, module, or multi-step product workflow change?
@@ -109,7 +109,7 @@ In STATE the task moves to "Recently completed", from where a week later it is d
 - **synthesis/** — is the outcome of the work worth capturing as a cross-cutting analysis, retrospective, or comparison?
 - **principles/** — was a rule born from an incident/near miss ("always X / never Y")?
 
-Claude **proposes** concrete entries (type + title + gist) — the human confirms (CLAUDE.md: "human in the write loop"; ADRs/principles — never silently). The goal is that knowledge from completed work does not stay only in the code/spec/chat but lands in the wiki. Skipping this step = the wiki falls behind what we actually know.
+The agent **proposes** concrete entries (type + title + gist) — the human confirms (AGENTS.md: "human in the write loop"; ADRs/principles — never silently). The goal is that knowledge from completed work does not stay only in the code/spec/chat but lands in the wiki. Skipping this step = the wiki falls behind what we actually know.
 
 This is the **development layer** of closing. The symmetric closing of the **research layer** (an interview batch, a market/competitor analysis) is the synthesis pass — see [ingest.md](ingest.md).
 
@@ -118,4 +118,4 @@ This is the **development layer** of closing. The symmetric closing of the **res
 - **Don't spawn specs speculatively.** A full spec is written when the task is taken up or right before that. Ideas for later — a line in `BACKLOG.md`, not a spec file.
 - **`completed`/`rejected` are frozen.** After freezing, substantive changes go through a new ADR or a new spec, not by retroactively editing the frozen file.
 - **`rejected` is always recorded when the refusal is meaningful** ("we decided not to do X because Y"). It is the only record of the unbuilt — there will never be code for it, and git shows nothing either. Optionally duplicated by an ADR with `status: rejected` if the decision is large.
-- **`specs/` is not `wiki/`.** No mandatory lint/ingest and no `sources:` requirements as in the wiki; these are working documents edited by the human and Claude. But frontmatter with `status` is mandatory.
+- **`specs/` is not `wiki/`.** No mandatory lint/ingest and no `sources:` requirements as in the wiki; these are working documents edited by the human and the agent. But frontmatter with `status` is mandatory.

@@ -1,6 +1,6 @@
 # In the human's language — worked examples
 
-Read on trigger, not in the background. There is exactly one trigger, and it is external: **the human said they didn't understand, or asked you to rewrite** (including with the single word "simpler"). Then come here and rewrite by this file. The rule itself is the "In the human's language" paragraph in `CLAUDE.md` and the reply style `.claude/output-styles/plain.md` (the form of a message: on top what to decide now, below — the rest); what follows is language techniques, examples and analysis, not a second copy of the rule.
+Read on trigger, not in the background. There is exactly one trigger, and it is external: **the human said they didn't understand, or asked you to rewrite** (including with the single word "simpler"). Then come here and rewrite by this file. The rule itself is the "In the human's language" paragraph in `AGENTS.md` and the reply style (the style file and how it is turned on — the environment file) (the form of a message: on top what to decide now, below — the rest); what follows is language techniques, examples and analysis, not a second copy of the rule.
 
 ---
 

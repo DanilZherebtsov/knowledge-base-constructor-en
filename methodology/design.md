@@ -136,7 +136,7 @@ Surface habits: gradient text (emphasis comes from weight or size) · glass and 
 2. **Name what already works** — a short list of what was done right and **what must not be broken**. Without it, acceptance turns into a demolition and the human is left with no line between "fix" and "leave alone".
 3. **One batch of fixes** covering everything found.
 4. **At most one confirming pass. Stop.**
-5. **A fresh lens** — a subagent that **does not inherit the build conversation**: one that does inherits your framing, your optimism and your abstractions. It gets the original request, the human's answers, artifact paths, renders, the design-read line, and this floor. No subagents — the same pass inline, **disclosing the substitution in one line of the report**.
+5. **A fresh lens** — a subagent that **does not inherit the build conversation** (how to start one — your program's environment file): one that does inherits your framing, your optimism and your abstractions. It gets the original request, the human's answers, artifact paths, renders, the design-read line, and this floor. No subagents — the same pass inline, **disclosing the substitution in one line of the report**.
 6. **The verdict is one word from a closed list:** `rebuild | fix | ship`. Quote it verbatim; softening is not allowed; a table with open items is never announced as acceptance. No more than eight fixes, most material first.
 7. `rebuild` — do not patch, rebuild what was named, **telling the human** rather than asking permission to fix a failure.
 8. **Stop the moment a pass resolves nothing.**
@@ -178,7 +178,7 @@ The environment offers an artboard canvas (`/design`) — **run directions and a
 - **The human brought a brand identity themselves** (a logo, brand book, guidelines — the catcher in [ingest.md](ingest.md)) → the file is created right away: that act is the consent, and there is nothing to ask twice.
 - No file — we work without one. That is the normal mode, not a deficiency.
 
-A root-level file in the project. A third axis of memory: `wiki/` — what we know, `STATE.md` — what we are doing, **`BRAND.md` — what the things we make look like**. Deliberately not a wiki page: the wiki is maintained by Claude through ingest and requires sources, whereas `BRAND.md` is edited by the human and is itself the source.
+A root-level file in the project. A third axis of memory: `wiki/` — what we know, `STATE.md` — what we are doing, **`BRAND.md` — what the things we make look like**. Deliberately not a wiki page: the wiki is maintained by the agent through ingest and requires sources, whereas `BRAND.md` is edited by the human and is itself the source.
 
 Sections: who we are and what we promise (2 lines, taken from "About the project", not invented) · palette by roles (ground · text · muted · accent) · typography (faces, scale, leading) · rhythm (spacing step, radii, shadows) · the recognition device (1–2 moves) · **named rules** (2–5, in the form "**The One Voice Rule.** The accent never covers more than a tenth of the screen; its rarity is the point" — a named rule can be cited in conversation and in acceptance) · **what we don't do** (the project's own ban list, grown from experience, separate from §4) · what each artifact type is built with · `_Updated: YYYY-MM-DD · after <which artifact>_`.
 

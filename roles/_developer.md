@@ -16,11 +16,11 @@
 
 ## My wiki slice (prefixes and tags)
 
-<How the role finds its pages: a tag (e.g. `code`/`design`), the profile type. Claude filters via `wiki/index.md` + `grep` over `tags:`, reads only the matches. Filled in by Claude at "create role".>
+<How the role finds its pages: a tag (e.g. `code`/`design`), the profile type. The agent filters via `wiki/index.md` + `grep` over `tags:`, reads only the matches. Filled in by the agent at "create role".>
 
 ## What to read at the start
 
-- `CLAUDE.md`; this role file.
+- `AGENTS.md`; this role file.
 - **The code itself in the code folder** — the source of truth for the product; the `README` next to it — how to build/verify.
 - Own wiki slice and the related raw material.
 
