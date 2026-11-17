@@ -17,7 +17,7 @@ Once per project (verified on Codex 0.169, 2026-11-16):
 2. **Approve the project's checks** — type `/hooks` and approve this project's checks.
 3. **Restart Codex** — until then it reads the previous settings.
 
-Python 3 is needed — `python3`, `python` or `py`. A project without git works (verified there too).
+Python 3 is needed — `python3`, `python` or `py`. A project without git works (verified there too). On Windows in PowerShell 5.1, read project files with `-Encoding UTF8` and edit them with your own editing tool, not PowerShell commands: otherwise non-Latin text gets corrupted.
 
 ## Settings and the project's checks
 
@@ -45,7 +45,7 @@ Codex's sandbox doesn't allow writing into `.git/` (verified on 0.164): a commit
 
 ## Network during an update
 
-Codex's sandbox usually has no network (the command fails with `Could not resolve host`) — that is not the human's refusal: repeat the same update-check commands, asking the human in Codex's window for network permission — only for these commands, not for good. Not allowed — the check is not done; the action for the human: "allow Codex network access for this check in the approval window, or open the project in Codex with network access — the update will go through there". Codex's built-in web search is forbidden for this check.
+Codex's sandbox usually has no network (the command fails with `Could not resolve host`, `hooks/update.py` — with `RESULT failed:network`) — that is not the human's refusal: repeat the same update-check commands (`hooks/update.py` with a timeout of up to 2 minutes), asking the human in Codex's window for network permission — only for these commands, not for good. Not allowed — the check is not done; the action for the human: "allow Codex network access for this check in the approval window, or open the project in Codex with network access — the update will go through there". Codex's built-in web search is forbidden for this check.
 
 ## The reply reviewer and its cost
 

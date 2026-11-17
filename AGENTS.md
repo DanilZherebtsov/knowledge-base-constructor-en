@@ -1,6 +1,6 @@
 # AGENTS.md — the project's LLM wiki
 
-> **Version:** 3.2.0
+> **Version:** 3.3.0
 
 The core idea: each source is compiled once into a permanent, interlinked wiki; when answering, the agent reads the wiki and goes back to the raw source only to integrate something new or resolve a contradiction.
 
@@ -69,7 +69,7 @@ STATE.md         ← Operational state (intentions, not facts; not canonical).
 BACKLOG.md       ← Deferred items (not in progress).
 BRAND.md         ← How what we make looks: palette, fonts, rhythm, rules, banlist. Edited by
                    the human; only with their consent, from what was built — methodology/design.md.
-hooks/           ← The project's checks, shared by all programs: start, turn, reply, raw/ guard.
+hooks/           ← The project's checks, shared by all programs: start, turn, reply, raw/ guard; update without git.
 .claude/ .codex/ .qwen/ ← Program settings: which checks to run, the reply style.
 ```
 

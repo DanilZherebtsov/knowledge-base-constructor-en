@@ -34,7 +34,7 @@ A new subagent of the agent-launching tool (an ordinary type, not `fork`) starts
 
 ## Network during an update
 
-The shell usually has network. A sandbox without network — do step 1 of the update check with the page-reading tool `WebFetch` (a live GET that bypasses the sandbox); `WebSearch` is forbidden for it. Steps 2–8 need `git` with network — ask to allow that command outside the sandbox in Claude Code's window; not allowed — to the human: "open the project in Claude Code without the sandbox — the update will go through there". In Claude Desktop without a shell with network — step 1 via `WebFetch`, and to the human: "open the project in the Code tab or in Claude Code — the update will go through there".
+The shell usually has network. A sandbox without network — do step 1 of the update check with the page-reading tool `WebFetch` (a live GET that bypasses the sandbox); `WebSearch` is forbidden for it. Steps 2–8 need network — `git` or `hooks/update.py` (`github.com`, `codeload.github.com`, `raw.githubusercontent.com`) — ask to allow that command outside the sandbox in Claude Code's window; not allowed — to the human: "open the project in Claude Code without the sandbox — the update will go through there". In Claude Desktop without a shell with network — step 1 via `WebFetch`, and to the human: "open the project in the Code tab or in Claude Code — the update will go through there".
 
 ## The reply reviewer and its cost
 

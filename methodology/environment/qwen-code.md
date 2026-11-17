@@ -36,7 +36,7 @@ The `agent` tool with a named subagent type (the built-in general one; not `fork
 
 ## Network during an update
 
-Qwen Code's shell usually has network (the sandbox is off by default). Without network — do step 1 of the update check with the page-reading tool `web_fetch`; the built-in web search is forbidden for it. Steps 2–8 need `git` with network — to the human: "start Qwen Code with network access (without the sandbox) — the update will go through there".
+Qwen Code's shell usually has network (the sandbox is off by default). Without network — do step 1 of the update check with the page-reading tool `web_fetch`; the built-in web search is forbidden for it. Steps 2–8 need network — `git` or `hooks/update.py` (`github.com`, `codeload.github.com`, `raw.githubusercontent.com`) — to the human: "start Qwen Code with network access (without the sandbox) — the update will go through there".
 
 ## The reply reviewer and its cost
 
