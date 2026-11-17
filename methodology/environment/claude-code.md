@@ -10,12 +10,12 @@ Claude Code reads `CLAUDE.md`, not `AGENTS.md`: it loads `AGENTS.md` on its own 
 
 ## First setup
 
-In Claude Code — nothing: the project's checks (`hooks/`) run on their own from the entries in `.claude/settings.json` (verified on 2.1.325). `python3` is needed. In Claude Desktop — a line for the project instructions field (its text — the "Claude Desktop" section below).
+In Claude Code — nothing: the project's checks (`hooks/`) run on their own from the entries in `.claude/settings.json` (verified on 2.1.325). Python 3 is needed — `python3`, `python` or `py`. In Claude Desktop — a line for the project instructions field (its text — the "Claude Desktop" section below).
 
 ## Settings and the project's checks
 
 - **Settings files:** `.claude/settings.json` — shared, in the project (the checks and the reply style); personal — `.claude/settings.local.json` (this computer only, not committed) and `~/.claude/settings.json`.
-- **The project's checks** — entries in `.claude/settings.json`: `SessionStart` (with the `matcher` `startup|resume|clear|compact` — also after context compaction) → `hooks/start.py`; `UserPromptSubmit` → `hooks/consent.py`; `PreToolUse` (`Write|Edit|MultiEdit|NotebookEdit|Bash|Monitor`) → `hooks/raw_guard.py`; `Stop` → `hooks/judge.py`. The command is `python3 "$CLAUDE_PROJECT_DIR/hooks/<script>.py" --program claude`, with a `python3` check in front and `|| true` at the end.
+- **The project's checks** — entries in `.claude/settings.json`: `SessionStart` (with the `matcher` `startup|resume|clear|compact` — also after context compaction) → `hooks/start.py`; `UserPromptSubmit` → `hooks/consent.py`; `PreToolUse` (`Write|Edit|MultiEdit|NotebookEdit|Bash|Monitor|PowerShell`, `"onFailure": "continue"`) → `hooks/raw_guard.py`; `Stop` → `hooks/judge.py`. The command is one line for bash (before `#>`) and PowerShell (after `#>;`), with the first Python found. On Windows without Git Bash Claude Code advises installing Git for Windows once per session — expected, leave the entries as they are.
 - **No approval needed:** Claude Code runs the project's checks without an approval window.
 - **All turned off at once** — the key `disableAllHooks: true` in any of the settings files. The flag is the human's choice: don't touch it, name it.
 - **The `raw/` guard** sees file edits and shell commands; it checks commands by patterns — that is why the "`raw/` is immutable" rule outranks the guard.

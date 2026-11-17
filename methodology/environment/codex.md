@@ -17,14 +17,14 @@ Once per project (verified on Codex 0.169, 2026-11-16):
 2. **Approve the project's checks** — type `/hooks` and approve this project's checks.
 3. **Restart Codex** — until then it reads the previous settings.
 
-`python3` is needed. A project without git works (verified there too).
+Python 3 is needed — `python3`, `python` or `py`. A project without git works (verified there too).
 
 ## Settings and the project's checks
 
 - **Settings files:** `.codex/hooks.json` — the project's checks; `.codex/config.toml` — the limit and the reply style; `.codex/agents/` — subagent roles (the `reviewer`). Personal — `~/.codex/config.toml` (or the folder from `CODEX_HOME`).
-- **The project's checks** — entries in `.codex/hooks.json`: `SessionStart` → `hooks/start.py`; `UserPromptSubmit` → `hooks/consent.py`; `PreToolUse` (`Bash|apply_patch`) → `hooks/raw_guard.py`; `Stop` → `hooks/judge.py`. The command finds the project root by `.codex/hooks.json`, then `python3 "<root>/hooks/<script>.py" --program codex`, with `|| true` at the end.
+- **The project's checks** — entries in `.codex/hooks.json`: `SessionStart` → `hooks/start.py`; `UserPromptSubmit` → `hooks/consent.py`; `PreToolUse` (`Bash|apply_patch`) → `hooks/raw_guard.py`; `Stop` → `hooks/judge.py`. The command (`command` — Mac and Linux, `commandWindows` — Windows, PowerShell) finds the project root by `.codex/hooks.json` and runs the script with the first Python found; a failure doesn't stop the work.
 - **Turning all checks off at once** — reject them in `/hooks` (we haven't checked a separate project switch in Codex's settings).
-- **Approval is by the entries' contents.** An entry in `.codex/hooks.json` changed (after a project update or an edit) — the approval is dropped and the checks silently don't run until the human approves them again in `/hooks`. Editing the `hooks/` scripts themselves doesn't drop approval: the entries' commands don't change between versions.
+- **Approval is by the entries' contents.** An entry's command in `.codex/hooks.json` for the human's system changed — `command` on Mac and Linux, `commandWindows` on Windows (after a project update or an edit) — the approval is dropped and the checks silently don't run until the human approves them again in `/hooks`. Editing the `hooks/` scripts themselves doesn't drop approval; changed entries are named by the journal under "How to accept".
 - **The `raw/` guard** sees edits via `apply_patch` and shell commands; it checks commands by patterns. It doesn't see input into an already running program (`write_stdin`) — verified 2026-11-16 on Codex 0.169: a write into `raw/` from a running interpreter went through; nor the tools of connected servers. That is why the "`raw/` is immutable" rule outranks the guard: don't write into `raw/` by any route. Don't work around the guard's refusal and don't ask to allow it in Codex's window.
 
 ## Reply style
@@ -69,5 +69,5 @@ The common procedure — [lint.md](../lint.md), "Writing the checks and program 
 
 - The sandbox doesn't allow writing into `.codex/` without approval — that is not the human's refusal: ask them to allow it in Codex's window.
 - What is needed from the human in the question (item 2 of the common procedure): allow the write in the window, switch the permission mode, trust the folder, or approve the checks in `/hooks` — name what is needed.
-- **After writing `.codex/hooks.json`** — ask the human to approve the checks again (`/hooks`) and restart Codex (item 6 of the common procedure).
+- **After writing `.codex/hooks.json`** — if the command for the human's system changed, ask them to approve the checks again (`/hooks`) and restart Codex (item 6 of the common procedure).
 - In the description for the human, name the cost of the after-reply check: "when signed in with an API key, this costs money".

@@ -16,6 +16,27 @@ The single version journal of the constructor. As of 2.0.0 the product has **one
 
 ---
 
+## 3.2.0 [instruction]
+
+**The project's checks work on Windows.** The automatic checks now start on Windows too — in Claude Code (with Git Bash and without), Codex and Qwen Code — with Python under any name: `python3`, `python`, `py`. The `hooks/` scripts answer in ASCII only (Cyrillic was lost in a Windows code page, and a lost guard deny let the call through), look for programs only on PATH, not in the current folder, hand the question to the reply reviewer on the program's input rather than as an argument, and on Windows stop the reply reviewer on timeout together with all its processes. The `raw/` guard understands PowerShell and cmd commands by a rough rule: deleting, moving, overwriting and copying over a source — denied; a pipe, a variable, `.NET` or `Invoke-Expression` mentioning `raw/` — denied when `raw/` has sources. The environment check no longer says "the checks don't start on Windows", and without approval it points to `/hooks`. The fallback Python name in `AGENTS.md` is `python`, then `py -3`. Verified: the command lines on a GitHub Windows machine (Windows Server 2025; PowerShell 5.1 and 7, Git Bash, cmd; five Python variants — `python3`, only `py`, only `python`, the real Microsoft Store stubs, no Python; a path with a space and Cyrillic) — 171 of 171; on Windows 11, in an IDE and with a live model — not verified.
+
+- **Files:** `.claude/settings.json`, `.codex/hooks.json`, `.qwen/settings.json` — the check commands; `hooks/common.py`, `raw_guard.py`, `judge.py`, `env_check.py`; `AGENTS.md` — the "Environment check" paragraph and line 3; `methodology/lint.md` — "The project's checks aren't working", "The `raw/` guard is not in place"; environment files — the description of the commands.
+- **How to accept:** by steps 5–8 of the "Update check"; the programs' settings files — entry by entry (step 7): the check entries are replaced, the human's own edits in them — show and ask. On Windows without git this path can't update (updating without git comes in the next release): to the human — install Git for Windows or download the project anew and carry over their files. Moving from old versions (1.x, 2.x) on Windows still needs Git for Windows.
+
+### Claude only
+
+- Each check's command is one line for bash and PowerShell; the `PreToolUse` filter now includes the `PowerShell` tool. On Windows without Git Bash Claude Code advises installing Git for Windows once per session — expected, leave the entries as they are; with Git for Windows the advice goes away. Nothing to approve.
+
+### Codex only
+
+- Each check entry has a new field `commandWindows` — the command for Windows (PowerShell); the command for Mac and Linux is the same as before, and approval there is not dropped (by the Codex 0.169 source). On Windows the reply reviewer starts working for the first time too: after replies it asks the model — this uses the limit.
+- **How to accept:** only on Windows — type `/hooks`, approve the project's checks again and restart Codex.
+
+### Qwen Code only
+
+- The check commands changed: one line for Mac, Linux and Windows (on Windows — through cmd; Python — `python3`, `py -3` or `python`), the scripts always answer with one JSON. Without Python Qwen Code shows a "not found" message after every event — Python 3 is needed.
+- **How to accept:** on any system — approve the project's checks again (Qwen Code asks in its window, or `/hooks`).
+
 ## 3.1.0 [instruction]
 
 ### Claude only
