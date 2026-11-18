@@ -16,6 +16,12 @@ The single version journal of the constructor. As of 2.0.0 the product has **one
 
 ---
 
+## 3.4.1 [instruction]
+
+**The "Environment check" paragraph is shorter — behaviour unchanged.** In `AGENTS.md` the note on who puts the `[environment] Program: …` line there is removed, the pointer to `methodology/environment/` is now a plain path instead of a link, the other sentences are tightened; the always-on text is 65 characters shorter. Behaviour does not change: what the agent does at the start of a conversation, when it tells the human and when it holds off on the task — the same.
+
+- **Files:** `AGENTS.md` — the "Environment check" paragraph, line 3.
+
 ## 3.4.0 [instruction]
 
 **Presentations by the project's rules, not by the program's template.** The reason: decks built on the scaffold of the built-in presentation tool ("icon + heading + description" rows, card grids) even though the project's rules had been read — the deck rules offered no form to use instead of that scaffold. The Presentation item (`methodology/design.md`, §7) is rewritten: everything in it is the default — the chosen direction, a brief, the client's brand identity, a design system and `BRAND.md` win; the slide roles gain "who it's for" and "what it does", a genre outside the list names its own roles; the layout comes from the role (what to show) and the direction (how), with a default layout for each role; a list of 3–5 items — as text, no icons or plates; a deck that travels as a file — an explanation for every large assertion; nothing tangible to show — type and a colour field; templates (from the program's tool or out of habit) are not a scaffold: "icon + label + explanation" blocks on no more than one slide, the same layout class on two adjacent slides is a defect except a series; the "slide → role → layout → heading" table — on disk, before production and before handing over. §4 is re-read before building; the built-in tool's design advice ranks below the floor, its technical side stays in force. The visual-work catcher in `AGENTS.md` carries the whole order; the paragraph "Visual work — only through the order of visual work" is removed as a duplicate. A trial in the workshop (a copy of a project, the same request): the old rules — a template on 7 and 9 of 16 slides, the new ones with the built-in tool — on 0.

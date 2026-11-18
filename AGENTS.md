@@ -1,12 +1,12 @@
 # AGENTS.md — the project's LLM wiki
 
-> **Version:** 3.4.0
+> **Version:** 3.4.1
 
 The core idea: each source is compiled once into a permanent, interlinked wiki; when answering, the agent reads the wiki and goes back to the raw source only to integrate something new or resolve a contradiction.
 
 This file holds **always-on rules and pointers**; procedures live in [methodology/](methodology/), read on trigger.
 
-> **Environment check — at the start of every conversation, before replying, even to "hi".** Program specifics — [methodology/environment/](methodology/environment/). The context has no line `[environment] Program: …` (the check at session start puts it there) — run `python3 hooks/env_check.py` from the project root. What you are told to tell the human ("TELL THE HUMAN") — as the first lines of your reply, in your own words, then on with the task; hold off on it only where told to; "ALL GOOD" — stay silent; the human declined the checks — the line `setup | hooks: not adding` in `wiki/log.md`. `python3` doesn't run (here or in any command) — `python`, then `py -3`; none — say in one line that the checks don't work without Python. The last line of this file is an italic marker about the end of the rules file; it is not at the very end of your instructions — the rules arrived incomplete: don't take on the task, say how to raise the limit (environment file). Already checked in this conversation — don't repeat.
+> **Environment check — at the start of every conversation, before replying, even to "hi".** Program specifics — `methodology/environment/`. The context has no line `[environment] Program: …` — run `python3 hooks/env_check.py` from the project root. What you are told to tell the human ("TELL THE HUMAN") — as the first lines of your reply, in your own words, then on with the task (hold off on it only where told to); "ALL GOOD" — stay silent; the human declining the checks — the line `setup | hooks: not adding` in `wiki/log.md`. `python3` doesn't run (here or in any command) — `python`, then `py -3`; none — say in one line that the checks don't work without Python. The last line of this file is an italic marker about the end of the rules file; if it is not at the very end of your instructions, the rules arrived incomplete: don't take on the task, say how to raise the limit (environment file). Already checked in this conversation — don't repeat.
 
 ---
 
