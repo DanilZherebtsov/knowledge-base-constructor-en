@@ -14,7 +14,7 @@ Codex reads `AGENTS.md` on its own — from every folder from the git root down 
 
 Once per project (verified on Codex 0.169, 2026-11-16):
 1. **Trust the folder** — Codex asks on first open: "Trust and continue", not "Open restricted". Without trust neither the project's settings (limit, style) nor its checks work.
-2. **Approve the project's checks** — type `/hooks` and approve this project's checks.
+2. **Approve the project's checks** — type `/hooks` and approve what belongs to this project. To the human — in the words "turn on the reminders, the saving prompt and the protection of the source documents" ([lint.md](../lint.md), "How to describe the checks to the human"), without the word "checks".
 3. **Restart Codex** — until then it reads the previous settings.
 
 Python 3 is needed — `python3`, `python` or `py`. A project without git works (verified there too). On Windows in PowerShell 5.1, read project files with `-Encoding UTF8` and edit them with your own editing tool, not PowerShell commands: otherwise non-Latin text gets corrupted.
@@ -68,6 +68,6 @@ The common procedure — [lint.md](../lint.md), "Deletion when the environment b
 The common procedure — [lint.md](../lint.md), "Writing the checks and program settings"; here — Codex.
 
 - The sandbox doesn't allow writing into `.codex/` without approval — that is not the human's refusal: ask them to allow it in Codex's window.
-- What is needed from the human in the question (item 2 of the common procedure): allow the write in the window, switch the permission mode, trust the folder, or approve the checks in `/hooks` — name what is needed.
-- **After writing `.codex/hooks.json`** — if the command for the human's system changed, ask them to approve the checks again (`/hooks`) and restart Codex (item 6 of the common procedure).
+- What is needed from the human in the question (item 2 of the common procedure): allow the write in the window, switch the permission mode, trust the folder, or turn on the reminders, the saving prompt and the protection of the source documents (`/hooks`, approve what belongs to this project) — name what is needed.
+- **After writing `.codex/hooks.json`** — if the command for the human's system changed, ask them to turn on the reminders, the saving prompt and the protection of the source documents again (`/hooks`, approve what belongs to this project) and restart Codex (item 6 of the common procedure).
 - In the description for the human, name the cost of the after-reply check: "when signed in with an API key, this costs money".

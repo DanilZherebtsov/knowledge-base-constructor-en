@@ -114,7 +114,7 @@ One message to the human, in plain words, without the words "version, tag, merge
    - the project will work in Codex and Qwen Code too; the rules — in `AGENTS.md`, next to it a one-line `CLAUDE.md` — no need to delete it;
    - the automatic checks move into the `hooks/` folder;
    - **in Claude Desktop** (if the project is open there) — the line in the project instructions will need replacing: I'll give the new one;
-   - **in Codex and Qwen Code** (if you work there) — approve the project's checks once: I'll tell you how.
+   - **in Codex and Qwen Code** (if you work there) — turn on the reminders, the saving prompt and the protection of the source documents there: I'll tell you how.
 2. **What is yours and where I carry it** — briefly, per the analysis.
 3. **What I'm asking** — conflicts, files you deleted, edited scripts, the exact replacement in personal settings files (I write it with your "yes", or you do), the switch.
 
@@ -183,8 +183,8 @@ In plain words, without the forbidden words:
 - what changed and what of the project's own was carried where;
 - **the new rules take effect from a new chat — start the next task in a new one**; a check: in a new chat ask "which version is the project?" — I'll name 3.0.0 without opening files;
 - **Claude Desktop** (if the project is open there): in **Project settings → Memory → Project instructions** replace the line with "Before your first reply in every chat, read AGENTS.md from the project folder and follow it; if you can't open the file, say so. Write to files in this folder, not to the app's memory (MEMORY.md).";
-- **Codex** (if you work there): trust the folder ("Trust and continue"), type `/hooks` and approve the project's checks, restart Codex;
-- **Qwen Code** (if you work there): open it in the project folder interactively and approve the project's checks (or `/hooks`);
+- **Codex** (if you work there): trust the folder ("Trust and continue"), type `/hooks` and approve what belongs to this project (this turns on the reminders, the saving prompt and the protection of the source documents), restart Codex;
+- **Qwen Code** (if you work there): open it in the project folder interactively and agree when it asks (or type `/hooks` and approve what belongs to this project) — this turns on the reminders, the saving prompt and the protection of the source documents;
 - hooks turned off in step 1.6 (`disableAllHooks`) — remove that line from `.claude/settings.local.json`;
 - replacements in personal settings the human writes themselves, and old scripts that stayed — what and where;
 - links to `CLAUDE.md` in the project's own files — a list with the proposed replacement (step 6.7);

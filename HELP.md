@@ -71,7 +71,7 @@ I'll also tidy the documents folder: files that haven't changed for a month and 
 - **Can't see a file** → tell me which folder it's in, or put it in the project folder (for example, in `input/`).
 - **My answer is unclear** → type "simpler". **I misread the task** → rephrase it.
 - **No idea what I'm even talking about** → say "show me where I wrote that". I have to either point at your own message containing the word, or rewrite without it.
-- **I ask you to approve the project's checks** → some programs run my automatic checks only after your approval, and after a project update it sometimes has to be given again. I'll tell you where.
+- **I ask you to turn on the reminders and protection** → some programs turn on the reminders (of an outdated plan, of maintenance), the saving prompt (when I forget to offer saving something important) and the protection of the source documents in `raw/` from my edits only after your approval; after some project updates the approval has to be given again. I'll tell you where.
 - **I ask you to switch modes** → this happens when, in automatic mode, the app itself turns down my permission requests (to delete a file, to change project settings) without showing them to you. Switch to the mode where I ask permission — I'll tell you where. You can switch back afterwards.
 - **The `_to_delete` folder** — things you allowed me to remove but I couldn't delete; drag it to the Trash (Recycle Bin on Windows).
 - **An unfamiliar line shows up in the window (say, with the word "error"), or my replies got noticeably slower** → ask me what it is and paste the line here: I'll explain what I know and tell you whether it can be removed.

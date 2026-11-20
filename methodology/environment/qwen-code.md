@@ -12,7 +12,7 @@ Qwen Code reads `AGENTS.md` on its own: it is its default rules file (the `conte
 
 ## First setup
 
-Once per project: open Qwen Code in the project folder interactively (not `qwen -p`) and **approve the project's checks** when it asks about them, or type `/hooks`. Without approval the checks don't load — Qwen Code's output has the line "Project hooks in .qwen/settings.json were not loaded: they are not approved for this folder" (verified on 0.27.4, 2026-11-16). Qwen Code's warning that the always-on context is longer than 10,000 tokens (`Loaded always-on context … more than 10,000 tokens`) is expected for this project: the rules are that size — if the human asks, say so. What exactly the approval window shows — per Qwen Code's code, not tested by a run. `python3` is needed.
+Once per project: open Qwen Code in the project folder interactively (not `qwen -p`) and **approve the project's checks** when it asks about them, or type `/hooks` and approve what belongs to this project. To the human — in the words "turn on the reminders, the saving prompt and the protection of the source documents" ([lint.md](../lint.md), "How to describe the checks to the human"), without the word "checks". Without approval the checks don't load — Qwen Code's output has the line "Project hooks in .qwen/settings.json were not loaded: they are not approved for this folder" (verified on 0.27.4, 2026-11-16). Qwen Code's warning that the always-on context is longer than 10,000 tokens (`Loaded always-on context … more than 10,000 tokens`) is expected for this project: the rules are that size — if the human asks, say so. What exactly the approval window shows — per Qwen Code's code, not tested by a run. `python3` is needed.
 
 ## Settings and the project's checks
 
@@ -54,5 +54,5 @@ The common procedure — [lint.md](../lint.md), "Deletion when the environment b
 
 The common procedure — [lint.md](../lint.md), "Writing the checks and program settings"; here — Qwen Code.
 
-- **After writing `.qwen/settings.json`** the approval is dropped (it is by contents): ask the human to open Qwen Code in the project folder interactively and approve the checks again, or type `/hooks` (item 6 of the common procedure).
+- **After writing `.qwen/settings.json`** the approval is dropped (it is by contents): ask the human to turn on the reminders, the saving prompt and the protection of the source documents again: type `/hooks` and approve what belongs to this project, or open Qwen Code in the project folder interactively and agree (item 6 of the common procedure).
 - A write refused in the confirmation window — what is needed from the human (item 2 of the common procedure): allow the write in the window or switch the confirmation mode.
